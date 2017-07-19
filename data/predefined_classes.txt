@@ -1,5 +1,0 @@
-ic
-capacitor
-resistor
-inductor
-ss-cap
