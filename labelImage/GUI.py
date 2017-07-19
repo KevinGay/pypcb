@@ -24,7 +24,7 @@ from labelFile import LabelFile, LabelFileError
 from toolBar import ToolBar
 from pascal_voc_io import PascalVocReader
 
-__appname__ = 'labelImg'
+__appname__ = 'PyPCB'
 
 ### Utility functions and classes.
 
@@ -42,7 +42,7 @@ class WindowMixin(object):
         toolbar.setToolButtonStyle(Qt.ToolButtonTextUnderIcon)
         if actions:
             addActions(toolbar, actions)
-        self.addToolBar(Qt.LeftToolBarArea, toolbar)
+        self.addToolBar(Qt.TopToolBarArea, toolbar)
         return toolbar
 
 
@@ -102,6 +102,17 @@ class MainWindow(QMainWindow, WindowMixin):
         self.dock.setObjectName(u'Labels')
         self.dock.setWidget(self.labelListContainer)
 
+        self.fileListWidget = QListWidget()
+        self.fileListWidget.itemDoubleClicked.connect(self.fileitemDoubleClicked)
+        filelistLayout = QVBoxLayout()
+        filelistLayout.setContentsMargins(0, 0, 0, 0)
+        filelistLayout.addWidget(self.fileListWidget)
+        fileListContainer = QWidget()
+        fileListContainer.setLayout(filelistLayout)
+        self.filedock = QDockWidget(u'File List', self)
+        self.filedock.setObjectName(u'Files')
+        self.filedock.setWidget(fileListContainer)
+
         self.zoomWidget = ZoomWidget()
         self.colorDialog = ColorDialog(parent=self)
 
@@ -123,7 +134,8 @@ class MainWindow(QMainWindow, WindowMixin):
         self.canvas.drawingPolygon.connect(self.toggleDrawingSensitive)
 
         self.setCentralWidget(scroll)
-        self.addDockWidget(Qt.RightDockWidgetArea, self.dock)
+        self.addDockWidget(Qt.LeftDockWidgetArea, self.dock)
+        self.addDockWidget(Qt.LeftDockWidgetArea, self.filedock)
         self.dockFeatures = QDockWidget.DockWidgetClosable\
                           | QDockWidget.DockWidgetFloatable
         self.dock.setFeatures(self.dock.features() ^ self.dockFeatures)
@@ -288,13 +300,14 @@ class MainWindow(QMainWindow, WindowMixin):
             action('&Move here', self.moveShape)))
 
         self.tools = self.toolbar('Tools')
+
         self.actions.beginner = (
-            open, opendir, openNextImg, openPrevImg, save, None, create, copy, delete, None,
-            zoomIn, zoom, zoomOut, fitWindow, fitWidth)
+            open, opendir, openPrevImg, openNextImg, save, None, create, copy, delete, None,
+            zoomIn, zoomOut, fitWindow, fitWidth, zoom)
 
         self.actions.advanced = (
             open, save, None,
-            openNextImg, openPrevImg, None,
+            openPrevImg, openNextImg, None,
             createMode, editMode, None,
             hideAll, showAll)
 
@@ -510,6 +523,13 @@ class MainWindow(QMainWindow, WindowMixin):
             item.setText(text)
             self.setDirty()
 
+    def fileitemDoubleClicked(self, item=None):
+        currIndex = self.mImgList.index(item.text())
+        if currIndex < len(self.mImgList):
+            filename = self.mImgList[currIndex]
+            if filename:
+                self.loadFile(filename)
+
     # React to canvas signals.
     def shapeSelectionChanged(self, selected=False):
         if self._noSelectionSlot:
@@ -677,7 +697,15 @@ class MainWindow(QMainWindow, WindowMixin):
         self.canvas.setEnabled(False)
         if filename is None:
             filename = self.settings['filename']
+
         filename = unicode(filename)
+
+        # Highlight the file item
+        if filename and self.fileListWidget.count() > 0:
+            index = self.mImgList.index(filename)
+            fileWidgetItem = self.fileListWidget.item(index)
+            fileWidgetItem.setSelected(True)
+
         if QFile.exists(filename):
             if LabelFile.isLabelFile(filename):
                 try:
@@ -880,6 +908,11 @@ class MainWindow(QMainWindow, WindowMixin):
             self.mImgList = self.scanAllImages(dirpath)
 
             self.loadFile(self.mImgList[0])
+
+            self.fileListWidget.clear()
+            for imgPath in self.mImgList:
+                item = QListWidgetItem(imgPath)
+                self.fileListWidget.addItem(item)
 
     def openPrevImg(self, _value=False):
         if self.autoSaving is True and self.defaultSaveDir is not None:
@@ -1234,7 +1267,7 @@ def main(argv):
     """Standard boilerplate Qt application code."""
     app = QApplication(argv)
     app.setApplicationName(__appname__)
-    app.setWindowIcon(newIcon("app"))
+    app.setWindowIcon(QIcon('icons/proglogo.jpg'))
     win = MainWindow(argv[1] if len(argv) == 2 else None)
     win.show()
     return app.exec_()
