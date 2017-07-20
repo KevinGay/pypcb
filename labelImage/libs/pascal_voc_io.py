@@ -4,6 +4,11 @@ from xml.etree.ElementTree import Element, SubElement
 from xml.dom import minidom
 from lxml import etree
 
+import codecs
+
+XML_EXT = '.xml'
+ENCODE_METHOD = 'utf-8'
+
 class PascalVocWriter:
     def __init__(self, foldername, filename, imgSize, databaseSrc='Unknown', localImgPath=None):
         self.foldername = foldername
@@ -93,11 +98,13 @@ class PascalVocWriter:
         self.appendObjects(root)
         out_file = None
         if targetFile is None:
-            out_file = open(self.filename + '.xml','w')
+            out_file = codecs.open(
+                self.filename + XML_EXT, 'w', encoding=ENCODE_METHOD)
         else:
-            out_file = open(targetFile, 'w')
+            out_file = codecs.open(targetFile, 'w', encoding=ENCODE_METHOD)
 
-        out_file.write(self.prettify(root))
+        prettifyResult = self.prettify(root)
+        out_file.write(prettifyResult.decode('utf8'))
         out_file.close()
 
 
