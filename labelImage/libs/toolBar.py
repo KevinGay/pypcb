@@ -6,7 +6,9 @@ except ImportError:
     from PyQt4.QtGui import *
     from PyQt4.QtCore import *
 
+
 class ToolBar(QToolBar):
+
     def __init__(self, title):
         super(ToolBar, self).__init__(title)
         layout = self.layout()
@@ -28,6 +30,7 @@ class ToolBar(QToolBar):
 class ToolButton(QToolButton):
     """ToolBar companion class which ensures all buttons have the same size."""
     minSize = (60, 60)
+
     def minimumSizeHint(self):
         ms = super(ToolButton, self).minimumSizeHint()
         w1, h1 = ms.width(), ms.height()

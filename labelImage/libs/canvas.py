@@ -8,8 +8,8 @@ except ImportError:
 
 #from PyQt4.QtOpenGL import *
 
-from shape import Shape
-from lib import distance
+from libs.shape import Shape
+from libs.lib import distance
 
 CURSOR_DEFAULT = Qt.ArrowCursor
 CURSOR_POINT = Qt.PointingHandCursor
@@ -47,7 +47,7 @@ class Canvas(QWidget):
         self.scale = 1.0
         self.pixmap = QPixmap()
         self.visible = {}
-        self._hideBackround = False
+        self._hideBackground = False
         self.hideBackround = False
         self.hShape = None
         self.hVertex = None
@@ -245,7 +245,7 @@ class Canvas(QWidget):
             self.current.addPoint(initPos)
             self.line[0] = self.current[-1]
             if self.current.isClosed():
-                self.finalise()
+                self.finalize()
         elif not self.outOfPixmap(pos):
             self.current = Shape()
             self.current.addPoint(pos)
@@ -255,7 +255,7 @@ class Canvas(QWidget):
             self.update()
 
     def setHiding(self, enable=True):
-        self._hideBackround = self.hideBackround if enable else False
+        self._hideBackground = self.hideBackround if enable else False
 
     def canCloseShape(self):
         return self.drawing() and self.current and len(self.current) > 2
@@ -265,7 +265,7 @@ class Canvas(QWidget):
         # adds an extra one before this handler is called.
         if self.canCloseShape() and len(self.current) > 3:
             self.current.popPoint()
-            self.finalise()
+            self.finalize()
 
     def selectShape(self, shape):
         self.deSelectShape()
@@ -395,7 +395,7 @@ class Canvas(QWidget):
         p.drawPixmap(0, 0, self.pixmap)
         Shape.scale = self.scale
         for shape in self.shapes:
-            if (shape.selected or not self._hideBackround) and self.isVisible(shape):
+            if (shape.selected or not self._hideBackground) and self.isVisible(shape):
                 shape.fill = shape.selected or shape == self.hShape
                 shape.paint(p)
         if self.current:
@@ -417,13 +417,7 @@ class Canvas(QWidget):
             p.drawRect(leftTop.x(), leftTop.y(), rectWidth, rectHeight)
 
         self.setAutoFillBackground(True)
-        '''
-        if self.verified:
-            pal = self.palette()
-            pal.setColor(self.backgroundRole(), QColor(184, 239, 38, 128))
-            self.setPalette(pal)
-        else:
-        '''
+
         pal = self.palette()
         pal.setColor(self.backgroundRole(), QColor(232, 232, 232, 255))
         self.setPalette(pal)
@@ -447,7 +441,7 @@ class Canvas(QWidget):
         w, h = self.pixmap.width(), self.pixmap.height()
         return not (0 <= p.x() <= w and 0 <= p.y() <= h)
 
-    def finalise(self):
+    def finalize(self):
         assert self.current
         self.current.close()
         self.shapes.append(self.current)
@@ -550,7 +544,7 @@ class Canvas(QWidget):
             self.drawingPolygon.emit(False)
             self.update()
         elif key == Qt.Key_Return and self.canCloseShape():
-            self.finalise()
+            self.finalize()
         elif key == Qt.Key_Left and self.selectedShape:
             self.moveOnePixel('Left')
         elif key == Qt.Key_Right and self.selectedShape:

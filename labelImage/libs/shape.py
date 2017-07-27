@@ -9,7 +9,7 @@ except ImportError:
     from PyQt4.QtGui import *
     from PyQt4.QtCore import *
 
-from lib import distance
+from libs.lib import distance
 
 DEFAULT_LINE_COLOR = QColor(0, 255, 0, 128)
 DEFAULT_FILL_COLOR = QColor(255, 0, 0, 128)
@@ -57,7 +57,6 @@ class Shape(object):
             self.line_color = line_color
 
     def close(self):
-        assert len(self.points) > 2
         self._closed = True
 
     def reachMaxPoints(self):
@@ -124,9 +123,9 @@ class Shape(object):
         else:
             self.vertex_fill_color = Shape.vertex_fill_color
         if shape == self.P_SQUARE:
-            path.addRect(point.x() - d/2, point.y() - d/2, d, d)
+            path.addRect(point.x() - d / 2, point.y() - d / 2, d, d)
         elif shape == self.P_ROUND:
-            path.addEllipse(point, d/2.0, d/2.0)
+            path.addEllipse(point, d / 2.0, d / 2.0)
         else:
             assert False, "unsupported vertex shape"
 
