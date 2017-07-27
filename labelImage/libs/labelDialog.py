@@ -1,7 +1,13 @@
-from PyQt4.QtGui import *
-from PyQt4.QtCore import *
+try:
+    from PyQt5.QtGui import *
+    from PyQt5.QtCore import *
+    from PyQt5.QtWidgets import *
+except ImportError:
+    from PyQt4.QtGui import *
+    from PyQt4.QtCore import *
 
-from lib import newIcon, labelValidator
+
+from libs.lib import newIcon, labelValidator
 
 BB = QDialogButtonBox
 
@@ -32,11 +38,20 @@ class LabelDialog(QDialog):
         self.setLayout(layout)
 
     def validate(self):
-        if self.edit.text().trimmed():
-            self.accept()
+        try:
+            if self.edit.text().trimmed():
+                self.accept()
+        except AttributeError:
+            # PyQt5: AttributeError: 'str' object has no attribute 'trimmed'
+            if self.edit.text().strip():
+                self.accept()
 
     def postProcess(self):
-        self.edit.setText(self.edit.text().trimmed())
+        try:
+            self.edit.setText(self.edit.text().trimmed())
+        except AttributeError:
+            # PyQt5: AttributeError: 'str' object has no attribute 'trimmed'
+            self.edit.setText(self.edit.text())
 
     def popUp(self, text='', move=True):
         self.edit.setText(text)
@@ -47,6 +62,10 @@ class LabelDialog(QDialog):
         return self.edit.text() if self.exec_() else None
 
     def listItemClick(self, tQListWidgetItem):
-        text = tQListWidgetItem.text().trimmed()
+        try:
+            text = tQListWidgetItem.text().trimmed()
+        except AttributeError:
+            # PyQt5: AttributeError: 'str' object has no attribute 'trimmed'
+            text = tQListWidgetItem.text().strip()
         self.edit.setText(text)
         self.validate()

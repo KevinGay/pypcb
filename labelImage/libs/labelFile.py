@@ -1,8 +1,11 @@
-from PyQt4.QtGui import QImage
+try:
+    from PyQt5.QtGui import QImage
+except ImportError:
+    from PyQt4.QtGui import QImage
+
 from base64 import b64encode, b64decode
-from pascal_voc_io import PascalVocWriter
+from libs.pascal_voc_io import PascalVocWriter, XML_EXT
 import json
-import numpy
 import os.path
 import sys
 
@@ -11,7 +14,8 @@ class LabelFileError(Exception):
 
 class LabelFile(object):
     # It might be changed as window creates
-    suffix = '.lif'
+    #suffix = '.lif'
+    suffix = XML_EXT
 
     def __init__(self, filename=None):
         self.shapes = ()
@@ -36,7 +40,7 @@ class LabelFile(object):
                 self.imageData = imageData
                 self.lineColor = lineColor
                 self.fillColor = fillColor
-        except Exception, e:
+        except Exception as e:
             raise LabelFileError(e)
 
     def save(self, filename, shapes, imagePath, imageData,
@@ -49,7 +53,7 @@ class LabelFile(object):
                     imagePath=imagePath,
                     imageData=b64encode(imageData)),
                     f, ensure_ascii=True, indent=2)
-        except Exception, e:
+        except Exception as e:
             raise LabelFileError(e)
 
     def savePascalVocFormat(self, filename, shapes, imagePath, imageData,
@@ -85,10 +89,10 @@ class LabelFile(object):
 
     @staticmethod
     def convertPoints2BndBox(points):
-        xmin = sys.maxint
-        ymin = sys.maxint
-        xmax = -sys.maxint
-        ymax = -sys.maxint
+        xmin = float('inf')
+        ymin = float('inf')
+        xmax = float('-inf')
+        ymax = float('-inf')
         for p in points:
             x = p[0]
             y = p[1]
