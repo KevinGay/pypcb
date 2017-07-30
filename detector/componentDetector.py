@@ -9,9 +9,9 @@ from PIL import Image, ImageDraw, ImageFont
 import argparse
 import cv2
 import copy, time
-import config
+from . import config
 
-sys.path.insert(os.path.join(config.caffe_root, 'python'))
+sys.path.insert(0, os.path.join(config.caffe_root, 'python'))
 import caffe
 
 from nms import nms_max, nms_average
@@ -23,7 +23,7 @@ from windowExtractor import *
 
 class componentDetector(object):
 
-    def __init__(self, component="ic", mode="gpu"):
+    def __init__(self, component="ic", mode="GPU"):
         self.componentClass = component
         self.modelpath = 'models/' + self.componentClass
         self.model = os.path.join(self.modelpath, 'model_' + self.componentClass + '.caffemodel')
@@ -38,10 +38,6 @@ class componentDetector(object):
         self.net_full_conv.blobs['data'].reshape(1,3,self.winSize, self.winSize)
         # load the transformer
         self.transformer = loadTransformer(net_full_conv, (self.winSize, self.winSize))
-        if mode == "gpu":
-            caffe.set_mode_gpu()
-        else:
-            caffe.set_mode_cpu()
 
 
     def detect(self, image, minComponentSize):
@@ -110,4 +106,4 @@ class componentDetector(object):
                 #draw the Bounding boxes on top of the image
                 #drawBoundingBoxes(im, finalBoxes, "Final Image")
             else:
-                print "Image not found"
+                print("Image not found")

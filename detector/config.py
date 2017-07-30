@@ -1,4 +1,7 @@
 
+import os
+import sys
+
 min_ic_size = (50,50)
 max_ic_size = (350, 350)
 
