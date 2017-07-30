@@ -15,7 +15,6 @@ sys.path.insert(0, os.path.join(config.caffe_root, 'python'))
 import caffe
 
 from nms import nms_max, nms_average
-from nms1 import *
 from helperModules import *
 from Clustering import *
 from windowExtractor import *
