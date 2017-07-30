@@ -17,13 +17,18 @@ downscaleFactor = 0.793700526
 upscaleFactor = 1.2
 overlapThresh = 0.3
 
+params = ['fc6', 'fc7', 'fc8']
+params_full_conv = ['fc6-conv', 'fc7-conv', 'fc8-conv']
+
 defaultComponent = "ic"
 
-modelpath = 'models/' + defaultComponent
-model = os.path.join(modelpath, 'model_' + defaultComponent + '.caffemodel')
-prototxt = os.path.join(modelpath, 'deploy.prototxt')
-fullConvProto = os.path.join(modelpath, 'fullConv_' + defaultComponent + '.prototxt')
-meanfile = os.path.join(modelpath, 'mean_' + defaultComponent + '.npy')
+modelpath = 'models/'
+modelpath = os.path.join(os.path.dirname(__file__),'models')
+componentPath = os.path.join(modelpath, defaultComponent)
+model = os.path.join(componentPath, 'model_' + defaultComponent + '.caffemodel')
+prototxt = os.path.join(componentPath, 'deploy.prototxt')
+fullConvProto = os.path.join(componentPath, 'fullConv_' + defaultComponent + '.prototxt')
+meanfile = os.path.join(componentPath, 'mean_' + defaultComponent + '.npy')
 
 
-caffe_root = '/home/mahaling/Libraries/caffe/'
+caffe_root = '/usr/local/caffe/'

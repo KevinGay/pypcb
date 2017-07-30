@@ -25,7 +25,8 @@ class componentDetector(object):
     def __init__(self, component="ic", mode="GPU"):
         self.componentClass = component
         self.mode = mode
-        self.modelpath = './models/' + self.componentClass
+        self.modelpath = os.path.join(config.modelpath, self.componentClass)
+        #print self.modelpath
         self.model = os.path.join(self.modelpath, 'model_' + self.componentClass + '.caffemodel')
         self.prototxt = os.path.join(self.modelpath, 'deploy.prototxt')
         self.fullConvProto = os.path.join(self.modelpath, 'fullConv_' + self.componentClass + '.prototxt')
@@ -37,7 +38,7 @@ class componentDetector(object):
         # reshape the data layer to match the size of the image
         self.net_full_conv.blobs['data'].reshape(1,3,self.winSize, self.winSize)
         # load the transformer
-        self.transformer = loadTransformer(net_full_conv, (self.winSize, self.winSize))
+        self.transformer = loadTransformer(self.net_full_conv, self.meanfile, (self.winSize, self.winSize))
 
 
     def detect(self, image, minComponentSize):

@@ -10,7 +10,7 @@ import argparse as ap
 import config as cfg
 import sys
 
-#sys.path.insert(0, cfg.caffe_root + 'python')
+sys.path.insert(0, cfg.caffe_root + 'python')
 import caffe
 
 
@@ -257,19 +257,19 @@ def loadNet(deployProto, fullConvProto, caffeModel, mode='CPU'):
     return net_full_conv
 
 
-def loadTransformer(net_full_conv, reshapeSize=(515, 515)):
+def loadTransformer(net_full_conv, meanFile, reshapeSize=(515, 515)):
     # reshape the data layer to match the size of the image
     net_full_conv.blobs['data'].reshape(1, 3, reshapeSize[0], reshapeSize[1])
     transformer = caffe.io.Transformer({'data': net_full_conv.blobs['data'].data.shape})
-    transformer.set_mean('data', np.load(cfg.meanFile).mean(1).mean(1))
+    transformer.set_mean('data', np.load(meanFile).mean(1).mean(1))
     transformer.set_transpose('data', (2,0,1))
     transformer.set_channel_swap('data', (2,1,0))
     transformer.set_raw_scale('data', 255.0)
     return transformer
 
 
-def getMean():
-    proto_data = open(cfg.meanBinaryProto, "rb").read()
+def getMean(meanBinaryProto):
+    proto_data = open(meanBinaryProto, "rb").read()
     blob = caffe.proto.caffe_pb2.BlobProto()
     blob.ParseFromString(proto_data)
     arr = np.array( caffe.io.blobproto_to_array(blob) )

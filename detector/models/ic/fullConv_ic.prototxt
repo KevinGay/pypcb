@@ -3,8 +3,8 @@ name: "CaffeNetConv"
 input: "data"
 input_dim: 1
 input_dim: 3
-input_dim: 128
-input_dim: 128
+input_dim: 500
+input_dim: 500
 layer {
   name: "conv1"
   type: "Convolution"
@@ -209,34 +209,8 @@ layer {
   }
 }
 layer {
-  name: "upsample"
-  type: "Deconvolution"
-  bottom: "fc8-conv"
-  top: "bigscore"
-  param {
-    lr_mult: 0
-  }
-  param {
-    lr_mult: 0
-  }
-  convolution_param {
-    num_output: 2
-    kernel_size: 63
-    group: 2
-    stride: 32
-  }
-}
-layer {
-  name: "crop"
-  type: "Crop"
-  bottom: "bigscore"
-  bottom: "data"
-  top: "score"
-}
-layer {
   name: "prob"
-  type: "SoftmaxWithLoss"
-  bottom: "score"
-  bottom: "label"
+  type: "Softmax"
+  bottom: "fc8-conv"
   top: "prob"
 }
