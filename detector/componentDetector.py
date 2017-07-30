@@ -24,6 +24,7 @@ class componentDetector(object):
 
     def __init__(self, component="ic", mode="GPU"):
         self.componentClass = component
+        self.mode = mode
         self.modelpath = 'models/' + self.componentClass
         self.model = os.path.join(self.modelpath, 'model_' + self.componentClass + '.caffemodel')
         self.prototxt = os.path.join(self.modelpath, 'deploy.prototxt')
