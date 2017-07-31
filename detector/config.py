@@ -1,4 +1,7 @@
 
+import os
+import sys
+
 min_ic_size = (50,50)
 max_ic_size = (350, 350)
 
@@ -14,15 +17,18 @@ downscaleFactor = 0.793700526
 upscaleFactor = 1.2
 overlapThresh = 0.3
 
-# model parameters and files
-caffeModel = 'models/pcb_ic_tight.caffemodel'
-deployProto = 'models/pcb_ic_tight_deploy.prototxt'
-fullConvProto = 'models/pcb_ic_tight_full_conv.prototxt'
 params = ['fc6', 'fc7', 'fc8']
 params_full_conv = ['fc6-conv', 'fc7-conv', 'fc8-conv']
-netFullConvModel = 'models/pcbu_full_conv.caffemodel'
-meanFile = 'models/mean_IC.npy'
-meanBinaryProto = 'models/mean_IC.binaryproto'
 
-caffe_root = '/home/mahaling/Libraries/caffe/'
+defaultComponent = "ic"
 
+modelpath = 'models/'
+modelpath = os.path.join(os.path.dirname(__file__),'models')
+componentPath = os.path.join(modelpath, defaultComponent)
+model = os.path.join(componentPath, 'model_' + defaultComponent + '.caffemodel')
+prototxt = os.path.join(componentPath, 'deploy.prototxt')
+fullConvProto = os.path.join(componentPath, 'fullConv_' + defaultComponent + '.prototxt')
+meanfile = os.path.join(componentPath, 'mean_' + defaultComponent + '.npy')
+
+
+caffe_root = '/usr/local/caffe/'

@@ -9,9 +9,12 @@ from PIL import Image, ImageDraw, ImageFont
 import argparse
 import cv2
 import copy, time
+from . import config
+
+sys.path.insert(0, os.path.join(config.caffe_root, 'python'))
+import caffe
 
 from nms import nms_max, nms_average
-from nms1 import *
 from helperModules import *
 from Clustering import *
 from windowExtractor import *
@@ -19,21 +22,23 @@ from windowExtractor import *
 
 class componentDetector(object):
 
-    def __init__(self, component, mode):
+    def __init__(self, component="ic", mode="GPU"):
         self.componentClass = component
-        self.modelpath = 'models/' + self.componentClass
+        self.mode = mode
+        self.modelpath = os.path.join(config.modelpath, self.componentClass)
+        #print self.modelpath
         self.model = os.path.join(self.modelpath, 'model_' + self.componentClass + '.caffemodel')
         self.prototxt = os.path.join(self.modelpath, 'deploy.prototxt')
         self.fullConvProto = os.path.join(self.modelpath, 'fullConv_' + self.componentClass + '.prototxt')
         self.meanfile = os.path.join(self.modelpath, 'mean_' + self.componentClass + '.npy')
-        self.winSize = 515
+        self.winSize = config.winSize
 
         # load the full conv net
         self.net_full_conv = loadNet(self.prototxt, self.fullConvProto, self.model, self.mode)
         # reshape the data layer to match the size of the image
         self.net_full_conv.blobs['data'].reshape(1,3,self.winSize, self.winSize)
         # load the transformer
-        self.transformer = loadTransformer(net_full_conv, (self.winSize, self.winSize))
+        self.transformer = loadTransformer(self.net_full_conv, self.meanfile, (self.winSize, self.winSize))
 
 
     def detect(self, image, minComponentSize):
@@ -49,7 +54,7 @@ class componentDetector(object):
                 total_boxes = []
 
                 start1 = time.time()
-                for (x,y,imw) in sliding_window(ims, (515, 515), mins):
+                for (x,y,imw) in sliding_window(ims, (515, 515), (minComponentSize, minComponentSize)):
                     # pass the image window to the classifier network
                     out = net_full_conv.forward_all(data=np.asarray([transformer.preprocess('data', imw)]))
 
@@ -83,7 +88,7 @@ class componentDetector(object):
                         total_boxes.extend(true_boxes)
 
                 end1 = time.time()
-                print "Total time take for this image: " % (end1-start1)
+                #print "Total time take for this image: " % (end1-start1)
 
                 # perform nms for the entire set of boxes
                 boxes_nms = np.array(total_boxes)
@@ -97,5 +102,9 @@ class componentDetector(object):
                 # group enclosed boxes
                 finalBoxes = enclosingBoxes(fCluster)
 
+                return finalBoxes
+
                 #draw the Bounding boxes on top of the image
-                drawBoundingBoxes(im, finalBoxes, "Final Image")
+                #drawBoundingBoxes(im, finalBoxes, "Final Image")
+            else:
+                print("Image not found")
