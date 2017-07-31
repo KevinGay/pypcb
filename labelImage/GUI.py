@@ -222,6 +222,9 @@ class MainWindow(QMainWindow, WindowMixin):
         color2 = action('Box &Fill Color', self.chooseColor2,
                 'Ctrl+Shift+L', 'color', u'Choose Box fill color')
 
+        predictions = action('Component Predictions', self.getComponentPredictions,
+                'Ctrl+M', 'predictions', u'Get component predictions')
+
         createMode = action('Create\nMode', self.setCreateMode,
                 'Ctrl+N', 'new', u'Start drawing Boxes', enabled=False)
         editMode = action('&Edit\nMode', self.setEditMode,
@@ -304,7 +307,7 @@ class MainWindow(QMainWindow, WindowMixin):
         # Store actions for further handling.
         self.actions = struct(save=save, saveAs=saveAs, exportAsXML=exportAsXML, open=open, close=close,
                 lineColor=color1, fillColor=color2,
-                create=create, delete=delete, edit=edit, copy=copy,
+                create=create, predictions=predictions, delete=delete, edit=edit, copy=copy,
                 createMode=createMode, editMode=editMode, advancedMode=advancedMode,
                 shapeLineColor=shapeLineColor, shapeFillColor=shapeFillColor,
                 zoom=zoom, zoomIn=zoomIn, zoomOut=zoomOut, zoomOrg=zoomOrg,
@@ -333,7 +336,7 @@ class MainWindow(QMainWindow, WindowMixin):
         self.autoSaving.setCheckable(True)
 
         addActions(self.menus.file,
-                (open, opendir, changeSavedir, openAnnotation, self.menus.recentFiles, save, saveAs, exportAsXML, close, None, quit))
+                (open, opendir, changeSavedir, openAnnotation, self.menus.recentFiles, None, predictions, None, save, saveAs, exportAsXML, close, None, quit))
         addActions(self.menus.help, (help,))
         addActions(self.menus.view, (
             self.autoSaving,
@@ -1389,6 +1392,49 @@ class MainWindow(QMainWindow, WindowMixin):
             shapes[shape] = formatted
 
         self.loadLabels(shapes)
+
+    def componentDialog(self):
+        dlg = QDialog()
+        dlg.setFixedSize(200, 200)
+        dlg.setWindowTitle("Select components to locate")
+
+        icCheck = QCheckBox(self)
+        capCheck = QCheckBox(self)
+        resCheck = QCheckBox(self)
+
+        acceptButton = QPushButton("Ok")
+        acceptButton.clicked.connect(dlg.accept)
+        cancelButton = QPushButton("Cancel")
+        cancelButton.clicked.connect(dlg.reject)
+
+        checklayout = QGridLayout()
+        checklayout.addWidget(QLabel("ICs"), 0, 0)
+        checklayout.addWidget(icCheck, 0, 1)
+        checklayout.addWidget(QLabel("Capacitors"), 1, 0)
+        checklayout.addWidget(capCheck, 1, 1)
+        checklayout.addWidget(QLabel("Resistors"), 2, 0)
+        checklayout.addWidget(resCheck, 2, 1)
+        checklayout.setAlignment(Qt.AlignCenter)
+
+        buttonlayout = QHBoxLayout()
+        buttonlayout.addWidget(acceptButton)
+        buttonlayout.addWidget(cancelButton)
+
+        layout = QVBoxLayout()
+        layout.addLayout(checklayout)
+        layout.addLayout(buttonlayout)
+
+        dlg.setLayout(layout)
+        dlg.exec_()
+
+        if dlg.accepted:
+            return [icCheck.isChecked(), capCheck.isChecked(), resCheck.isChecked()]
+        else:
+            return
+
+    def getComponentPredictions(self):
+        components = self.componentDialog()
+        print(components)
 
 class Settings(object):
     """Convenience dict-like wrapper around QSettings."""
