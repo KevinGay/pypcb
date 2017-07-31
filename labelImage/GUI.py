@@ -15,6 +15,7 @@ try:
     from PyQt5.QtCore import *
     from PyQt5.QtWidgets import *
 except ImportError:
+
     # needed for py3+qt4
     # Ref:
     # http://pyqt.sourceforge.net/Docs/PyQt4/incompatible_apis.html
@@ -28,17 +29,31 @@ except ImportError:
 
 import resources
 
-from libs.lib import struct, newAction, newIcon, addActions, fmtShortcut
-from libs.shape import Shape, DEFAULT_LINE_COLOR, DEFAULT_FILL_COLOR
-from libs.canvas import Canvas
-from libs.zoomWidget import ZoomWidget
-from libs.labelDialog import LabelDialog
-from libs.colorDialog import ColorDialog
-from libs.labelFile import LabelFile, LabelFileError
-from libs.toolBar import ToolBar
-from libs.pascal_voc_io import PascalVocReader
-from libs.pascal_voc_io import XML_EXT
-from libs.ustr import ustr
+try:
+    from libs.lib import struct, newAction, newIcon, addActions, fmtShortcut
+    from libs.shape import Shape, DEFAULT_LINE_COLOR, DEFAULT_FILL_COLOR
+    from libs.canvas import Canvas
+    from libs.zoomWidget import ZoomWidget
+    from libs.labelDialog import LabelDialog
+    from libs.colorDialog import ColorDialog
+    from libs.labelFile import LabelFile, LabelFileError
+    from libs.toolBar import ToolBar
+    from libs.pascal_voc_io import PascalVocReader
+    from libs.pascal_voc_io import XML_EXT
+    from libs.ustr import ustr
+except ImportError:
+    sys.path.insert(0, 'libs/')
+    from lib import struct, newAction, newIcon, addActions, fmtShortcut
+    from shape import Shape, DEFAULT_LINE_COLOR, DEFAULT_FILL_COLOR
+    from canvas import Canvas
+    from zoomWidget import ZoomWidget
+    from labelDialog import LabelDialog
+    from colorDialog import ColorDialog
+    from labelFile import LabelFile, LabelFileError
+    from toolBar import ToolBar
+    from pascal_voc_io import PascalVocReader
+    from pascal_voc_io import XML_EXT
+    from ustr import ustr
 
 __appname__ = 'PyPCB'
 
@@ -222,8 +237,8 @@ class MainWindow(QMainWindow, WindowMixin):
         color2 = action('Box &Fill Color', self.chooseColor2,
                 'Ctrl+Shift+L', 'color', u'Choose Box fill color')
 
-        predictions = action('Component Predictions', self.getComponentPredictions,
-                'Ctrl+M', 'predictions', u'Get component predictions')
+        predictions = action('Component\nPredictions', self.getComponentPredictions,
+                'Ctrl+M', 'component', u'Get component predictions')
 
         createMode = action('Create\nMode', self.setCreateMode,
                 'Ctrl+N', 'new', u'Start drawing Boxes', enabled=False)
@@ -355,11 +370,11 @@ class MainWindow(QMainWindow, WindowMixin):
 
         self.tools = self.toolbar('Tools')
         self.actions.beginner = (
-            open, opendir, openPrevImg, openNextImg, save, None, create, copy, delete, None,
+            open, opendir, openPrevImg, openNextImg, save, None, predictions, None, create, copy, delete, None,
             zoomIn, zoomOut, fitWindow, fitWidth, zoom)
 
         self.actions.advanced = (
-            open, save, None,
+            open, save, None, predictions, None,
             openPrevImg, openNextImg, None,
             createMode, editMode, None,
             hideAll, showAll)
@@ -1020,7 +1035,9 @@ class MainWindow(QMainWindow, WindowMixin):
                 #Edit for face aging group input. If file ends with .txt,
                 # assume it is of the form: class \t x(top left corner) \t y \t width \t height \t
                 # where class= 1-ic; 2-capacitor; 3-resistor; 4-inductor; 5-sscapacitor
-                if filename.endswith('.txt'):
+                if isinstance(filename, str) and filename.endswith('.txt'):
+                    self.loadTXTByFilename(filename)
+                elif isinstance(filename, QString) and filename.endsWith('.txt'):
                     self.loadTXTByFilename(filename)
                 else:
                     self.loadPascalXMLByFilename(filename)
@@ -1394,9 +1411,14 @@ class MainWindow(QMainWindow, WindowMixin):
         self.loadLabels(shapes)
 
     def componentDialog(self):
+        if self.image.isNull():
+            self.errorMessage(u'No image open',
+                    u'Open an image before accessing models.')
+            return
+
         dlg = QDialog()
         dlg.setFixedSize(200, 200)
-        dlg.setWindowTitle("Select components to locate")
+        dlg.setWindowTitle("Select components")
 
         icCheck = QCheckBox(self)
         capCheck = QCheckBox(self)
@@ -1408,12 +1430,13 @@ class MainWindow(QMainWindow, WindowMixin):
         cancelButton.clicked.connect(dlg.reject)
 
         checklayout = QGridLayout()
+        checklayout.setSpacing(30)
         checklayout.addWidget(QLabel("ICs"), 0, 0)
-        checklayout.addWidget(icCheck, 0, 1)
+        checklayout.addWidget(icCheck, 0, 2)
         checklayout.addWidget(QLabel("Capacitors"), 1, 0)
-        checklayout.addWidget(capCheck, 1, 1)
+        checklayout.addWidget(capCheck, 1, 2)
         checklayout.addWidget(QLabel("Resistors"), 2, 0)
-        checklayout.addWidget(resCheck, 2, 1)
+        checklayout.addWidget(resCheck, 2, 2)
         checklayout.setAlignment(Qt.AlignCenter)
 
         buttonlayout = QHBoxLayout()
@@ -1487,7 +1510,7 @@ def get_main_app(argv=[]):
     """
     app = QApplication(argv)
     app.setApplicationName(__appname__)
-    app.setWindowIcon(newIcon("app"))
+    app.setWindowIcon(newIcon("logo"))
     # Accept extra agruments to change predefined class file
     # Usage : labelImg.py image predefClassFile
     win = MainWindow(argv[1] if len(argv) >= 2 else None,

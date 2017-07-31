@@ -134,7 +134,7 @@ class PascalVocReader:
         self.shapes.append((label, points, None, None))
 
     def parseXML(self):
-        assert self.filepath.endswith('.xml'), "Unsupport file format"
+        assert str(self.filepath).endswith('.xml'), "Unsupport file format"
         parser = etree.XMLParser(encoding=ENCODE_METHOD)
         xmltree = ElementTree.parse(self.filepath, parser=parser).getroot()
         filename = xmltree.find('filename').text
