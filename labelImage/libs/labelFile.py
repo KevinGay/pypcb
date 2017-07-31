@@ -4,7 +4,10 @@ except ImportError:
     from PyQt4.QtGui import QImage
 
 from base64 import b64encode, b64decode
-from libs.pascal_voc_io import PascalVocWriter, XML_EXT
+try:
+    from libs.pascal_voc_io import PascalVocWriter, XML_EXT
+except ImportError:
+    from pascal_voc_io import PascalVocWriter, XML_EXT
 import json
 import os.path
 import sys

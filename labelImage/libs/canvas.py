@@ -8,8 +8,12 @@ except ImportError:
 
 #from PyQt4.QtOpenGL import *
 
-from libs.shape import Shape
-from libs.lib import distance
+try:
+    from libs.shape import Shape
+    from libs.lib import distance
+except ImportError:
+    from shape import Shape
+    from lib import distance
 
 CURSOR_DEFAULT = Qt.ArrowCursor
 CURSOR_POINT = Qt.PointingHandCursor
