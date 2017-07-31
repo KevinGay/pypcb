@@ -14,7 +14,7 @@ import sys
 def getWindowDims(image, winSize=[cfg.winSize, cfg.winSize], stride=[cfg.stride,cfg.stride]):
     # This function returns the bounding boxes for each window in the given image
     windows = []
-    
+
     for y in xrange(0, image.shape[0]-winSize[0], stride[0]):
         for x in xrange(0, image.shape[1]-winSize[1], stride[1]):
             windows.append([x, y, winSize[0], winSize[1]]) # row, col, width, height
@@ -22,7 +22,7 @@ def getWindowDims(image, winSize=[cfg.winSize, cfg.winSize], stride=[cfg.stride,
     return windows
 
 def extractSubWindows(image, windows, transformer):
-    # This function extracts the subwindows and puts it in the format required by caffe for batch processing. 
+    # This function extracts the subwindows and puts it in the format required by caffe for batch processing.
     # Each window is of the same size
 
     subWindows = np.zeros(np.array([len(windows), 3, windows[0][2], windows[0][3]]))
@@ -45,4 +45,3 @@ def extractSubImages(image, windows):
         subWindows[i] = image[y:y+h, x:x+w]
 
     return subWindows
-    

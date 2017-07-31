@@ -8,7 +8,7 @@ import PIL
 from PIL import Image, ImageDraw, ImageFont
 import argparse
 import cv2
-import copy, time
+import copy, time, math
 from . import config
 
 sys.path.insert(0, os.path.join(config.caffe_root, 'python'))
@@ -53,10 +53,11 @@ class componentDetector(object):
                 # sliding window
                 total_boxes = []
 
+                print("Computing bounding boxes")
                 start1 = time.time()
                 for (x,y,imw) in sliding_window(ims, (515, 515), (minComponentSize, minComponentSize)):
                     # pass the image window to the classifier network
-                    out = net_full_conv.forward_all(data=np.asarray([transformer.preprocess('data', imw)]))
+                    out = self.net_full_conv.forward_all(data=np.asarray([self.transformer.preprocess('data', imw)]))
 
                     # get the probability matrix associated with class 1 (IC here)
                     outprob = out['prob'][0,1]
@@ -90,15 +91,17 @@ class componentDetector(object):
                 end1 = time.time()
                 #print "Total time take for this image: " % (end1-start1)
 
+                print("Performing Non-Maxima Suppression")
                 # perform nms for the entire set of boxes
                 boxes_nms = np.array(total_boxes)
                 true_boxes = nms_max(boxes_nms, overlapThresh=0.2)
 
-
+                print("Clustering bounding boxes")
                 # Cluster the overlapping bounding boxes
                 clusters = clusterBoxes(true_boxes)
                 fCluster = getAvgClusterBoxes(clusters)
 
+                print("Finding enclosing boxes")
                 # group enclosed boxes
                 finalBoxes = enclosingBoxes(fCluster)
 
