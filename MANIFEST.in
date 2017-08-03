@@ -1,1 +1,1 @@
-recursive-include detector/models
+recursive-include detector/models *.*

@@ -5,9 +5,9 @@ import PIL
 
 
 def match_score(b1, b2):
-    # sum of the distance between centers of the two bounding 
+    # sum of the distance between centers of the two bounding
     # boxes and the intersection area of the boxes
-    
+
     # calculate the centers
     xc1 = (b1[0]+b1[2]) / 2
     yc1 = (b1[1]+b1[3]) / 2
@@ -22,22 +22,22 @@ def match_score(b1, b2):
         area = dx*dy
     else:
         area = 0
-    
+
     return dist+area
 
 #def box_merge(b1, b2):
-       
+
 
 def combine_boxes(boxes, overlapThresh=0.07):
     # Combines boxes across scales
     if len(boxes) == 0:
         return []
-    
-    # Bs - set of bounding boxes predicted by the regressor network 
+
+    # Bs - set of bounding boxes predicted by the regressor network
     # for each class in Cs across all spatial locations at scale s
     # In our case it the boxes variable itself
 
-    
+
 
 def nms_max(boxes, overlapThresh=0.3):
     if len(boxes) == 0:
@@ -74,15 +74,15 @@ def nms_max(boxes, overlapThresh=0.3):
         # compute the width and height of the bounding box
         w = np.maximum(0, xx2 - xx1 + 1)
         h = np.maximum(0, yy2 - yy1 + 1)
-        
+
         # area of i.
         area_i = np.maximum(0, x2[i] - x1[i] + 1) * np.maximum(0, y2[i] - y1[i] + 1)
         area_array = np.zeros(len(idxs) - 1)
         area_array.fill(area_i)
-        
+
         # compute the ratio of overlap
         overlap = (w * h) / (area[idxs[:last]]  - w * h + area_array)
-        
+
         # delete all indexes from the index list that have
         idxs = np.delete(idxs, np.concatenate(([last],np.where(overlap > overlapThresh)[0])))
 
@@ -94,7 +94,7 @@ def nms_average(boxes, overlapThresh=0.2):
     result_boxes = []
     if len(boxes) == 0:
         return []
-    
+
     # initialize the list of picked indexes
     pick = []
 
@@ -117,7 +117,7 @@ def nms_average(boxes, overlapThresh=0.2):
         i = idxs[last]
         pick.append(i)
 
-        # find the largest (x, y) coordinates for the start of the bounding box 
+        # find the largest (x, y) coordinates for the start of the bounding box
         # and the smallest (x, y) coordinates for the end of the bounding box
         xx1 = np.maximum(x1[i], x1[idxs[:last]])
         yy1 = np.maximum(y1[i], y1[idxs[:last]])
@@ -127,7 +127,7 @@ def nms_average(boxes, overlapThresh=0.2):
         # compute the width and height of the bounding box
         w = np.maximum(0, xx2 - xx1 + 1)
         h = np.maximum(0, yy2 - yy1 + 1)
-        
+
         # area of i.
         area_i = np.maximum(0, x2[i] - x1[i] + 1) * np.maximum(0, y2[i] - y1[i] + 1)
         area_array = np.zeros(len(idxs) - 1)
@@ -135,7 +135,7 @@ def nms_average(boxes, overlapThresh=0.2):
 
         # compute the ratio of overlap
         overlap = (w * h) / (area[idxs[:last]])
-        
+
         delete_idxs = np.concatenate(([last],np.where(overlap > overlapThresh)[0]))
         # print "delete_idxs:", delete_idxs
         xmin = 10000
@@ -165,12 +165,11 @@ def nms_average(boxes, overlapThresh=0.2):
             xmax = x2[i]  + 0.1 * width
         if( ymax - y2[i] > 0.1 * height):
             ymax = y2[i] + 0.1 * height
-        
+
         result_boxes.append([xmin, ymin, xmax, ymax, ave_prob / len(delete_idxs)])
-	
+
         # delete all indexes from the index list that have
         idxs = np.delete(idxs, delete_idxs)
 
     # return only the bounding boxes that were picked using the integer data type
     return result_boxes
-                
