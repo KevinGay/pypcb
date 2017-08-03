@@ -1,0 +1,5 @@
+images/A029F090.jpg	59
+images/A002F180.jpg	46
+images/A013F180.jpg	61
+images/A014F180.jpg	65
+images/A047F180.jpg	57

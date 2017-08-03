@@ -1,0 +1,4 @@
+images/A027F180.jpg	91
+images/A014F180.jpg	81
+images/A047F180.jpg	71
+images/A019F180.jpg	91
