@@ -26,12 +26,11 @@ class Config:
 
     MIN_CONTOUR_AREA=100
 
-    FONT_MODEL=""
-    FONT_MEANFILE=""
-    FONT_PROTO=""
-    FONT_LABEL=""
+    FONT_MODEL="models/font_model.caffemodel"
+    FONT_MEANFILE="models/mean.npy"
+    FONT_PROTO="models/font_deploy.prototxt"
     FONT_DIMS=32
-    FONT_LBLFILE=""
+    FONT_LBLFILE="models/fontLabels.txt"
 
 def init():
     sys.path.insert(0, caffe_root + 'python')
