@@ -1,6 +1,8 @@
 import sys
-from config import *
+from config import Config as cfg
 
+if '/usr/local/caffe/python' in sys.path:
+    sys.path.remove('/usr/local/caffe/python')
 sys.path.insert(0, cfg.caffe_root + 'python')
 import cv2, caffe
 import numpy as np
@@ -83,6 +85,7 @@ class Graph:
 class CaffeModel:
     def __init__(self, net_def_file, model_file):
         self.net_def_file=net_def_file
+        print net_def_file
         self.net=caffe.Net(net_def_file, model_file, caffe.TEST)
 
     def blob(self, key):

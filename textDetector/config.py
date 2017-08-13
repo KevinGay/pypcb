@@ -1,7 +1,6 @@
 import os
 import sys
 
-caffe_root = '/data0/mahaling/TEXT/CTPN/caffe/'
 
 import numpy as np
 
@@ -21,17 +20,26 @@ class Config:
     MIN_V_OVERLAPS=0.7
     MIN_SIZE_SIM=0.7
     TEXT_PROPOSALS_WIDTH=16
-    NET_FILE="models/deploy.prototxt"
-    MODEL_FILE="models/ctpn_trained_model.caffemodel"
+
+    MODELPATH = os.path.dirname(__file__)
+
+    NET_FILE=os.path.join(MODELPATH, "models/ctpn_deploy.prototxt")
+    MODEL_FILE=os.path.join(MODELPATH, "models/ctpn_trained_model.caffemodel")
 
     MIN_CONTOUR_AREA=100
 
-    FONT_MODEL="models/font_model.caffemodel"
-    FONT_MEANFILE="models/mean.npy"
-    FONT_PROTO="models/font_deploy.prototxt"
+    FONT_MODEL=os.path.join(MODELPATH, "models/font_model.caffemodel")
+    FONT_MEANFILE=os.path.join(MODELPATH, "models/font_mean.npy")
+    FONT_PROTO=os.path.join(MODELPATH, "models/font_deploy.prototxt")
     FONT_DIMS=32
-    FONT_LBLFILE="models/fontLabels.txt"
+    FONT_LBLFILE=os.path.join(MODELPATH, "models/fontLabels.txt")
+
+    caffe_root = '/data0/mahaling/TEXT/CTPN/caffe/'
+
 
 def init():
-    sys.path.insert(0, caffe_root + 'python')
+    c = Config()
+    if '/usr/local/caffe/python' in sys.path:
+        sys.path.remove('/usr/local/caffe/python')
+    sys.path.insert(0, c.caffe_root + 'python')
 init()

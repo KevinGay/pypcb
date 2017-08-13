@@ -1,4 +1,4 @@
-from cfg import Config as cfg
+from config import Config as cfg
 import numpy as np
 from other import Graph
 

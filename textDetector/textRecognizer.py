@@ -4,6 +4,8 @@ from other import draw_boxes, resize_im, CaffeModel
 
 
 import sys
+if '/usr/local/caffe/python' in sys.path:
+    sys.path.remove('/usr/local/caffe/python')
 sys.path.insert(0, cfg.caffe_root + 'python')
 import cv2, os, caffe
 import os
@@ -11,20 +13,23 @@ import numpy as np
 from timer import Timer
 
 
-class TextRecognizer:
+class TextRecognizer():
     """
     Recognizes text from a given image
     """
-    def __init__(netfile=cfg.NET_FILE, modelfile=cfg.MODEL_FILE, mode="CPU"):
+    def __init__(self, mode):
         if mode == "GPU":
             caffe.set_mode_gpu()
             caffe.set_device(cfg.TEST_GPU_ID)
         else:
             caffe.set_mode_cpu()
 
+        netfile = cfg.NET_FILE
+        modelfile = cfg.MODEL_FILE
+
         # initialize the detectors
         self.text_proposals_detector=TextProposalDetector(CaffeModel(netfile, modelfile))
-        self.text_detector=TextDetector(text_proposals_detector)
+        self.text_detector = TextDetector(self.text_proposals_detector)
         self.timer = Timer()
 
         self.char_classifier = caffe.Classifier(cfg.FONT_PROTO,
@@ -44,10 +49,10 @@ class TextRecognizer:
         if os.path.exists(image):
             img = cv2.imread(image)
 
-            timer.tic()
+            self.timer.tic()
             im, f=resize_im(img, cfg.SCALE, cfg.MAX_SCALE)
             text_lines = self.text_detector.detect(im)
-            print("Time: %f"%timer.toc())
+            print("Time: %f"%self.timer.toc())
             return text_lines
         else:
             print("Image not found")
@@ -62,8 +67,7 @@ class TextRecognizer:
         if os.path.exists(image):
             img = cv2.imread(image)
             for box in boundingBoxes:
-                # verify this later
-                text = img[box[1]:box[3]-box[1]+1,box[0]:box[2]-box[0]]
+                text = img[int(box[1]):int(box[3]),int(box[0]):int(box[2])]
                 extractedText.append(text)
         else:
             print("Image not found")
@@ -76,9 +80,9 @@ class TextRecognizer:
         """
         extractedChars = []
         if image.shape[2] == 3:
-            imageGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
+            imgGray = cv2.cvtColor(image, cv2.COLOR_BGR2GRAY)
         else:
-            imageGray = image
+            imgGray = image
 
         # Otsu's Thresholding
         newRet,binaryThreshold = cv2.threshold(imgGray,0,255,cv2.THRESH_BINARY+cv2.THRESH_OTSU)
@@ -86,11 +90,11 @@ class TextRecognizer:
         # dilation
         rectkernel = cv2.getStructuringElement(cv2.MORPH_RECT,(5,5))
         rectdilation = cv2.dilate(binaryThreshold, rectkernel, iterations = 1)
-        outputImage = imgInput.copy()
+        outputImage = image.copy()
         npaContours, npaHierarchy = cv2.findContours(rectdilation.copy(), cv2.RETR_EXTERNAL, cv2.CHAIN_APPROX_SIMPLE)
 
         for num, npaContour in enumerate(npaContours):
-            if cv2.contourArea(npaContour) > MIN_CONTOUR_AREA:
+            if cv2.contourArea(npaContour) > cfg.MIN_CONTOUR_AREA:
                 [intX, intY, intW, intH] = cv2.boundingRect(npaContour)
                 cv2.rectangle(outputImage,(intX, intY),(intX+intW,intY+intH),(0, 0, 255),2)
                 # Get subimage of word and find contours of that word
@@ -99,7 +103,7 @@ class TextRecognizer:
 
                 for n, subContour in enumerate(subContours):
                     [pointX, pointY, width, height] = cv2.boundingRect(subContour)
-                    imr = imgInput[intY+pointY:intY+pointY+height, intX+pointX:intX+pointX+width]
+                    imr = image[intY+pointY:intY+pointY+height, intX+pointX:intX+pointX+width]
                     extractedChars.append(imr)
         return extractedChars
 
@@ -110,6 +114,10 @@ class TextRecognizer:
         """
         outList = []
         pred = self.char_classifier.predict(charList)
-        detectedChars = [self.fontLabels[x] for i,p in enumerate(pred) x = self.fontLabels.index(p.argmax)]
+        detectedChars = []
+        for p in pred:
+            x = self.fontLabels[p.argmax()]
+            detectedChars.append(x)
+        #detectedChars = [self.fontLabels[x] for i,p in enumerate(pred) x = self.fontLabels.index(p.argmax)]
         #indexes = [x for i,x in enumerate(self.fontLabels) if x == self.fontLabels[pred[0].argmax()]]
         return detectedChars
