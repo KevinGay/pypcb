@@ -7,8 +7,8 @@ import numpy as np
 class Config:
     MEAN=np.float32([102.9801, 115.9465, 122.7717])
     TEST_GPU_ID=0
-    SCALE=600
-    MAX_SCALE=1000
+    SCALE=800
+    MAX_SCALE=2000
 
     LINE_MIN_SCORE=0.7
     TEXT_PROPOSALS_MIN_SCORE=0.7
