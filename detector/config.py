@@ -31,4 +31,4 @@ fullConvProto = os.path.join(componentPath, 'fullConv_' + defaultComponent + '.p
 meanfile = os.path.join(componentPath, 'mean_' + defaultComponent + '.npy')
 
 
-caffe_root = '/usr/local/caffe/'
+caffe_root = '/data0/mahaling/TEXT/CTPN/caffe/'
