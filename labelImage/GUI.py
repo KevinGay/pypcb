@@ -7,10 +7,22 @@ import re
 import sys
 import subprocess
 import cv2
-import caffe
+
+from textDetector.textRecognizer import TextRecognizer
+from textDetector.other import draw_boxes, resize_im
+from textDetector.config import Config as cfg
 
 from detector import componentDetector as cd
 from detector.helperModules import *
+
+if '/usr/local/caffe/python' in sys.path:
+    sys.path.remove('/usr/local/caffe/python')
+
+if '/data0/mahaling/TEXT/CTPN/caffe/python' not in sys.path:
+    sys.path.insert(0, '/data0/mahaling/TEXT/CTPN/caffe/python')
+
+
+import caffe
 
 from functools import partial
 from collections import defaultdict
@@ -437,7 +449,14 @@ class MainWindow(QMainWindow, WindowMixin):
             }
 
         self.settings = settings = Settings(types)
-        self.recentFiles = settings.get('recentFiles') if settings.get('recentFiles') is not None else []
+
+        if settings.get('lastOpenDir'):
+            if have_qstring():
+               recentFileQStringList = settings.get('lastOpenDir')
+               self.recentFiles = [ustr(i) for i in recentFileQStringList]
+            else:
+                self.recentFiles = recentFileQStringList = settings.get('lastOpenDir')
+
         size = settings.get('window/size', QSize(600, 500))
         position = settings.get('window/position', QPoint(0, 0))
         self.resize(size)
@@ -1420,87 +1439,15 @@ class MainWindow(QMainWindow, WindowMixin):
 
         self.loadLabels(shapes)
 
-    def componentDialog(self):
+    def getComponentPredictions(self):
         if self.image.isNull():
             self.errorMessage(u'No image open',
                               u'Open an image before accessing models.')
             return
 
-        dlg = QDialog()
-        dlg.setFixedSize(200, 200)
-        dlg.setWindowTitle("Select components")
-
-        icCheck = QCheckBox(self)
-        capCheck = QCheckBox(self)
-        resCheck = QCheckBox(self)
-
-        acceptButton = QPushButton("Ok")
-        acceptButton.clicked.connect(dlg.accept)
-        cancelButton = QPushButton("Cancel")
-        cancelButton.clicked.connect(dlg.reject)
-
-        checklayout = QGridLayout()
-        checklayout.setSpacing(30)
-        checklayout.addWidget(QLabel("ICs"), 0, 0)
-        checklayout.addWidget(icCheck, 0, 2)
-        checklayout.addWidget(QLabel("Capacitors"), 1, 0)
-        checklayout.addWidget(capCheck, 1, 2)
-        checklayout.addWidget(QLabel("Resistors"), 2, 0)
-        checklayout.addWidget(resCheck, 2, 2)
-        checklayout.setAlignment(Qt.AlignCenter)
-
-        buttonlayout = QHBoxLayout()
-        buttonlayout.addWidget(acceptButton)
-        buttonlayout.addWidget(cancelButton)
-
-        layout = QVBoxLayout()
-        layout.addLayout(checklayout)
-        layout.addLayout(buttonlayout)
-
-        dlg.setLayout(layout)
-        dlg.exec_()
-
-        if dlg.accepted:
-            return [icCheck.isChecked(), capCheck.isChecked(), resCheck.isChecked()]
-        else:
-            return
-
-    def _loadPredictions(self, component, boxes):
-        shapes = []
-        for i in range(len(boxes)):
-            points = []
-            leftx = boxes[i][0]
-            topy = boxes[i][1]
-            rightx = boxes[i][2]
-            bottomy = boxes[i][3]
-            points.append((leftx, topy))
-            points.append((rightx, topy))  # topright
-            points.append((rightx, bottomy))  # bottomright
-            points.append((leftx, bottomy))  # bottomleft
-            shapes.append([component + str(i), points, None, None])
-
-        return shapes
-
-    def getComponentPredictions(self):
-        components = self.componentDialog()
-        # components = bool [ic, capacitors, resistors]
-        shapes = []
-        if components[0]:  # ic
-            detector = cd.componentDetector("ic", "gpu")
-            boxes = detector.detectfast(self.filePath, 50)
-            [shapes.append(box) for box in self._loadPredictions("ic", boxes)]
-        if components[1]:
-            detector = cd.componentDetector("capacitor", "gpu")
-            boxes = detector.detectfast(self.filePath, 90)
-            [shapes.append(box) for box in self._loadPredictions("capacitor", boxes)]
-        if components[2]:
-            detector = cd.componentDetector("resistor", "gpu")
-            boxes = detector.detectfast(self.filePath, 50)
-            [shapes.append(box) for box in self._loadPredictions("resistor", boxes)]
-
-        if len(shapes) > 0:
-            self.loadLabels(shapes)
-
+        dlg = DetectionDialog(self.filePath, self)
+        if len(dlg.getShapes()) > 0:
+            self.loadLabels(dlg.getShapes())
 
 
 class Settings(object):
@@ -1535,6 +1482,159 @@ class Settings(object):
                 except AttributeError as e:
                     return value
         return value
+
+class DetectionDialog(QDialog):
+
+    def __init__(self, filePath, parent=None):
+        super(DetectionDialog, self).__init__(parent)
+
+        self.filePath = filePath
+        self.shapes = []
+        self.threadpool = QThreadPool()
+        self.threadpool.setMaxThreadCount(5)
+
+        # Create a progress bar and a button and add them to the main layout
+        self.progressBar = QProgressBar(self)
+        self.progressBar.setRange(0,1)
+        self.progressBar.setAlignment(Qt.AlignCenter)
+
+        self.setFixedSize(250, 300)
+        self.setWindowTitle("Select components")
+
+        self.icCheck = QCheckBox(self)
+        self.capCheck = QCheckBox(self)
+        self.resCheck = QCheckBox(self)
+        self.labelCheck = QCheckBox(self)
+
+        self.minSize = QSpinBox(self)
+        self.minSize.setFixedWidth(60)
+        self.minSize.setRange(1, 999)
+        self.minSize.setValue(1)
+
+        acceptButton = QPushButton("Ok")
+        acceptButton.clicked.connect(self.runModels)
+        cancelButton = QPushButton("Cancel")
+        cancelButton.clicked.connect(self.reject)
+
+        checklayout = QGridLayout()
+        checklayout.setSpacing(30)
+        checklayout.addWidget(QLabel("ICs"), 0, 0)
+        checklayout.addWidget(self.icCheck, 0, 2)
+        checklayout.addWidget(QLabel("Capacitors"), 1, 0)
+        checklayout.addWidget(self.capCheck, 1, 2)
+        checklayout.addWidget(QLabel("Resistors"), 2, 0)
+        checklayout.addWidget(self.resCheck, 2, 2)
+        checklayout.addWidget(QLabel("Labels"), 3, 0)
+        checklayout.addWidget(self.labelCheck, 3, 2)
+        checklayout.addWidget(QLabel("Min. Box Size"), 4, 0)
+        checklayout.addWidget(self.minSize, 4, 2)
+        checklayout.setAlignment(Qt.AlignCenter)
+
+        buttonlayout = QHBoxLayout()
+        buttonlayout.addWidget(acceptButton)
+        buttonlayout.addWidget(cancelButton)
+
+        layout = QVBoxLayout()
+        layout.addLayout(checklayout)
+        layout.addWidget(self.progressBar)
+        layout.addLayout(buttonlayout)
+
+        self.setLayout(layout)
+        self.exec_()
+
+    def runModels(self):
+        self.progressBar.setRange(0, 0)
+
+        components = [self.icCheck.isChecked(), self.capCheck.isChecked(), self.resCheck.isChecked(), self.labelCheck.isChecked(),
+                      self.minSize.value()]
+
+        self.modelThread = TaskThread(components, self.filePath)
+        self.modelThread.signals.finished.connect(self.onFinished)
+        self.threadpool.start(self.modelThread)
+
+    def _loadPredictions(self, component, boxes):
+        shapes = []
+        for i in range(len(boxes)):
+            points = []
+            leftx = boxes[i][0]
+            topy = boxes[i][1]
+            rightx = boxes[i][2]
+            bottomy = boxes[i][3]
+            points.append((leftx, topy))
+            points.append((rightx, topy))  # topright
+            points.append((rightx, bottomy))  # bottomright
+            points.append((leftx, bottomy))  # bottomleft
+            shapes.append([component + str(i), points, None, None])
+
+        return shapes
+
+    def getShapes(self):
+        return self.shapes
+
+    def onFinished(self):
+        # Stop the pulsation
+        self.progressBar.setRange(0,1)
+        if len(self.modelThread.ics) > 0:
+            [self.shapes.append(box) for box in self._loadPredictions("ic", self.modelThread.ics)]
+        if len(self.modelThread.caps) > 0:
+            [self.shapes.append(box) for box in self._loadPredictions("capacitor", self.modelThread.caps)]
+        if len(self.modelThread.res) > 0:
+            [self.shapes.append(box) for box in self._loadPredictions("resistor", self.modelThread.res)]
+        if len(self.modelThread.labels) > 0:
+            [self.shapes.append(box) for box in self._loadPredictions("label", self.modelThread.labels)]
+
+        self.accept()
+
+class WorkerSignals(QObject):
+    '''
+    Defines the signals available from a running worker thread.
+
+    Supported signals are:
+
+    finished
+        No data
+
+    error
+        `tuple` (exctype, value, traceback.format_exc() )
+
+    result
+        `object` data returned from processing, anything
+
+    progress
+        `int` indicating % progress
+
+    '''
+    finished = pyqtSignal()
+    error = pyqtSignal(tuple)
+    result = pyqtSignal(object)
+    progress = pyqtSignal(int)
+
+class TaskThread(QRunnable):
+    def __init__(self, components, filePath):
+        super(TaskThread, self).__init__()
+        self.signals = WorkerSignals()
+        self.components = components
+        self.filePath = filePath
+        self.ics = []
+        self.caps = []
+        self.res = []
+        self.labels = []
+    def run(self):
+        boxes = []
+        minSize = self.components[4]
+        if self.components[0]:  # ic
+            detector = cd.componentDetector("ic", "gpu")
+            self.ics = detector.detectfast(self.filePath, minSize)
+        if self.components[1]:
+            detector = cd.componentDetector("capacitor", "gpu")
+            self.caps = detector.detect(self.filePath, minSize)
+        if self.components[2]:
+            detector = cd.componentDetector("resistor", "gpu")
+            self.res = detector.detect(self.filePath, minSize)
+        if self.components[3]:
+            detector = TextRecognizer("GPU")
+            self.labels = detector.detectText(self.filePath)
+        self.signals.finished.emit()
 
 
 def inverted(color):
