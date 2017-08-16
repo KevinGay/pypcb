@@ -53,7 +53,7 @@ class TextRecognizer():
             im, f=resize_im(img, cfg.SCALE, cfg.MAX_SCALE)
             text_lines = self.text_detector.detect(im)
             print("Time: %f"%self.timer.toc())
-            return text_lines
+            return text_lines, f
         else:
             print("Image not found")
 
