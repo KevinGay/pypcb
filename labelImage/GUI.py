@@ -1267,7 +1267,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
     def saveFileAs(self, _value=False):
         assert not self.image.isNull(), "cannot save empty image"
-        self._saveFile(self.saveDialog())
+        self._saveFile(self.saveFileDialog())
 
     def exportXMLDialog(self):
         caption = '%s - Choose File' % __appname__
@@ -1511,8 +1511,8 @@ class DetectionDialog(QDialog):
         self.minSize.setRange(1, 999)
         self.minSize.setValue(1)
 
-        acceptButton = QPushButton("Ok")
-        acceptButton.clicked.connect(self.runModels)
+        self.acceptButton = QPushButton("Ok")
+        self.acceptButton.clicked.connect(self.runModels)
         cancelButton = QPushButton("Cancel")
         cancelButton.clicked.connect(self.reject)
 
@@ -1531,7 +1531,7 @@ class DetectionDialog(QDialog):
         checklayout.setAlignment(Qt.AlignCenter)
 
         buttonlayout = QHBoxLayout()
-        buttonlayout.addWidget(acceptButton)
+        buttonlayout.addWidget(self.acceptButton)
         buttonlayout.addWidget(cancelButton)
 
         layout = QVBoxLayout()
@@ -1543,6 +1543,7 @@ class DetectionDialog(QDialog):
         self.exec_()
 
     def runModels(self):
+        self.acceptButton.setEnabled(False)
         self.progressBar.setRange(0, 0)
 
         components = [self.icCheck.isChecked(), self.capCheck.isChecked(), self.resCheck.isChecked(), self.labelCheck.isChecked(),
@@ -1627,10 +1628,11 @@ class TaskThread(QRunnable):
             self.ics = detector.detectfast(self.filePath, minSize)
         if self.components[1]:
             detector = cd.componentDetector("capacitor", "gpu")
-            self.caps = detector.detect(self.filePath, minSize)
+            self.caps = detector.detectfast(self.filePath, minSize)
+            print(self.caps)
         if self.components[2]:
             detector = cd.componentDetector("resistor", "gpu")
-            self.res = detector.detect(self.filePath, minSize)
+            self.res = detector.detectfast(self.filePath, minSize)
         if self.components[3]:
             detector = TextRecognizer("GPU")
             self.labels = detector.detectText(self.filePath)
