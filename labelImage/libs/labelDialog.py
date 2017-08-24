@@ -14,8 +14,18 @@ except ImportError:
 BB = QDialogButtonBox
 
 class LabelDialog(QDialog):
+    """
+    This class inherits the QDialog class. LabelDialogs are displayed after the user draws a shape. It helps the 
+    user pick a label from a list of declare a new label to associate with a shape.
+    """
 
     def __init__(self, text="Enter object label", parent=None, listItem=None):
+        """
+        Create an instance of the labelDialog.
+        :param text: The text to display at the top of the dialog box.
+        :param parent: The parent of the dialog box. None by default.
+        :param listItem: The listItem to select when the dialog box is displayed.
+        """
         super(LabelDialog, self).__init__(parent)
         self.edit = QLineEdit()
         self.edit.setText(text)
@@ -40,6 +50,9 @@ class LabelDialog(QDialog):
         self.setLayout(layout)
 
     def validate(self):
+        """
+        Validate that the string supplied has no leading or trailing spaces.
+        """
         try:
             if self.edit.text().trimmed():
                 self.accept()
@@ -56,6 +69,12 @@ class LabelDialog(QDialog):
             self.edit.setText(self.edit.text())
 
     def popUp(self, text='', move=True):
+        """
+        Display the dialog box in front of the main application.
+        :param text: The text that will currently be displayed in the dialog.
+        :param move: A bool that tells whether or not to move the dialog box before displaying it.
+        :return: 
+        """
         self.edit.setText(text)
         self.edit.setSelection(0, len(text))
         self.edit.setFocus(Qt.PopupFocusReason)
@@ -63,11 +82,15 @@ class LabelDialog(QDialog):
             self.move(QCursor.pos())
         return self.edit.text() if self.exec_() else None
 
-    def listItemClick(self, tQListWidgetItem):
+    def listItemClick(self, QListWidgetItem):
+        """
+        This is called whenever an item in the list is clicked.
+        :param tQListWidgetItem: The QListWidgetItem that is clicked.
+        """
         try:
-            text = tQListWidgetItem.text().trimmed()
+            text = QListWidgetItem.text().trimmed()
         except AttributeError:
             # PyQt5: AttributeError: 'str' object has no attribute 'trimmed'
-            text = tQListWidgetItem.text().strip()
+            text = QListWidgetItem.text().strip()
         self.edit.setText(text)
         self.validate()

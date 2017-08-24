@@ -9,7 +9,11 @@ except:
     qt4 = False
 
 def ustr(x):
-    '''py2/py3 unicode helper'''
+    """
+    py2/py3 unicode helper.
+    :param x: The string to be converted.
+    :return: The converted string.
+    """
     if sys.version_info < (3, 0, 0):
         if type(x) == str:
             return x.decode('utf-8')

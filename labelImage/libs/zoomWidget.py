@@ -7,7 +7,14 @@ except ImportError:
     from PyQt4.QtCore import *
 
 class ZoomWidget(QSpinBox):
+    """
+    The zoom widget class controls the zooming of the image on the canvas.
+    """
     def __init__(self, value=100):
+        """
+        Create a zoom widget.
+        :param value: The percent of zoom.
+        """
         super(ZoomWidget, self).__init__()
         self.setButtonSymbols(QAbstractSpinBox.NoButtons)
         self.setRange(1, 500)
@@ -18,6 +25,9 @@ class ZoomWidget(QSpinBox):
         self.setAlignment(Qt.AlignCenter)
 
     def minimumSizeHint(self):
+        """
+        :return: The minimum size that can be zoomed in.
+        """
         height = super(ZoomWidget, self).minimumSizeHint().height()
         fm = QFontMetrics(self.font())
         width = fm.width(str(self.maximum()))
