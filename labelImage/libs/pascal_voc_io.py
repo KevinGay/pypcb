@@ -9,6 +9,9 @@ XML_EXT = '.xml'
 ENCODE_METHOD = 'utf-8'
 
 class PascalVocWriter:
+    """
+    This class handles the writing of pascal voc formatted files.
+    """
     def __init__(self, foldername, filename, imgSize, databaseSrc='Unknown', localImgPath=None):
         self.foldername = foldername
         self.filename = filename
@@ -19,7 +22,9 @@ class PascalVocWriter:
 
     def prettify(self, elem):
         """
-            Return a pretty-printed XML string for the Element.
+        Return a pretty-printed XML string for the Element.
+        :param elem: The element.
+        :return: A printed XML string for the element.
         """
         rough_string = ElementTree.tostring(elem, 'utf8')
         root = etree.fromstring(rough_string)
@@ -27,7 +32,7 @@ class PascalVocWriter:
 
     def genXML(self):
         """
-            Return XML root
+        Return XML root.
         """
         # Check conditions
         if self.filename is None or \
@@ -66,6 +71,14 @@ class PascalVocWriter:
         return top
 
     def addBndBox(self, xmin, ymin, xmax, ymax, name):
+        """
+        Add a bounding box to the xml file.
+        :param xmin: The xmin value (in pixels) of the bounding box.
+        :param ymin: The ymin value (in pixels) of the bounding box.
+        :param xmax: The xmax value (in pixels) of the bounding box.
+        :param ymax: The ymax value (in pixels) of the bounding box.
+        :param name: The label that is associated with the bounding box.
+        """
         bndbox = {'xmin' : xmin, 'ymin' : ymin, 'xmax' : xmax, 'ymax' : ymax}
         bndbox['name'] = name
         self.boxlist.append(bndbox)
@@ -99,6 +112,10 @@ class PascalVocWriter:
             ymax.text = str(each_object['ymax'])
 
     def save(self, targetFile = None):
+        """
+        Save the file in the given targetFile.
+        :param targetFile: The path that the file will be saved.
+        """
         root = self.genXML()
         self.appendObjects(root)
         out_file = None
@@ -114,6 +131,9 @@ class PascalVocWriter:
 
 
 class PascalVocReader:
+    """
+    This class handles the reading of pascal voc formatted files.
+    """
 
     def __init__(self, filepath):
         # shapes type:
@@ -123,9 +143,17 @@ class PascalVocReader:
         self.parseXML()
 
     def getShapes(self):
+        """
+        :return: Getter for the shapes from the file.
+        """
         return self.shapes
 
     def addShape(self, label, bndbox):
+        """
+        Add a shape to the instance variable shapes.
+        :param label: The label associated with the bounding box.
+        :param bndbox: The bounding box to add to the reader.
+        """
         xmin = int(bndbox.find('xmin').text)
         ymin = int(bndbox.find('ymin').text)
         xmax = int(bndbox.find('xmax').text)
@@ -134,6 +162,9 @@ class PascalVocReader:
         self.shapes.append((label, points, None, None))
 
     def parseXML(self):
+        """
+        Parse the XML file and store the information in instance variables.
+        """
         assert str(self.filepath).endswith('.xml'), "Unsupport file format"
         parser = etree.XMLParser(encoding=ENCODE_METHOD)
         xmltree = ElementTree.parse(self.filepath, parser=parser).getroot()

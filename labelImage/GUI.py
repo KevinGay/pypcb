@@ -1,3 +1,8 @@
+"""
+This module brings everything together and handles all of the functional requirements as well as non functional
+ requirements. This clases include the MainWindow as well as classes for multi threading.
+"""
+
 #!/usr/bin/env python
 # -*- coding: utf8 -*-
 
@@ -78,7 +83,9 @@ __appname__ = 'PyPCB'
 ### Utility functions and classes.
 
 def have_qstring():
-    '''p3/qt5 get rid of QString wrapper as py3 has native unicode str type'''
+    """
+    p3/qt5 get rid of QString wrapper as py3 has native unicode str type
+    """
     return not (sys.version_info.major >= 3 or QT_VERSION_STR.startswith('5.'))
 
 
@@ -114,9 +121,18 @@ class HashableQListWidgetItem(QListWidgetItem):
 
 
 class MainWindow(QMainWindow, WindowMixin):
+    """
+    This class handles the entire GUI.
+    """
     FIT_WINDOW, FIT_WIDTH, MANUAL_ZOOM = list(range(3))
 
     def __init__(self, defaultFilename=None, defaultPrefdefClassFile=None):
+        """
+        Create a main window GUI.
+        :param defaultFilename: The default file to load into the GUI.
+        :param defaultPrefdefClassFile: The name of the file with the class names to load into the label dialog 
+                    by default.
+        """
         super(MainWindow, self).__init__()
         self.setWindowTitle(__appname__)
         # Save as Pascal voc xml
@@ -499,9 +515,17 @@ class MainWindow(QMainWindow, WindowMixin):
     ## Support Functions ##
 
     def noShapes(self):
+        """
+        :return: True if there are no shapes currently drawn. False otherwise. 
+        """
         return not self.itemsToShapes
 
     def toggleAdvancedMode(self, value=True):
+        """
+        Toggle advanced mode so that users can draw multiple boxes without having to interact with the label dialog box
+            each time. In advanced mode, the user selects the label and then can draw multiple boxes with that label.
+        :param value: The boolean value that tells whether to set advanced mode or not.
+        """
         self._beginner = not value
         self.canvas.setEditing(True)
         self.populateModeActions()
@@ -515,6 +539,9 @@ class MainWindow(QMainWindow, WindowMixin):
             self.dock.setFeatures(self.dock.features() ^ self.dockFeatures)
 
     def populateModeActions(self):
+        """
+        Changes the tool bar and based on whether the tool is in advanced mode or beginner mode.
+        """
         if self.beginner():
             tool, menu = self.actions.beginner, self.actions.beginnerContext
         else:
@@ -529,25 +556,39 @@ class MainWindow(QMainWindow, WindowMixin):
         addActions(self.menus.edit, actions + self.actions.editMenu)
 
     def setBeginner(self):
+        """
+        Change the tool bar so that the beginner mode buttons are displayed.
+        """
         self.tools.clear()
         addActions(self.tools, self.actions.beginner)
 
     def setAdvanced(self):
+        """
+        Change the tool bar so that the advanced mode buttons are displayed.
+        """
         self.tools.clear()
         addActions(self.tools, self.actions.advanced)
 
     def setDirty(self):
+        """
+        Set dirty mode to true. Dirty means that there are boxes drawn that are not currently saved.
+        """
         self.dirty = True
         self.actions.save.setEnabled(True)
         self.actions.exportAsXML.setEnabled(True)
 
     def setClean(self):
+        """
+        Set dirty mode to false. Clean means that every drawn box is saved in a file.
+        """
         self.dirty = False
         self.actions.save.setEnabled(False)
         self.actions.create.setEnabled(True)
 
     def toggleActions(self, value=True):
-        """Enable/Disable widgets which depend on an opened image."""
+        """
+        Enable/Disable widgets which depend on an opened image.
+        """
         for z in self.actions.zoomActions:
             z.setEnabled(value)
         for action in self.actions.onLoadActive:
@@ -557,9 +598,17 @@ class MainWindow(QMainWindow, WindowMixin):
         QTimer.singleShot(0, function)
 
     def status(self, message, delay=5000):
+        """
+        Display a given message on the status bar.
+        :param message: The message to display on the status bar.
+        :param delay: The amount of time (in ms) to wait before displaying the message.
+        """
         self.statusBar().showMessage(message, delay)
 
     def resetState(self):
+        """
+        Reset everything about the stored GUI information, including the annotation boxes, image, and save files.
+        """
         self.itemsToShapes.clear()
         self.shapesToItems.clear()
         self.labelList.clear()
@@ -569,12 +618,19 @@ class MainWindow(QMainWindow, WindowMixin):
         self.canvas.resetState()
 
     def currentItem(self):
+        """
+        :return: The currently selected label. 
+        """
         items = self.labelList.selectedItems()
         if items:
             return items[0]
         return None
 
     def addRecentFile(self, filePath):
+        """
+        Add a file to the recent file list after it is opened.
+        :param filePath: The path to the file that was just opened.
+        """
         if filePath in self.recentFiles:
             self.recentFiles.remove(filePath)
         elif len(self.recentFiles) >= self.maxRecent:
@@ -582,23 +638,37 @@ class MainWindow(QMainWindow, WindowMixin):
         self.recentFiles.insert(0, filePath)
 
     def beginner(self):
+        """
+        :return: True if the GUI is in beginner mode. False otherwise. 
+        """
         return self._beginner
 
     def advanced(self):
+        """
+        :return: True if the GUI is in advanced mode. False otherwise. 
+        """
         return not self.beginner()
 
     ## Callbacks ##
     def tutorial(self):
+        """
+        This is called whenever the user clicks on help. Not yet implemented, as no tutorial doc exists yet.
+        """
         # Todo: add in html page with instructions for use
         pass
 
     def createShape(self):
+        """
+        Create a shape on the canvas.
+        """
         assert self.beginner()
         self.canvas.setEditing(False)
         self.actions.create.setEnabled(False)
 
     def toggleDrawingSensitive(self, drawing=True):
-        """In the middle of drawing, toggling between modes should be disabled."""
+        """
+        In the middle of drawing, toggling between modes should be disabled.
+        """
         self.actions.editMode.setEnabled(not drawing)
         if not drawing and self.beginner():
             # Cancel creation.
@@ -608,22 +678,36 @@ class MainWindow(QMainWindow, WindowMixin):
             self.actions.create.setEnabled(True)
 
     def toggleDrawMode(self, edit=True):
+        """
+        This is a helper function for setCreateMode and setEditMode. It toggles beginner/advanced mode.
+        :param edit: bool value that tells whether edit mode is enabled or not.
+        """
         self.canvas.setEditing(edit)
         self.actions.createMode.setEnabled(edit)
         self.actions.editMode.setEnabled(not edit)
 
     def setCreateMode(self):
+        """
+        Set create mode while the user is in advanced mode. This happens when the user clicks the create mode button.
+        """
         assert self.advanced()
         if self.storedToggleLabel is None:
             self.storedToggleLabel = self.labelDialog.popUp()
         self.toggleDrawMode(False)
 
     def setEditMode(self):
+        """
+        Set edit mode while the user is in the edit mode. This happens when the user clicks the edit mode button.
+        :return: 
+        """
         assert self.advanced()
         self.storedToggleLabel = None
         self.toggleDrawMode(True)
 
     def updateFileMenu(self):
+        """
+        Update the file menu whenever the user opens a new image. Add the file to the recently opened list.
+        """
         currFilePath = self.filePath
 
         def exists(filename):
@@ -640,9 +724,16 @@ class MainWindow(QMainWindow, WindowMixin):
             menu.addAction(action)
 
     def popLabelListMenu(self, point):
+        """
+        Populate the label list menu.
+        """
         self.menus.labelList.exec_(self.labelList.mapToGlobal(point))
 
     def editLabel(self, item=None):
+        """
+        This occurs when the user clicks edit label on a particular bounding box.
+        :param item: The item that the user is editing the label for.
+        """
         if not self.canvas.editing():
             return
         item = item if item else self.currentItem()
@@ -652,6 +743,10 @@ class MainWindow(QMainWindow, WindowMixin):
             self.setDirty()
 
     def fileitemDoubleClicked(self, item=None):
+        """
+        This event is triggered whenever the user double clicks on an image in the image list.
+        :param item: The item that the user clicked on.
+        """
         currIndex = self.mImgList.index(ustr(item.text()))
         if currIndex < len(self.mImgList):
             filename = self.mImgList[currIndex]
@@ -660,6 +755,10 @@ class MainWindow(QMainWindow, WindowMixin):
 
     # React to canvas signals.
     def shapeSelectionChanged(self, selected=False):
+        """
+        This event is triggered when the user clicks on a new shape. 
+        :param selected: boolean value that tells whether a shape is selected.
+        """
         if self._noSelectionSlot:
             self._noSelectionSlot = False
         else:
@@ -675,6 +774,10 @@ class MainWindow(QMainWindow, WindowMixin):
         self.actions.shapeFillColor.setEnabled(selected)
 
     def addLabel(self, shape):
+        """
+        Add a label (corresponding to the recently drawn shape) to the label list.
+        :param shape: The shape that corresponds to the label.
+        """
         item = HashableQListWidgetItem(shape.label)
         item.setFlags(item.flags() | Qt.ItemIsUserCheckable)
         item.setCheckState(Qt.Checked)
@@ -685,6 +788,10 @@ class MainWindow(QMainWindow, WindowMixin):
             action.setEnabled(True)
 
     def remLabel(self, shape):
+        """
+        Remove a label and delete the shape.
+        :param shape: The shape to delete and remove the label for.
+        """
         if shape is None:
             return
         item = self.shapesToItems[shape]
@@ -693,6 +800,10 @@ class MainWindow(QMainWindow, WindowMixin):
         del self.itemsToShapes[item]
 
     def loadLabels(self, shapes):
+        """
+        Load labels based on the shapes that are given.
+        :param shapes: The shapes to load the labels for.
+        """
         s = []
         for label, points, line_color, fill_color in shapes:
             shape = Shape(label=label)
@@ -710,6 +821,10 @@ class MainWindow(QMainWindow, WindowMixin):
         self.canvas.loadShapes(s)
 
     def saveLabels(self, annotationFilePath):
+        """
+        Save the labels in the file path currently specified. This is for XML files.
+        :param annotationFilePath: The path to save the file to.
+        """
         annotationFilePath = ustr(annotationFilePath)
         if self.labelFile is None:
             self.labelFile = LabelFile()
@@ -738,17 +853,24 @@ class MainWindow(QMainWindow, WindowMixin):
             return False
 
     def copySelectedShape(self):
+        """
+        Copy the currently selected shape and display it offset from the original by a few pixels.
+        """
         self.addLabel(self.canvas.copySelectedShape())
         # fix copy and delete
         self.shapeSelectionChanged(True)
 
     def labelSelectionChanged(self):
+        """
+        This event triggers whenever the user selects a new label in the label list.
+        """
         item = self.currentItem()
         if item and self.canvas.editing():
             self._noSelectionSlot = True
             self.canvas.selectShape(self.itemsToShapes[item])
 
     def labelItemChanged(self, item):
+        
         shape = self.itemsToShapes[item]
         label = item.text()
         if label != shape.label:

@@ -16,11 +16,17 @@ class LabelFileError(Exception):
     pass
 
 class LabelFile(object):
-    # It might be changed as window creates
-    #suffix = '.lif'
+    """
+    This class controls the saving and loading of XML label files.
+    """
+
     suffix = XML_EXT
 
     def __init__(self, filename=None):
+        """
+        Create a labelFile object.
+        :param filename: The name of the label file.
+        """
         self.shapes = ()
         self.imagePath = None
         self.imageData = None
@@ -28,6 +34,11 @@ class LabelFile(object):
             self.load(filename)
 
     def load(self, filename):
+        """
+        Load information from a file into the instance variables
+        :param filename: 
+        :return: 
+        """
         try:
             with open(filename, 'rb') as f:
                 data = json.load(f)
@@ -46,8 +57,16 @@ class LabelFile(object):
         except Exception as e:
             raise LabelFileError(e)
 
-    def save(self, filename, shapes, imagePath, imageData,
-            lineColor=None, fillColor=None):
+    def save(self, filename, shapes, imagePath, imageData, lineColor=None, fillColor=None):
+        """
+        Save a XML file.
+        :param filename: The name to save the file with. 
+        :param shapes: The shapes to save to the XML file.
+        :param imagePath: The path to the image that the annotations correspond to.
+        :param imageData: The data about the image, including the width, height, and depth.
+        :param lineColor: The line color that is saved with the boxes.
+        :param fillColor: The fill color that is saved with the boxes.
+        """
         try:
             with open(filename, 'wb') as f:
                 json.dump(dict(
@@ -59,8 +78,17 @@ class LabelFile(object):
         except Exception as e:
             raise LabelFileError(e)
 
-    def savePascalVocFormat(self, filename, shapes, imagePath, imageData,
-            lineColor=None, fillColor=None, databaseSrc=None):
+    def savePascalVocFormat(self, filename, shapes, imagePath, imageData, lineColor=None, fillColor=None, databaseSrc=None):
+        """
+        Save a XML in pascal Voc format.
+        :param filename: The name to save the file with.
+        :param shapes: The shapes to save to the XML file.
+        :param imagePath: The path to the image that the annotations correspond to.
+        :param imageData: The data about the image, including the width, height, and depth.
+        :param lineColor: The line color that is saved with the boxes.
+        :param fillColor: The fill color that is saved with the boxes.
+        :param databaseSrc: The source of the database that the annotations are located.
+        """
         imgFolderPath = os.path.dirname(imagePath)
         imgFolderName = os.path.split(imgFolderPath)[-1]
         imgFileName = os.path.basename(imagePath)
@@ -87,11 +115,20 @@ class LabelFile(object):
 
     @staticmethod
     def isLabelFile(filename):
+        """
+        Returns true if the filename has the same suffix as the class variable "suffix".
+        :param filename: The filename to test.
+        """
         fileSuffix = os.path.splitext(filename)[1].lower()
         return fileSuffix == LabelFile.suffix
 
     @staticmethod
     def convertPoints2BndBox(points):
+        """
+        Given points, convert them into a bounding box (xmin, xmax, ymin, ymax).
+        :param points: The points to convert.
+        :return: The xmin, xmax, ymin, and ymax that correspond to the given points.
+        """
         xmin = float('inf')
         ymin = float('inf')
         xmax = float('-inf')
