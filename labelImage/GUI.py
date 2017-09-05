@@ -1,6 +1,5 @@
 """
-This module brings everything together and handles all of the functional requirements as well as non functional
- requirements. This clases include the MainWindow as well as classes for multi threading.
+This module brings everything together and handles all of the functional requirements as well as non functional requirements. The classes include the MainWindow as well as classes for multi threading.
 """
 
 #!/usr/bin/env python
@@ -12,6 +11,7 @@ import re
 import sys
 import subprocess
 import cv2
+
 
 from textDetector.textRecognizer import TextRecognizer
 from textDetector.other import draw_boxes, resize_im
@@ -49,7 +49,7 @@ except ImportError:
     from PyQt4.QtGui import *
     from PyQt4.QtCore import *
 
-import resources
+#import resources
 
 try:
     from libs.lib import struct, newAction, newIcon, addActions, fmtShortcut
@@ -522,8 +522,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
     def toggleAdvancedMode(self, value=True):
         """
-        Toggle advanced mode so that users can draw multiple boxes without having to interact with the label dialog box
-            each time. In advanced mode, the user selects the label and then can draw multiple boxes with that label.
+        Toggle advanced mode so that users can draw multiple boxes without having to interact with the label dialog box each time. In advanced mode, the user selects the label and then can draw multiple boxes with that label.
         :param value: The boolean value that tells whether to set advanced mode or not.
         """
         self._beginner = not value
@@ -1140,8 +1139,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
     def closeEvent(self, event):
         """
-        This is called whenever the user clicks the close button. The image is closed and all of the annotations are
-            reset.
+        This is called whenever the user clicks the close button. The image is closed and all of the annotations are reset.
         :param event: The close event (button click). 
         """
         if not self.mayContinue():
@@ -1196,8 +1194,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
     def changeSavedir(self, _value=False):
         """
-        Change default save directory. The default save directory is where annotations for all loaded images
-            (via open dir) will be saved.
+        Change default save directory. The default save directory is where annotations for all loaded images (via open dir) will be saved.
         :param _value: Whether there is a default save directory given or not.
         """
         if self.defaultSaveDir is not None:
@@ -1220,7 +1217,7 @@ class MainWindow(QMainWindow, WindowMixin):
     def openAnnotation(self, _value=False):
         """
         Open the annotation file. This method display a dialog box and asks the user to select a txt or xml file.
-            The method will then call the appropriate loadTXT or loadXML method based on the user's selection.
+        The method will then call the appropriate loadTXT or loadXML method based on the user's selection.
         :param _value: Whether an annotation is loaded or not.
         """
         if self.image.isNull():

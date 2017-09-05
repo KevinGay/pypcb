@@ -23,23 +23,33 @@
   <component name="ExecutionTargetManager" SELECTED_TARGET="default_target" />
   <component name="FileEditorManager">
     <leaf SIDE_TABS_SIZE_LIMIT_KEY="300">
-      <file leaf-file-name="GUI.py" pinned="false" current-in-tab="true">
+      <file leaf-file-name="GUI.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="331">
-              <caret line="1920" column="23" lean-forward="true" selection-start-line="1920" selection-start-column="23" selection-end-line="1920" selection-end-column="23" />
+            <state relative-caret-position="493">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
-                <element signature="e#257#270#0" expanded="true" />
+                <element signature="e#256#269#0" expanded="true" />
               </folding>
             </state>
           </provider>
         </entry>
       </file>
-      <file leaf-file-name="resources.py" pinned="false" current-in-tab="false">
+      <file leaf-file-name="resources.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/labelImage/resources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="34816">
-              <caret line="2048" column="46" lean-forward="false" selection-start-line="2048" selection-start-column="46" selection-end-line="2048" selection-end-column="46" />
+            <state relative-caret-position="187">
+              <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+              <folding />
+            </state>
+          </provider>
+        </entry>
+      </file>
+      <file leaf-file-name="resources.qrc" pinned="false" current-in-tab="false">
+        <entry file="file://$PROJECT_DIR$/labelImage/resources.qrc">
+          <provider selected="true" editor-type-id="text-editor">
+            <state relative-caret-position="527">
+              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -118,8 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setCreate</find>
-      <find>createMode</find>
       <find>labelDialog</find>
       <find>setCreateMode</find>
       <find>toggleDrawMode</find>
@@ -148,6 +156,8 @@
       <find>self.shapes</find>
       <find>saveDialog</find>
       <find>hideBackroundShapes</find>
+      <find>reset</find>
+      <find>toggleAd</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -159,7 +169,6 @@
       <list>
         <option value="$PROJECT_DIR$/KGlabelImg.py" />
         <option value="$PROJECT_DIR$/labelImage/resources.qrc" />
-        <option value="$PROJECT_DIR$/labelImage/resources.py" />
         <option value="$PROJECT_DIR$/labelImage/libs/canvas.py" />
         <option value="$PROJECT_DIR$/labelImage/libs/ustr.py" />
         <option value="$PROJECT_DIR$/labelImage/libs/labelFile.py" />
@@ -170,7 +179,9 @@
         <option value="$PROJECT_DIR$/labelImage/libs/zoomWidget.py" />
         <option value="$PROJECT_DIR$/labelImage/libs/lib.py" />
         <option value="$PROJECT_DIR$/labelImage/libs/colorDialog.py" />
+        <option value="$PROJECT_DIR$/labelImage/genDocs.py" />
         <option value="$PROJECT_DIR$/labelImage/GUI.py" />
+        <option value="$PROJECT_DIR$/labelImage/resources.py" />
       </list>
     </option>
   </component>
@@ -558,14 +569,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/labelImage/libs/labelDialog.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="935">
-          <caret line="55" column="11" lean-forward="false" selection-start-line="55" selection-start-column="9" selection-end-line="55" selection-end-column="11" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/libs/pascal_voc_io.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2533">
@@ -620,7 +623,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#257#270#0" expanded="true" />
+            <element signature="e#256#269#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -701,7 +704,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#257#270#0" expanded="true" />
+            <element signature="e#256#269#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -788,7 +791,7 @@
         <state relative-caret-position="0">
           <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
           <folding>
-            <element signature="e#257#270#0" expanded="true" />
+            <element signature="e#256#269#0" expanded="true" />
           </folding>
         </state>
       </provider>
@@ -808,14 +811,6 @@
       </provider>
     </entry>
     <entry file="file://C:/Anaconda3/Lib/os.py" />
-    <entry file="file://$PROJECT_DIR$/labelImage/resources.qrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/libs/canvas.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="14042">
@@ -858,14 +853,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/labelImage/resources.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="34816">
-          <caret line="2048" column="46" lean-forward="false" selection-start-line="2048" selection-start-column="46" selection-end-line="2048" selection-end-column="46" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/libs/toolBar.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="799">
@@ -902,13 +889,37 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/labelImage/genDocs.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="85">
+          <caret line="5" column="8" lean-forward="true" selection-start-line="5" selection-start-column="8" selection-end-line="5" selection-end-column="8" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/labelImage/resources.qrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="527">
+          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="331">
-          <caret line="1920" column="23" lean-forward="true" selection-start-line="1920" selection-start-column="23" selection-end-line="1920" selection-end-column="23" />
+        <state relative-caret-position="493">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
-            <element signature="e#257#270#0" expanded="true" />
+            <element signature="e#256#269#0" expanded="true" />
           </folding>
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/labelImage/resources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="187">
+          <caret line="11" column="17" lean-forward="true" selection-start-line="11" selection-start-column="17" selection-end-line="11" selection-end-column="17" />
+          <folding />
         </state>
       </provider>
     </entry>

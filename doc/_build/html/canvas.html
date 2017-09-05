@@ -1,0 +1,541 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>canvas module &mdash; PyPCB 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyPCB 1.0 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-canvas">
+<span id="canvas-module"></span><h1>canvas module<a class="headerlink" href="#module-canvas" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="canvas.Canvas">
+<em class="property">class </em><code class="descclassname">canvas.</code><code class="descname">Canvas</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtWidgets.QWidget</span></code></p>
+<p>Canvas inherits QWidget and is the area that displays the image and handles the drawing, resizing, and 
+moving the shapes.</p>
+<dl class="attribute">
+<dt id="canvas.Canvas.CREATE">
+<code class="descname">CREATE</code><em class="property"> = 0</em><a class="headerlink" href="#canvas.Canvas.CREATE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="canvas.Canvas.EDIT">
+<code class="descname">EDIT</code><em class="property"> = 1</em><a class="headerlink" href="#canvas.Canvas.EDIT" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.boundedMoveShape">
+<code class="descname">boundedMoveShape</code><span class="sig-paren">(</span><em>shape</em>, <em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.boundedMoveShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move a shape to a new position.
+:param shape: The shape that the user moves.
+:param pos: The position that the user moves the given shape to.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.boundedMoveVertex">
+<code class="descname">boundedMoveVertex</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.boundedMoveVertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the vertex of a shape.
+:param pos: The position that the user moves the vertex to.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.boundedShiftShape">
+<code class="descname">boundedShiftShape</code><span class="sig-paren">(</span><em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.boundedShiftShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called after the user duplicates a shape. This method automatically translate the new box so that they 
+are not entirely overlapping.
+:param shape: The duplicated shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.calculateOffsets">
+<code class="descname">calculateOffsets</code><span class="sig-paren">(</span><em>shape</em>, <em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.calculateOffsets" title="Permalink to this definition">¶</a></dt>
+<dd><p>Calculate the offsets between the shape and the point.
+:param shape: The shape.
+:param point: The point.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.canCloseShape">
+<code class="descname">canCloseShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.canCloseShape" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the shape can be closed (has 4 points).</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.closeEnough">
+<code class="descname">closeEnough</code><span class="sig-paren">(</span><em>p1</em>, <em>p2</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.closeEnough" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns the distance between a point and epsilon. This helps the user select a point of shape even if they&#8217;re
+a few pixels off, which improves responsiveness.
+:param p1: Point 1.
+:param p2: Point 2.
+:return: True if the distance between p1 and p2 is less that epsilon. False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.copySelectedShape">
+<code class="descname">copySelectedShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.copySelectedShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called whenever the user duplicates the selected shape.
+:return: The copied shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.deSelectShape">
+<code class="descname">deSelectShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.deSelectShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called when the user clicks off of a selected shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.deleteSelected">
+<code class="descname">deleteSelected</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.deleteSelected" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called whenever the user deletes the selected shape.
+:return: The shape that the user deleted.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.drawing">
+<code class="descname">drawing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.drawing" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the user is currently drawing a shape. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="canvas.Canvas.drawingPolygon">
+<code class="descname">drawingPolygon</code><a class="headerlink" href="#canvas.Canvas.drawingPolygon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.editing">
+<code class="descname">editing</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.editing" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the user is currently editing a shape. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.endMove">
+<code class="descname">endMove</code><span class="sig-paren">(</span><em>copy=False</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.endMove" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called whenever a user has finished moving a box.
+:param copy: bool value that tells whether the user has just duplicated a box or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.enterEvent">
+<code class="descname">enterEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.enterEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered whenever the mouse enters the canvas area.
+:param ev: The event.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="canvas.Canvas.epsilon">
+<code class="descname">epsilon</code><em class="property"> = 11.0</em><a class="headerlink" href="#canvas.Canvas.epsilon" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.finalize">
+<code class="descname">finalize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.finalize" title="Permalink to this definition">¶</a></dt>
+<dd><p>Helper method that&#8217;s called when a shape is finished being drawn.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.focusOutEvent">
+<code class="descname">focusOutEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.focusOutEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered whenever the focus leaves the canvas area.
+:param ev: The event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.handleDrawing">
+<code class="descname">handleDrawing</code><span class="sig-paren">(</span><em>pos</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.handleDrawing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Handles the drawing of a box.
+:param pos: The position of the box.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.hideBackgroundShapes">
+<code class="descname">hideBackgroundShapes</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.hideBackgroundShapes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Only hide other shapes if there is a current selection.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.intersectingEdges">
+<code class="descname">intersectingEdges</code><span class="sig-paren">(</span><em>x1y1</em>, <em>x2y2</em>, <em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.intersectingEdges" title="Permalink to this definition">¶</a></dt>
+<dd><p>For each edge formed by <cite>points&#8217;, yield the intersection
+with the line segment `(x1,y1) - (x2,y2)</cite>, if it exists.
+Also return the distance of <a href="#id1"><span class="problematic" id="id2">`</span></a>(x2,y2)&#8217; to the middle of the
+edge along with its index, so that the one closest can be chosen.
+:param x1y1: Point 1.
+:param x2y2: Point 2.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.intersectionPoint">
+<code class="descname">intersectionPoint</code><span class="sig-paren">(</span><em>p1</em>, <em>p2</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.intersectionPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cycle through each image edge in clockwise fashion,
+and find the one intersecting the current line segment.
+<a class="reference external" href="http://paulbourke.net/geometry/lineline2d/">http://paulbourke.net/geometry/lineline2d/</a>
+:param p1: Point 1.
+:param p2: Point 2.
+:return: The point that intersects with the current line segment.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.isVisible">
+<code class="descname">isVisible</code><span class="sig-paren">(</span><em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.isVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns True if the shape is visible.
+:param shape: The shape object
+:return: True if the shape object is visible. False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.keyPressEvent">
+<code class="descname">keyPressEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.keyPressEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered whenever a key is pressed.
+:param ev: The event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.leaveEvent">
+<code class="descname">leaveEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.leaveEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered whenever the mouse leaves the canvas area.
+:param ev: The event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.loadPixmap">
+<code class="descname">loadPixmap</code><span class="sig-paren">(</span><em>pixmap</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.loadPixmap" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the pixmap of an image. Repaint the canvas after.
+:param pixmap: The pixmap of an image.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.loadShapes">
+<code class="descname">loadShapes</code><span class="sig-paren">(</span><em>shapes</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.loadShapes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the shapes onto the canvas. Repaint the canvas after loaded.
+:param shapes: The list of shape objects.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.minimumSizeHint">
+<code class="descname">minimumSizeHint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.minimumSizeHint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Required for the scroll area.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.mouseDoubleClickEvent">
+<code class="descname">mouseDoubleClickEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.mouseDoubleClickEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is called whenever the user double clicks on the canvas. 
+:param ev: The event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.mouseMoveEvent">
+<code class="descname">mouseMoveEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.mouseMoveEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered whenever the user moves the mouse while drawing, resizing, or moving a box.
+:param ev: The event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.mousePressEvent">
+<code class="descname">mousePressEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.mousePressEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered whenever the user clicks to draw, move, or resize a shape.
+:param ev: The event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.mouseReleaseEvent">
+<code class="descname">mouseReleaseEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.mouseReleaseEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered whenever the user releases the mouse after drawing, moving, or resizing a shape.
+:param ev: The event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.moveOnePixel">
+<code class="descname">moveOnePixel</code><span class="sig-paren">(</span><em>direction</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.moveOnePixel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method moves the selected shape one pixel in the given direction.
+:param direction: The direction as a string [Up, Down, Left, Right].
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.moveOutOfBound">
+<code class="descname">moveOutOfBound</code><span class="sig-paren">(</span><em>step</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.moveOutOfBound" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the shape of out bounds.
+:param step: The amount of pixels to move it out of bounds.
+:return: True if any of the points are out of bounds.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="canvas.Canvas.newShape">
+<code class="descname">newShape</code><a class="headerlink" href="#canvas.Canvas.newShape" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.offsetToCenter">
+<code class="descname">offsetToCenter</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.offsetToCenter" title="Permalink to this definition">¶</a></dt>
+<dd><p>This method helps the image remain in the center during zooming.
+:return the point that is the center of the image.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.outOfPixmap">
+<code class="descname">outOfPixmap</code><span class="sig-paren">(</span><em>p</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.outOfPixmap" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>p</strong> &#8211; The point.</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the point p is outside of the image&#8217;s pixmap. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.overrideCursor">
+<code class="descname">overrideCursor</code><span class="sig-paren">(</span><em>cursor</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.overrideCursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Override the cursor method of QApplication
+:param cursor:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.paintEvent">
+<code class="descname">paintEvent</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.paintEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Updates the entire canvas, including the current bounding boxes, the vertices, and the currently selected
+box.
+:param event: The event.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.resetAllLines">
+<code class="descname">resetAllLines</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.resetAllLines" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset all of the lines in the last shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.resetState">
+<code class="descname">resetState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.resetState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset the canvas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.restoreCursor">
+<code class="descname">restoreCursor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.restoreCursor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Restore the override cursor of QApplication.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="canvas.Canvas.scrollRequest">
+<code class="descname">scrollRequest</code><a class="headerlink" href="#canvas.Canvas.scrollRequest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.selectShape">
+<code class="descname">selectShape</code><span class="sig-paren">(</span><em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.selectShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called whenever the user selects a shape.
+:param shape: The shape that the user selects.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.selectShapePoint">
+<code class="descname">selectShapePoint</code><span class="sig-paren">(</span><em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.selectShapePoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Select the shape which contains the given point.
+:param point: The point the user clicks on.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.selectedVertex">
+<code class="descname">selectedVertex</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.selectedVertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The vertex that the user has currently selected.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="canvas.Canvas.selectionChanged">
+<code class="descname">selectionChanged</code><a class="headerlink" href="#canvas.Canvas.selectionChanged" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.setEditing">
+<code class="descname">setEditing</code><span class="sig-paren">(</span><em>value=True</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.setEditing" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the canvas to editing mode when the user is resizing or moving a shape.
+:param value: bool that tells if the user is editing or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.setHiding">
+<code class="descname">setHiding</code><span class="sig-paren">(</span><em>enable=True</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.setHiding" title="Permalink to this definition">¶</a></dt>
+<dd><p>Hide the background shapes.
+:param enable: bool value that tells whether the shapes can be hidden.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.setLastLabel">
+<code class="descname">setLastLabel</code><span class="sig-paren">(</span><em>text</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.setLastLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the last label that was given for a shape.
+:param text: The label.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.setShapeVisible">
+<code class="descname">setShapeVisible</code><span class="sig-paren">(</span><em>shape</em>, <em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.setShapeVisible" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set a shape to be visible or hidden.
+:param shape: The shape to hide or shoe.
+:param value: Bool. If true, shape is shown. If false, shape is hidden.
+:return:</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="canvas.Canvas.shapeMoved">
+<code class="descname">shapeMoved</code><a class="headerlink" href="#canvas.Canvas.shapeMoved" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.sizeHint">
+<code class="descname">sizeHint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.sizeHint" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.transformPos">
+<code class="descname">transformPos</code><span class="sig-paren">(</span><em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.transformPos" title="Permalink to this definition">¶</a></dt>
+<dd><p>Convert from widget-logical coordinates to painter-logical coordinates.
+:param point: The point to convert.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.unHighlight">
+<code class="descname">unHighlight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.unHighlight" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the highlighting color from the inside of a shape when the user mouses out of the shape&#8217;s location.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.undoLastLine">
+<code class="descname">undoLastLine</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.undoLastLine" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="canvas.Canvas.wheelEvent">
+<code class="descname">wheelEvent</code><span class="sig-paren">(</span><em>ev</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.wheelEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>Event is triggered whenever the mouse wheel is scrolled.
+:param ev: The event.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="canvas.Canvas.zoomRequest">
+<code class="descname">zoomRequest</code><a class="headerlink" href="#canvas.Canvas.zoomRequest" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/canvas.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Gayathri Mahalingam, Kevin Gay.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/canvas.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
