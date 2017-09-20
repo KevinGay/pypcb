@@ -1,0 +1,93 @@
+pypcb\.textDetector package
+===========================
+
+Subpackages
+-----------
+
+.. toctree::
+
+    pypcb.textDetector.layers
+
+Submodules
+----------
+
+pypcb\.textDetector\.anchor module
+----------------------------------
+
+.. automodule:: pypcb.textDetector.anchor
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pypcb\.textDetector\.config module
+----------------------------------
+
+.. automodule:: pypcb.textDetector.config
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pypcb\.textDetector\.cpu\_nms module
+------------------------------------
+
+.. automodule:: pypcb.textDetector.cpu_nms
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pypcb\.textDetector\.detectors module
+-------------------------------------
+
+.. automodule:: pypcb.textDetector.detectors
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pypcb\.textDetector\.other module
+---------------------------------
+
+.. automodule:: pypcb.textDetector.other
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pypcb\.textDetector\.textRecognizer module
+------------------------------------------
+
+.. automodule:: pypcb.textDetector.textRecognizer
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pypcb\.textDetector\.text\_proposal\_connector module
+-----------------------------------------------------
+
+.. automodule:: pypcb.textDetector.text_proposal_connector
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pypcb\.textDetector\.text\_proposal\_graph\_builder module
+----------------------------------------------------------
+
+.. automodule:: pypcb.textDetector.text_proposal_graph_builder
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+pypcb\.textDetector\.timer module
+---------------------------------
+
+.. automodule:: pypcb.textDetector.timer
+    :members:
+    :undoc-members:
+    :show-inheritance:
+
+
+Module contents
+---------------
+
+.. automodule:: pypcb.textDetector
+    :members:
+    :undoc-members:
+    :show-inheritance:
