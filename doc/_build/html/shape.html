@@ -1,0 +1,333 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>shape module &mdash; PyPCB 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyPCB 1.0 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-shape">
+<span id="shape-module"></span><h1>shape module<a class="headerlink" href="#module-shape" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="shape.Shape">
+<em class="property">class </em><code class="descclassname">shape.</code><code class="descname">Shape</code><span class="sig-paren">(</span><em>label=None</em>, <em>line_color=None</em><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class represents an annotation bounding box and contains methods for altering them.</p>
+<dl class="attribute">
+<dt id="shape.Shape.MOVE_VERTEX">
+<code class="descname">MOVE_VERTEX</code><em class="property"> = 0</em><a class="headerlink" href="#shape.Shape.MOVE_VERTEX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.NEAR_VERTEX">
+<code class="descname">NEAR_VERTEX</code><em class="property"> = 1</em><a class="headerlink" href="#shape.Shape.NEAR_VERTEX" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.P_ROUND">
+<code class="descname">P_ROUND</code><em class="property"> = 1</em><a class="headerlink" href="#shape.Shape.P_ROUND" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.P_SQUARE">
+<code class="descname">P_SQUARE</code><em class="property"> = 0</em><a class="headerlink" href="#shape.Shape.P_SQUARE" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.addPoint">
+<code class="descname">addPoint</code><span class="sig-paren">(</span><em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.addPoint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a point to the shape.
+:param point: The point to add to the shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.boundingRect">
+<code class="descname">boundingRect</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.boundingRect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draws the bounding rectangle using the QPainterPath</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.close">
+<code class="descname">close</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.close" title="Permalink to this definition">¶</a></dt>
+<dd><p>Close the shape after the user is done drawing it.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.containsPoint">
+<code class="descname">containsPoint</code><span class="sig-paren">(</span><em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.containsPoint" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>point</strong> &#8211; The point</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">Returns True if the shape contains the given point. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.copy">
+<code class="descname">copy</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.copy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy this shape.
+:return: Return a copy of this shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.drawVertex">
+<code class="descname">drawVertex</code><span class="sig-paren">(</span><em>path</em>, <em>i</em><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.drawVertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Draw the vertex of the shape. 
+:param path: 
+:param i:</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.fill_color">
+<code class="descname">fill_color</code><em class="property"> = &lt;PyQt5.QtGui.QColor object at 0x000002DB92A3FC88&gt;</em><a class="headerlink" href="#shape.Shape.fill_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.highlightClear">
+<code class="descname">highlightClear</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.highlightClear" title="Permalink to this definition">¶</a></dt>
+<dd><p>Clear the highlighting.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.highlightVertex">
+<code class="descname">highlightVertex</code><span class="sig-paren">(</span><em>i</em>, <em>action</em><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.highlightVertex" title="Permalink to this definition">¶</a></dt>
+<dd><p>Highlight a vertex using the given action (usually when the user mouses over it).
+:param i: The index of the vertex to move.
+:param action: The action to perform.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.hvertex_fill_color">
+<code class="descname">hvertex_fill_color</code><em class="property"> = &lt;PyQt5.QtGui.QColor object at 0x000002DB92A3FE48&gt;</em><a class="headerlink" href="#shape.Shape.hvertex_fill_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.isClosed">
+<code class="descname">isClosed</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.isClosed" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the shape is closed. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.line_color">
+<code class="descname">line_color</code><em class="property"> = &lt;PyQt5.QtGui.QColor object at 0x000002DB92A3FA58&gt;</em><a class="headerlink" href="#shape.Shape.line_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.makePath">
+<code class="descname">makePath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.makePath" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The QPainterPath of the drawn shape.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.moveBy">
+<code class="descname">moveBy</code><span class="sig-paren">(</span><em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.moveBy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the shape by the given offset.
+:param offset: The number of pixels to move the shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.moveVertexBy">
+<code class="descname">moveVertexBy</code><span class="sig-paren">(</span><em>i</em>, <em>offset</em><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.moveVertexBy" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the specified vertex with the given offset.
+:param i: The index of the vertex to move.
+:param offset: The number of pixels to move the vertex.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.nearestVertex">
+<code class="descname">nearestVertex</code><span class="sig-paren">(</span><em>point</em>, <em>epsilon</em><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.nearestVertex" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><ul class="first simple">
+<li><strong>point</strong> &#8211; The point to compare with all vertices.</li>
+<li><strong>epsilon</strong> &#8211; The epsilon value.</li>
+</ul>
+</td>
+</tr>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body"><p class="first last">Return the point that is nearest the the given point.</p>
+</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.paint">
+<code class="descname">paint</code><span class="sig-paren">(</span><em>painter</em><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.paint" title="Permalink to this definition">¶</a></dt>
+<dd><p>Paint the shape using QPen and the given painter
+:param painter: The QPainter.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.point_size">
+<code class="descname">point_size</code><em class="property"> = 8</em><a class="headerlink" href="#shape.Shape.point_size" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.point_type">
+<code class="descname">point_type</code><em class="property"> = 1</em><a class="headerlink" href="#shape.Shape.point_type" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.popPoint">
+<code class="descname">popPoint</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.popPoint" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The last value in the list of points.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.reachMaxPoints">
+<code class="descname">reachMaxPoints</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.reachMaxPoints" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if there are at least 4 points in the shape. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.scale">
+<code class="descname">scale</code><em class="property"> = 1.0</em><a class="headerlink" href="#shape.Shape.scale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.select_fill_color">
+<code class="descname">select_fill_color</code><em class="property"> = &lt;PyQt5.QtGui.QColor object at 0x000002DB92A3FD68&gt;</em><a class="headerlink" href="#shape.Shape.select_fill_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.select_line_color">
+<code class="descname">select_line_color</code><em class="property"> = &lt;PyQt5.QtGui.QColor object at 0x000002DB92A3FCF8&gt;</em><a class="headerlink" href="#shape.Shape.select_line_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="shape.Shape.setOpen">
+<code class="descname">setOpen</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#shape.Shape.setOpen" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the shape.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="shape.Shape.vertex_fill_color">
+<code class="descname">vertex_fill_color</code><em class="property"> = &lt;PyQt5.QtGui.QColor object at 0x000002DB92A3FDD8&gt;</em><a class="headerlink" href="#shape.Shape.vertex_fill_color" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/shape.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Gayathri Mahalingam, Kevin Gay.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/shape.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

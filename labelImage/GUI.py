@@ -1,6 +1,5 @@
 """
-This module brings everything together and handles all of the functional requirements as well as non functional
- requirements. This clases include the MainWindow as well as classes for multi threading.
+This module brings everything together and handles all of the functional requirements as well as non functional requirements. The classes include the MainWindow as well as classes for multi threading.
 """
 
 #!/usr/bin/env python
@@ -12,6 +11,7 @@ import re
 import sys
 import subprocess
 import cv2
+
 
 from textDetector.textRecognizer import TextRecognizer
 from textDetector.other import draw_boxes, resize_im
@@ -49,7 +49,7 @@ except ImportError:
     from PyQt4.QtGui import *
     from PyQt4.QtCore import *
 
-import resources
+#import resources
 
 try:
     from libs.lib import struct, newAction, newIcon, addActions, fmtShortcut
@@ -522,8 +522,7 @@ class MainWindow(QMainWindow, WindowMixin):
 
     def toggleAdvancedMode(self, value=True):
         """
-        Toggle advanced mode so that users can draw multiple boxes without having to interact with the label dialog box
-            each time. In advanced mode, the user selects the label and then can draw multiple boxes with that label.
+        Toggle advanced mode so that users can draw multiple boxes without having to interact with the label dialog box each time. In advanced mode, the user selects the label and then can draw multiple boxes with that label.
         :param value: The boolean value that tells whether to set advanced mode or not.
         """
         self._beginner = not value
@@ -870,7 +869,10 @@ class MainWindow(QMainWindow, WindowMixin):
             self.canvas.selectShape(self.itemsToShapes[item])
 
     def labelItemChanged(self, item):
-        
+        """
+        This event is triggered whenever the user changes the label associated with a shape.
+        :param item: The item in the label list.
+        """
         shape = self.itemsToShapes[item]
         label = item.text()
         if label != shape.label:
@@ -881,9 +883,10 @@ class MainWindow(QMainWindow, WindowMixin):
 
     ## Callback functions:
     def newShape(self):
-        """Pop-up and give focus to the label editor.
+        """
+        Pop-up and give focus to the label editor.
 
-        position MUST be in global coordinates.
+        Position MUST be in global coordinates.
         """
         if not self.useDefaultLabelCheckbox.isChecked() or not self.defaultLabelTextLine.text():
             if len(self.labelHist) > 0:
@@ -912,20 +915,34 @@ class MainWindow(QMainWindow, WindowMixin):
             self.canvas.resetAllLines()
 
     def scrollRequest(self, delta, orientation):
+        """
+        This handles the scroll bar.
+        """
         units = - delta / (8 * 15)
         bar = self.scrollBars[orientation]
         bar.setValue(bar.value() + bar.singleStep() * units)
 
     def setZoom(self, value):
+        """
+        Set the zoom of the image to the given value.
+        :param value: The amount of zoom.
+        """
         self.actions.fitWidth.setChecked(False)
         self.actions.fitWindow.setChecked(False)
         self.zoomMode = self.MANUAL_ZOOM
         self.zoomWidget.setValue(value)
 
     def addZoom(self, increment=10):
+        """
+        Zoom in.
+        :param increment: how much to zoom in.
+        """
         self.setZoom(self.zoomWidget.value() + increment)
 
     def zoomRequest(self, delta):
+        """
+        This event is called whenever the user zooms in/out.
+        """
         # get the current scrollbar positions
         # calculate the percentages ~ coordinates
         h_bar = self.scrollBars[Qt.Horizontal]
@@ -977,23 +994,40 @@ class MainWindow(QMainWindow, WindowMixin):
         v_bar.setValue(new_v_bar_value)
 
     def setFitWindow(self, value=True):
+        """
+        This event is called whenever the user select 'fit to window'
+        :param value: Whether 'fit to window' is selected or not.
+        """
         if value:
             self.actions.fitWidth.setChecked(False)
         self.zoomMode = self.FIT_WINDOW if value else self.MANUAL_ZOOM
         self.adjustScale()
 
     def setFitWidth(self, value=True):
+        """
+        Set the image to fit horizontally inside of the canvas.
+        :param value: Whether the image is fit horizontally or not.
+        """
         if value:
             self.actions.fitWindow.setChecked(False)
         self.zoomMode = self.FIT_WIDTH if value else self.MANUAL_ZOOM
         self.adjustScale()
 
     def togglePolygons(self, value):
+        """
+        Toggle all of the polygons to visible/invisible based on the value.
+        :param value: Whether the shapes are shown or not.
+        :return: 
+        """
         for item, shape in self.itemsToShapes.items():
             item.setCheckState(Qt.Checked if value else Qt.Unchecked)
 
     def loadFile(self, filePath=None):
-        """Load the specified file, or the last opened file if None."""
+        """
+        Load the specified image. Also load the annotations if the default annotation dir is specified.
+        :param filePath: The path to the image.
+        :return: True if load is successful. False otherwise.
+        """
         self.resetState()
         self.canvas.setEnabled(False)
         if filePath is None:
@@ -1085,7 +1119,9 @@ class MainWindow(QMainWindow, WindowMixin):
         self.zoomWidget.setValue(int(100 * value))
 
     def scaleFitWindow(self):
-        """Figure out the size of the pixmap in order to fit the main widget."""
+        """
+        Figure out the size of the pixmap in order to fit the main widget.
+        """
         e = 2.0  # So that no scrollbars are generated.
         w1 = self.centralWidget().width() - e
         h1 = self.centralWidget().height() - e
@@ -1102,6 +1138,10 @@ class MainWindow(QMainWindow, WindowMixin):
         return w / self.canvas.pixmap.width()
 
     def closeEvent(self, event):
+        """
+        This is called whenever the user clicks the close button. The image is closed and all of the annotations are reset.
+        :param event: The close event (button click). 
+        """
         if not self.mayContinue():
             event.ignore()
         s = self.settings
@@ -1135,6 +1175,11 @@ class MainWindow(QMainWindow, WindowMixin):
             self.loadFile(filename)
 
     def scanAllImages(self, folderPath):
+        """
+        Scan all of the images in the given directory path and sort them (ignore case).
+        :param folderPath: The directory to load the images from.
+        :return: A list of the images paths.
+        """
         extensions = {'.jpeg', '.jpg', '.png', '.bmp'}
         images = []
 
@@ -1148,6 +1193,10 @@ class MainWindow(QMainWindow, WindowMixin):
         return images
 
     def changeSavedir(self, _value=False):
+        """
+        Change default save directory. The default save directory is where annotations for all loaded images (via open dir) will be saved.
+        :param _value: Whether there is a default save directory given or not.
+        """
         if self.defaultSaveDir is not None:
             path = ustr(self.defaultSaveDir)
         else:
@@ -1166,6 +1215,11 @@ class MainWindow(QMainWindow, WindowMixin):
         self.statusBar().show()
 
     def openAnnotation(self, _value=False):
+        """
+        Open the annotation file. This method display a dialog box and asks the user to select a txt or xml file.
+        The method will then call the appropriate loadTXT or loadXML method based on the user's selection.
+        :param _value: Whether an annotation is loaded or not.
+        """
         if self.image.isNull():
             self.errorMessage(u'No image open',
                               u'Open an image before loading the annotations.')
@@ -1195,6 +1249,10 @@ class MainWindow(QMainWindow, WindowMixin):
                     self.loadPascalXMLByFilename(filename)
 
     def openDir(self, _value=False):
+        """
+        Open all images in a specified directory.
+        :param _value: Whether a directory is opened or not.
+        """
         if not self.mayContinue():
             return
 
@@ -1234,7 +1292,9 @@ class MainWindow(QMainWindow, WindowMixin):
                 self.fileListWidget.addItem(item)
 
     def openPrevImg(self, _value=False):
-        # Proceding prev image without dialog if having any label
+        """
+        Open previous image if there is a directory of images open.
+        """
         if self.autoSaving.isChecked() and self.defaultSaveDir is not None:
             if self.dirty is True and self.hasLabels():
                 self.saveFile()
@@ -1255,7 +1315,9 @@ class MainWindow(QMainWindow, WindowMixin):
                 self.loadFile(filename)
 
     def openNextImg(self, _value=False):
-        # Proceding next image without dialog if having any label
+        """
+        Open the next image in the image list if there is a directory of images open.
+        """
         if self.autoSaving.isChecked() and self.defaultSaveDir is not None:
             if self.dirty is True and self.hasLabels():
                 self.saveFile()
@@ -1280,6 +1342,10 @@ class MainWindow(QMainWindow, WindowMixin):
             self.loadFile(filename)
 
     def openFile(self, _value=False):
+        """
+        This method displays a dialog box that prompts the user to select an image. Then it calls the loadFile method
+            with the given image as a parameter.
+        """
         if not self.mayContinue():
             return
         path = os.path.dirname(ustr(self.filePath)) if self.filePath else '.'
@@ -1296,6 +1362,9 @@ class MainWindow(QMainWindow, WindowMixin):
                 self.actions.editMode.setEnabled(False)
 
     def exportAsXML(self, _value=False):
+        """
+        Export the annotations as a xml file.
+        """
         assert not self.image.isNull(), "cannot save empty image"
         if self.defaultSaveDir is not None and len(ustr(self.defaultSaveDir)):
             if self.defaultSaveDir is not None and len(ustr(self.defaultSaveDir)):
@@ -1312,11 +1381,13 @@ class MainWindow(QMainWindow, WindowMixin):
             self._exportAsXML(savedPath if self.labelFile
                               else self.exportXMLDialog())
 
-    ##Method to export annotations to a text file of the form:
-    ## class x(top left corner) y width height
-    ## where class= 1-ic; 2-capacitor; 3-resistor; 4-inductor; 5-sscapactitor
-    ##  Added by Kevin Gay for the face aging group
+
     def saveFile(self):
+        """
+        Method to export annotations to a text file of the form:
+        class x(top left corner) y width height
+        where class= 1-ic; 2-capacitor; 3-resistor; 4-inductor; 5-sscapactitor
+        """
         assert not self.image.isNull(), "cannot save empty image"
         if self.defaultSaveDir is not None and len(ustr(self.defaultSaveDir)):
             if self.filePath:
@@ -1334,6 +1405,13 @@ class MainWindow(QMainWindow, WindowMixin):
                            else self.saveFileDialog())
 
     def _saveFile(self, annotationFilePath):
+        """
+        Helper function for save. Opens the file and writes annotations to file in format: 
+        class x(top left corner) y width height
+        where class= 1-ic; 2-capacitor; 3-resistor; 4-inductor; 5-sscapactitor
+        :param annotationFilePath: The file path to the 
+        :return: 
+        """
         f = open(annotationFilePath, 'w')
         componentCode = 0  # 1=ic, 2=cap, 3=resistor, 4=inductor, 5=solid state cap
 
@@ -1374,6 +1452,10 @@ class MainWindow(QMainWindow, WindowMixin):
 
     # Method added by Kevin Gay for the Face Aging Group
     def saveFileDialog(self):
+        """
+        Open the file dialog to save text files. The user selects the location to save the file.
+        :return: 
+        """
         caption = '%s - Choose File' % __appname__
         filters = 'File (*%s)' % '.txt'
         openDialogPath = self.currentPath()
@@ -1388,10 +1470,18 @@ class MainWindow(QMainWindow, WindowMixin):
         return ''
 
     def saveFileAs(self, _value=False):
+        """
+        Save the file regardless of whether the image is dirty or clean.
+        :param _value: 
+        :return: 
+        """
         assert not self.image.isNull(), "cannot save empty image"
         self._saveFile(self.saveFileDialog())
 
     def exportXMLDialog(self):
+        """
+        Opens up a file dialog for the user to select where to save the XML file.
+        """
         caption = '%s - Choose File' % __appname__
         filters = 'File (*%s)' % LabelFile.suffix
         openDialogPath = self.currentPath()
@@ -1406,12 +1496,19 @@ class MainWindow(QMainWindow, WindowMixin):
         return ''
 
     def _exportAsXML(self, annotationFilePath):
+        """
+        Helper functions for exporting as xml.
+        :param annotationFilePath: The path to save the xml file to.
+        """
         if annotationFilePath and self.saveLabels(annotationFilePath):
             self.setClean()
             self.statusBar().showMessage('Saved to  %s' % annotationFilePath)
             self.statusBar().show()
 
     def closeFile(self, _value=False):
+        """
+        Called whenever the image is closed.
+        """
         if not self.mayContinue():
             return
         self.resetState()
@@ -1422,6 +1519,9 @@ class MainWindow(QMainWindow, WindowMixin):
 
     # Message Dialogs. #
     def hasLabels(self):
+        """
+        :return: True if the image has labels. False otherwise. 
+        """
         if not self.itemsToShapes and self.dirty:
             self.errorMessage(u'No objects labeled',
                               u'You must label at least one object to save the file.')
@@ -1429,21 +1529,39 @@ class MainWindow(QMainWindow, WindowMixin):
         return True
 
     def mayContinue(self):
+        """
+        Return true if there are no unsaved boxes on the image.
+        """
         return not (self.dirty and not self.discardChangesDialog())
 
     def discardChangesDialog(self):
+        """
+        Display a dialog to the user to ensure that they actually want to proceed without saving.
+        """
         yes, no = QMessageBox.Yes, QMessageBox.No
         msg = u'You have unsaved changes, proceed anyway?'
         return yes == QMessageBox.warning(self, u'Attention', msg, yes | no)
 
     def errorMessage(self, title, message):
+        """
+        Display an error message pop up box.
+        :param title: The string to display on the title bar of the dialog box.
+        :param message: The message to display in the dialog box.
+        :return: The dialog box.
+        """
         return QMessageBox.critical(self, title,
                                     '<p><b>%s</b></p>%s' % (title, message))
 
     def currentPath(self):
+        """
+        :return:  The currently open path if one is opened. Otherwise return the location of the program. 
+        """
         return os.path.dirname(self.filePath) if self.filePath else '.'
 
     def chooseColor1(self):
+        """
+        Open a color dialog and set the line color to the selected color.
+        """
         color = self.colorDialog.getColor(self.lineColor, u'Choose line color',
                                           default=DEFAULT_LINE_COLOR)
         if color:
@@ -1454,6 +1572,9 @@ class MainWindow(QMainWindow, WindowMixin):
             self.setDirty()
 
     def chooseColor2(self):
+        """
+        Open a color dialog and set the fill color to the selected color.
+        """
         color = self.colorDialog.getColor(self.fillColor, u'Choose fill color',
                                           default=DEFAULT_FILL_COLOR)
         if color:
@@ -1463,6 +1584,9 @@ class MainWindow(QMainWindow, WindowMixin):
             self.setDirty()
 
     def deleteSelectedShape(self):
+        """
+        Delete the currently selected shape. Display a confirmation dialog to ensure the user meant to hit delete.
+        """
         yes, no = QMessageBox.Yes, QMessageBox.No
         msg = u'You are about to permanently delete this Box, proceed anyway?'
         if yes == QMessageBox.warning(self, u'Attention', msg, yes | no):
@@ -1473,6 +1597,9 @@ class MainWindow(QMainWindow, WindowMixin):
                     action.setEnabled(False)
 
     def chshapeLineColor(self):
+        """
+        Open a color dialog and set the line color to the selected color.
+        """
         color = self.colorDialog.getColor(self.lineColor, u'Choose line color',
                                           default=DEFAULT_LINE_COLOR)
         if color:
@@ -1481,6 +1608,9 @@ class MainWindow(QMainWindow, WindowMixin):
             self.setDirty()
 
     def chshapeFillColor(self):
+        """
+        Open a color dialog and set the fill color to the selected color.
+        """
         color = self.colorDialog.getColor(self.fillColor, u'Choose fill color',
                                           default=DEFAULT_FILL_COLOR)
         if color:
@@ -1489,15 +1619,25 @@ class MainWindow(QMainWindow, WindowMixin):
             self.setDirty()
 
     def copyShape(self):
+        """
+        Copy the currently selected shape.
+        """
         self.canvas.endMove(copy=True)
         self.addLabel(self.canvas.selectedShape)
         self.setDirty()
 
     def moveShape(self):
+        """
+        Move the currently selected shape.
+        """
         self.canvas.endMove(copy=False)
         self.setDirty()
 
     def loadPredefinedClasses(self, predefClassesFile):
+        """
+        Load the contents of the text file into the label selection dialog box as labels to select.
+        :param predefClassesFile: The path to the file to load the labels from.
+        """
         if os.path.exists(predefClassesFile) is True:
             with codecs.open(predefClassesFile, 'r', 'utf8') as f:
                 for line in f:
@@ -1507,9 +1647,12 @@ class MainWindow(QMainWindow, WindowMixin):
                     else:
                         self.labelHist.append(line)
 
-    ##Method to load shapes from text file
-    ##Added by Kevin Gay for the face aging group
+
     def loadTXTByFilename(self, txtPath):
+        """
+        Load annotation boxes from a txt file.
+        :param txtPath: The path to the text file.
+        """
         if self.filePath is None:
             return
         if os.path.exists(txtPath) is False:
@@ -1542,6 +1685,10 @@ class MainWindow(QMainWindow, WindowMixin):
         f.close()
 
     def loadPascalXMLByFilename(self, xmlPath):
+        """
+        Load annotation boxes from a xml file.
+        :param xmlPath: The path to the xml file.
+        """
         if self.filePath is None:
             return
         if os.path.exists(xmlPath) is False:
@@ -1562,6 +1709,10 @@ class MainWindow(QMainWindow, WindowMixin):
         self.loadLabels(shapes)
 
     def getComponentPredictions(self):
+        """
+        Display the dialog box where the user can select the components to get the predicted boxes for.
+            This accesses the individual caffe model for the component that the user selects.
+        """
         if self.image.isNull():
             self.errorMessage(u'No image open',
                               u'Open an image before accessing models.')
@@ -1608,6 +1759,10 @@ class Settings(object):
 class DetectionDialog(QDialog):
 
     def __init__(self, filePath, parent=None):
+        """
+        Design the dialog box and display it on the center of the screen.
+        :param filePath: The path to the image to run the network on.
+        """
         super(DetectionDialog, self).__init__(parent)
 
         self.filePath = filePath
@@ -1665,6 +1820,9 @@ class DetectionDialog(QDialog):
         self.exec_()
 
     def runModels(self):
+        """
+        Run the models on a separate thread from the GUI.
+        """
         self.acceptButton.setEnabled(False)
         self.progressBar.setRange(0, 0)
 
@@ -1676,6 +1834,12 @@ class DetectionDialog(QDialog):
         self.threadpool.start(self.modelThread)
 
     def _loadPredictions(self, component, boxes):
+        """
+        Put the predictions in the format that labelImg can read.
+        :param component: The component to identify.
+        :param boxes: The boxes 
+        :return: Shapes from the component detector module.
+        """
         shapes = []
         for i in range(len(boxes)):
             points = []
@@ -1692,9 +1856,15 @@ class DetectionDialog(QDialog):
         return shapes
 
     def getShapes(self):
+        """
+        :return: The shapes. 
+        """
         return self.shapes
 
     def onFinished(self):
+        """
+        Display a load bar whenever the user clicks OK.
+        """
         # Stop the pulsation
         self.progressBar.setRange(0,1)
         if len(self.modelThread.ics) > 0:
@@ -1742,7 +1912,11 @@ class TaskThread(QRunnable):
         self.caps = []
         self.res = []
         self.labels = []
+
     def run(self):
+        """
+        Run the models.
+        """
         boxes = []
         minSize = self.components[4]
         if self.components[0]:  # ic

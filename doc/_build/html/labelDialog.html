@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>labelDialog module &mdash; PyPCB 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyPCB 1.0 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-labelDialog">
+<span id="labeldialog-module"></span><h1>labelDialog module<a class="headerlink" href="#module-labelDialog" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="labelDialog.LabelDialog">
+<em class="property">class </em><code class="descclassname">labelDialog.</code><code class="descname">LabelDialog</code><span class="sig-paren">(</span><em>text='Enter object label'</em>, <em>parent=None</em>, <em>listItem=None</em><span class="sig-paren">)</span><a class="headerlink" href="#labelDialog.LabelDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
+<p>This class inherits the QDialog class. LabelDialogs are displayed after the user draws a shape. It helps the 
+user pick a label from a list of declare a new label to associate with a shape.</p>
+<dl class="method">
+<dt id="labelDialog.LabelDialog.listItemClick">
+<code class="descname">listItemClick</code><span class="sig-paren">(</span><em>QListWidgetItem</em><span class="sig-paren">)</span><a class="headerlink" href="#labelDialog.LabelDialog.listItemClick" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called whenever an item in the list is clicked.
+:param tQListWidgetItem: The QListWidgetItem that is clicked.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="labelDialog.LabelDialog.popUp">
+<code class="descname">popUp</code><span class="sig-paren">(</span><em>text=''</em>, <em>move=True</em><span class="sig-paren">)</span><a class="headerlink" href="#labelDialog.LabelDialog.popUp" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display the dialog box in front of the main application.
+:param text: The text that will currently be displayed in the dialog.
+:param move: A bool that tells whether or not to move the dialog box before displaying it.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="labelDialog.LabelDialog.postProcess">
+<code class="descname">postProcess</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#labelDialog.LabelDialog.postProcess" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="labelDialog.LabelDialog.validate">
+<code class="descname">validate</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#labelDialog.LabelDialog.validate" title="Permalink to this definition">¶</a></dt>
+<dd><p>Validate that the string supplied has no leading or trailing spaces.</p>
+</dd></dl>
+
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/labelDialog.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Gayathri Mahalingam, Kevin Gay.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/labelDialog.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

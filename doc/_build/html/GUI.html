@@ -1,0 +1,821 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>GUI module &mdash; PyPCB 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyPCB 1.0 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-GUI">
+<span id="gui-module"></span><h1>GUI module<a class="headerlink" href="#module-GUI" title="Permalink to this headline">¶</a></h1>
+<p>This module brings everything together and handles all of the functional requirements as well as non functional requirements. The classes include the MainWindow as well as classes for multi threading.</p>
+<dl class="class">
+<dt id="GUI.DetectionDialog">
+<em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">DetectionDialog</code><span class="sig-paren">(</span><em>filePath</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.DetectionDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
+<dl class="method">
+<dt id="GUI.DetectionDialog.getShapes">
+<code class="descname">getShapes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.DetectionDialog.getShapes" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The shapes.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.DetectionDialog.onFinished">
+<code class="descname">onFinished</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.DetectionDialog.onFinished" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a load bar whenever the user clicks OK.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.DetectionDialog.runModels">
+<code class="descname">runModels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.DetectionDialog.runModels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the models on a separate thread from the GUI.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="GUI.HashableQListWidgetItem">
+<em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">HashableQListWidgetItem</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.HashableQListWidgetItem" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtWidgets.QListWidgetItem</span></code></p>
+</dd></dl>
+
+<dl class="class">
+<dt id="GUI.MainWindow">
+<em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">MainWindow</code><span class="sig-paren">(</span><em>defaultFilename=None</em>, <em>defaultPrefdefClassFile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtWidgets.QMainWindow</span></code>, <a class="reference internal" href="#GUI.WindowMixin" title="GUI.WindowMixin"><code class="xref py py-class docutils literal"><span class="pre">GUI.WindowMixin</span></code></a></p>
+<p>This class handles the entire GUI.</p>
+<dl class="attribute">
+<dt id="GUI.MainWindow.FIT_WIDTH">
+<code class="descname">FIT_WIDTH</code><em class="property"> = 1</em><a class="headerlink" href="#GUI.MainWindow.FIT_WIDTH" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="GUI.MainWindow.FIT_WINDOW">
+<code class="descname">FIT_WINDOW</code><em class="property"> = 0</em><a class="headerlink" href="#GUI.MainWindow.FIT_WINDOW" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="GUI.MainWindow.MANUAL_ZOOM">
+<code class="descname">MANUAL_ZOOM</code><em class="property"> = 2</em><a class="headerlink" href="#GUI.MainWindow.MANUAL_ZOOM" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.addLabel">
+<code class="descname">addLabel</code><span class="sig-paren">(</span><em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.addLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a label (corresponding to the recently drawn shape) to the label list.
+:param shape: The shape that corresponds to the label.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.addRecentFile">
+<code class="descname">addRecentFile</code><span class="sig-paren">(</span><em>filePath</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.addRecentFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Add a file to the recent file list after it is opened.
+:param filePath: The path to the file that was just opened.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.addZoom">
+<code class="descname">addZoom</code><span class="sig-paren">(</span><em>increment=10</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.addZoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Zoom in.
+:param increment: how much to zoom in.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.adjustScale">
+<code class="descname">adjustScale</code><span class="sig-paren">(</span><em>initial=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.adjustScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.advanced">
+<code class="descname">advanced</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.advanced" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the GUI is in advanced mode. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.beginner">
+<code class="descname">beginner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.beginner" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the GUI is in beginner mode. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.changeSavedir">
+<code class="descname">changeSavedir</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.changeSavedir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change default save directory. The default save directory is where annotations for all loaded images (via open dir) will be saved.
+:param _value: Whether there is a default save directory given or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.chooseColor1">
+<code class="descname">chooseColor1</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.chooseColor1" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a color dialog and set the line color to the selected color.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.chooseColor2">
+<code class="descname">chooseColor2</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.chooseColor2" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a color dialog and set the fill color to the selected color.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.chshapeFillColor">
+<code class="descname">chshapeFillColor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.chshapeFillColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a color dialog and set the fill color to the selected color.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.chshapeLineColor">
+<code class="descname">chshapeLineColor</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.chshapeLineColor" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open a color dialog and set the line color to the selected color.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.closeEvent">
+<code class="descname">closeEvent</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.closeEvent" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called whenever the user clicks the close button. The image is closed and all of the annotations are reset.
+:param event: The close event (button click).</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.closeFile">
+<code class="descname">closeFile</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.closeFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Called whenever the image is closed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.copySelectedShape">
+<code class="descname">copySelectedShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.copySelectedShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the currently selected shape and display it offset from the original by a few pixels.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.copyShape">
+<code class="descname">copyShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.copyShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Copy the currently selected shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.createShape">
+<code class="descname">createShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.createShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Create a shape on the canvas.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.currentItem">
+<code class="descname">currentItem</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.currentItem" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The currently selected label.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.currentPath">
+<code class="descname">currentPath</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.currentPath" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">The currently open path if one is opened. Otherwise return the location of the program.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.deleteSelectedShape">
+<code class="descname">deleteSelectedShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.deleteSelectedShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Delete the currently selected shape. Display a confirmation dialog to ensure the user meant to hit delete.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.discardChangesDialog">
+<code class="descname">discardChangesDialog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.discardChangesDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a dialog to the user to ensure that they actually want to proceed without saving.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.editLabel">
+<code class="descname">editLabel</code><span class="sig-paren">(</span><em>item=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.editLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>This occurs when the user clicks edit label on a particular bounding box.
+:param item: The item that the user is editing the label for.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.errorMessage">
+<code class="descname">errorMessage</code><span class="sig-paren">(</span><em>title</em>, <em>message</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.errorMessage" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display an error message pop up box.
+:param title: The string to display on the title bar of the dialog box.
+:param message: The message to display in the dialog box.
+:return: The dialog box.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.exportAsXML">
+<code class="descname">exportAsXML</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.exportAsXML" title="Permalink to this definition">¶</a></dt>
+<dd><p>Export the annotations as a xml file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.exportXMLDialog">
+<code class="descname">exportXMLDialog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.exportXMLDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Opens up a file dialog for the user to select where to save the XML file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.fileitemDoubleClicked">
+<code class="descname">fileitemDoubleClicked</code><span class="sig-paren">(</span><em>item=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.fileitemDoubleClicked" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered whenever the user double clicks on an image in the image list.
+:param item: The item that the user clicked on.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.getComponentPredictions">
+<code class="descname">getComponentPredictions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.getComponentPredictions" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>Display the dialog box where the user can select the components to get the predicted boxes for.</dt>
+<dd>This accesses the individual caffe model for the component that the user selects.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.hasLabels">
+<code class="descname">hasLabels</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.hasLabels" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if the image has labels. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.labelItemChanged">
+<code class="descname">labelItemChanged</code><span class="sig-paren">(</span><em>item</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.labelItemChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered whenever the user changes the label associated with a shape.
+:param item: The item in the label list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.labelSelectionChanged">
+<code class="descname">labelSelectionChanged</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.labelSelectionChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event triggers whenever the user selects a new label in the label list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.loadFile">
+<code class="descname">loadFile</code><span class="sig-paren">(</span><em>filePath=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.loadFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the specified image. Also load the annotations if the default annotation dir is specified.
+:param filePath: The path to the image.
+:return: True if load is successful. False otherwise.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.loadLabels">
+<code class="descname">loadLabels</code><span class="sig-paren">(</span><em>shapes</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.loadLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load labels based on the shapes that are given.
+:param shapes: The shapes to load the labels for.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.loadPascalXMLByFilename">
+<code class="descname">loadPascalXMLByFilename</code><span class="sig-paren">(</span><em>xmlPath</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.loadPascalXMLByFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load annotation boxes from a xml file.
+:param xmlPath: The path to the xml file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.loadPredefinedClasses">
+<code class="descname">loadPredefinedClasses</code><span class="sig-paren">(</span><em>predefClassesFile</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.loadPredefinedClasses" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load the contents of the text file into the label selection dialog box as labels to select.
+:param predefClassesFile: The path to the file to load the labels from.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.loadRecent">
+<code class="descname">loadRecent</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.loadRecent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.loadTXTByFilename">
+<code class="descname">loadTXTByFilename</code><span class="sig-paren">(</span><em>txtPath</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.loadTXTByFilename" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load annotation boxes from a txt file.
+:param txtPath: The path to the text file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.mayContinue">
+<code class="descname">mayContinue</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.mayContinue" title="Permalink to this definition">¶</a></dt>
+<dd><p>Return true if there are no unsaved boxes on the image.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.moveShape">
+<code class="descname">moveShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.moveShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Move the currently selected shape.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.newShape">
+<code class="descname">newShape</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.newShape" title="Permalink to this definition">¶</a></dt>
+<dd><p>Pop-up and give focus to the label editor.</p>
+<p>Position MUST be in global coordinates.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.noShapes">
+<code class="descname">noShapes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.noShapes" title="Permalink to this definition">¶</a></dt>
+<dd><table class="docutils field-list" frame="void" rules="none">
+<col class="field-name" />
+<col class="field-body" />
+<tbody valign="top">
+<tr class="field-odd field"><th class="field-name">Returns:</th><td class="field-body">True if there are no shapes currently drawn. False otherwise.</td>
+</tr>
+</tbody>
+</table>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.openAnnotation">
+<code class="descname">openAnnotation</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.openAnnotation" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the annotation file. This method display a dialog box and asks the user to select a txt or xml file.
+The method will then call the appropriate loadTXT or loadXML method based on the user&#8217;s selection.
+:param _value: Whether an annotation is loaded or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.openDir">
+<code class="descname">openDir</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.openDir" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open all images in a specified directory.
+:param _value: Whether a directory is opened or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.openFile">
+<code class="descname">openFile</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.openFile" title="Permalink to this definition">¶</a></dt>
+<dd><dl class="docutils">
+<dt>This method displays a dialog box that prompts the user to select an image. Then it calls the loadFile method</dt>
+<dd>with the given image as a parameter.</dd>
+</dl>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.openNextImg">
+<code class="descname">openNextImg</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.openNextImg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the next image in the image list if there is a directory of images open.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.openPrevImg">
+<code class="descname">openPrevImg</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.openPrevImg" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open previous image if there is a directory of images open.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.paintCanvas">
+<code class="descname">paintCanvas</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.paintCanvas" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.popLabelListMenu">
+<code class="descname">popLabelListMenu</code><span class="sig-paren">(</span><em>point</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.popLabelListMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Populate the label list menu.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.populateModeActions">
+<code class="descname">populateModeActions</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.populateModeActions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Changes the tool bar and based on whether the tool is in advanced mode or beginner mode.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.queueEvent">
+<code class="descname">queueEvent</code><span class="sig-paren">(</span><em>function</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.queueEvent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.remLabel">
+<code class="descname">remLabel</code><span class="sig-paren">(</span><em>shape</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.remLabel" title="Permalink to this definition">¶</a></dt>
+<dd><p>Remove a label and delete the shape.
+:param shape: The shape to delete and remove the label for.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.resetState">
+<code class="descname">resetState</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.resetState" title="Permalink to this definition">¶</a></dt>
+<dd><p>Reset everything about the stored GUI information, including the annotation boxes, image, and save files.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.resizeEvent">
+<code class="descname">resizeEvent</code><span class="sig-paren">(</span><em>event</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.resizeEvent" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.saveFile">
+<code class="descname">saveFile</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.saveFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Method to export annotations to a text file of the form:
+class x(top left corner) y width height
+where class= 1-ic; 2-capacitor; 3-resistor; 4-inductor; 5-sscapactitor</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.saveFileAs">
+<code class="descname">saveFileAs</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.saveFileAs" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the file regardless of whether the image is dirty or clean.
+:param _value: 
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.saveFileDialog">
+<code class="descname">saveFileDialog</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.saveFileDialog" title="Permalink to this definition">¶</a></dt>
+<dd><p>Open the file dialog to save text files. The user selects the location to save the file.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.saveLabels">
+<code class="descname">saveLabels</code><span class="sig-paren">(</span><em>annotationFilePath</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.saveLabels" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save the labels in the file path currently specified. This is for XML files.
+:param annotationFilePath: The path to save the file to.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.scaleFitWidth">
+<code class="descname">scaleFitWidth</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.scaleFitWidth" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.scaleFitWindow">
+<code class="descname">scaleFitWindow</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.scaleFitWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>Figure out the size of the pixmap in order to fit the main widget.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.scanAllImages">
+<code class="descname">scanAllImages</code><span class="sig-paren">(</span><em>folderPath</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.scanAllImages" title="Permalink to this definition">¶</a></dt>
+<dd><p>Scan all of the images in the given directory path and sort them (ignore case).
+:param folderPath: The directory to load the images from.
+:return: A list of the images paths.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.scrollRequest">
+<code class="descname">scrollRequest</code><span class="sig-paren">(</span><em>delta</em>, <em>orientation</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.scrollRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>This handles the scroll bar.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.setAdvanced">
+<code class="descname">setAdvanced</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setAdvanced" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the tool bar so that the advanced mode buttons are displayed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.setBeginner">
+<code class="descname">setBeginner</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setBeginner" title="Permalink to this definition">¶</a></dt>
+<dd><p>Change the tool bar so that the beginner mode buttons are displayed.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.setClean">
+<code class="descname">setClean</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setClean" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set dirty mode to false. Clean means that every drawn box is saved in a file.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.setCreateMode">
+<code class="descname">setCreateMode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setCreateMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set create mode while the user is in advanced mode. This happens when the user clicks the create mode button.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.setDirty">
+<code class="descname">setDirty</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setDirty" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set dirty mode to true. Dirty means that there are boxes drawn that are not currently saved.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.setEditMode">
+<code class="descname">setEditMode</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setEditMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set edit mode while the user is in the edit mode. This happens when the user clicks the edit mode button.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.setFitWidth">
+<code class="descname">setFitWidth</code><span class="sig-paren">(</span><em>value=True</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setFitWidth" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the image to fit horizontally inside of the canvas.
+:param value: Whether the image is fit horizontally or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.setFitWindow">
+<code class="descname">setFitWindow</code><span class="sig-paren">(</span><em>value=True</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setFitWindow" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is called whenever the user select &#8216;fit to window&#8217;
+:param value: Whether &#8216;fit to window&#8217; is selected or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.setZoom">
+<code class="descname">setZoom</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setZoom" title="Permalink to this definition">¶</a></dt>
+<dd><p>Set the zoom of the image to the given value.
+:param value: The amount of zoom.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.shapeSelectionChanged">
+<code class="descname">shapeSelectionChanged</code><span class="sig-paren">(</span><em>selected=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.shapeSelectionChanged" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is triggered when the user clicks on a new shape. 
+:param selected: boolean value that tells whether a shape is selected.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.status">
+<code class="descname">status</code><span class="sig-paren">(</span><em>message</em>, <em>delay=5000</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.status" title="Permalink to this definition">¶</a></dt>
+<dd><p>Display a given message on the status bar.
+:param message: The message to display on the status bar.
+:param delay: The amount of time (in ms) to wait before displaying the message.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.toggleActions">
+<code class="descname">toggleActions</code><span class="sig-paren">(</span><em>value=True</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.toggleActions" title="Permalink to this definition">¶</a></dt>
+<dd><p>Enable/Disable widgets which depend on an opened image.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.toggleAdvancedMode">
+<code class="descname">toggleAdvancedMode</code><span class="sig-paren">(</span><em>value=True</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.toggleAdvancedMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle advanced mode so that users can draw multiple boxes without having to interact with the label dialog box each time. In advanced mode, the user selects the label and then can draw multiple boxes with that label.
+:param value: The boolean value that tells whether to set advanced mode or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.toggleDrawMode">
+<code class="descname">toggleDrawMode</code><span class="sig-paren">(</span><em>edit=True</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.toggleDrawMode" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is a helper function for setCreateMode and setEditMode. It toggles beginner/advanced mode.
+:param edit: bool value that tells whether edit mode is enabled or not.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.toggleDrawingSensitive">
+<code class="descname">toggleDrawingSensitive</code><span class="sig-paren">(</span><em>drawing=True</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.toggleDrawingSensitive" title="Permalink to this definition">¶</a></dt>
+<dd><p>In the middle of drawing, toggling between modes should be disabled.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.togglePolygons">
+<code class="descname">togglePolygons</code><span class="sig-paren">(</span><em>value</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.togglePolygons" title="Permalink to this definition">¶</a></dt>
+<dd><p>Toggle all of the polygons to visible/invisible based on the value.
+:param value: Whether the shapes are shown or not.
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.tutorial">
+<code class="descname">tutorial</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.tutorial" title="Permalink to this definition">¶</a></dt>
+<dd><p>This is called whenever the user clicks on help. Not yet implemented, as no tutorial doc exists yet.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.updateFileMenu">
+<code class="descname">updateFileMenu</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.updateFileMenu" title="Permalink to this definition">¶</a></dt>
+<dd><p>Update the file menu whenever the user opens a new image. Add the file to the recently opened list.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="GUI.MainWindow.zoomRequest">
+<code class="descname">zoomRequest</code><span class="sig-paren">(</span><em>delta</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.zoomRequest" title="Permalink to this definition">¶</a></dt>
+<dd><p>This event is called whenever the user zooms in/out.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="GUI.Settings">
+<em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">Settings</code><span class="sig-paren">(</span><em>types=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.Settings" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Convenience dict-like wrapper around QSettings.</p>
+<dl class="method">
+<dt id="GUI.Settings.get">
+<code class="descname">get</code><span class="sig-paren">(</span><em>key</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.Settings.get" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="GUI.TaskThread">
+<em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">TaskThread</code><span class="sig-paren">(</span><em>components</em>, <em>filePath</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.TaskThread" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtCore.QRunnable</span></code></p>
+<dl class="method">
+<dt id="GUI.TaskThread.run">
+<code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.TaskThread.run" title="Permalink to this definition">¶</a></dt>
+<dd><p>Run the models.</p>
+</dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="GUI.WindowMixin">
+<em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">WindowMixin</code><a class="headerlink" href="#GUI.WindowMixin" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<dl class="method">
+<dt id="GUI.WindowMixin.menu">
+<code class="descname">menu</code><span class="sig-paren">(</span><em>title</em>, <em>actions=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.WindowMixin.menu" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="method">
+<dt id="GUI.WindowMixin.toolbar">
+<code class="descname">toolbar</code><span class="sig-paren">(</span><em>title</em>, <em>actions=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.WindowMixin.toolbar" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="class">
+<dt id="GUI.WorkerSignals">
+<em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">WorkerSignals</code><a class="headerlink" href="#GUI.WorkerSignals" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<p>Defines the signals available from a running worker thread.</p>
+<p>Supported signals are:</p>
+<dl class="docutils">
+<dt>finished</dt>
+<dd>No data</dd>
+<dt>error</dt>
+<dd><cite>tuple</cite> (exctype, value, traceback.format_exc() )</dd>
+<dt>result</dt>
+<dd><cite>object</cite> data returned from processing, anything</dd>
+<dt>progress</dt>
+<dd><cite>int</cite> indicating % progress</dd>
+</dl>
+<dl class="attribute">
+<dt id="GUI.WorkerSignals.error">
+<code class="descname">error</code><a class="headerlink" href="#GUI.WorkerSignals.error" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="GUI.WorkerSignals.finished">
+<code class="descname">finished</code><a class="headerlink" href="#GUI.WorkerSignals.finished" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="GUI.WorkerSignals.progress">
+<code class="descname">progress</code><a class="headerlink" href="#GUI.WorkerSignals.progress" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="attribute">
+<dt id="GUI.WorkerSignals.result">
+<code class="descname">result</code><a class="headerlink" href="#GUI.WorkerSignals.result" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="function">
+<dt id="GUI.get_main_app">
+<code class="descclassname">GUI.</code><code class="descname">get_main_app</code><span class="sig-paren">(</span><em>argv=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.get_main_app" title="Permalink to this definition">¶</a></dt>
+<dd><p>Standard boilerplate Qt application code.
+Do everything but app.exec_() &#8211; so that we can test the application in one thread</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="GUI.have_qstring">
+<code class="descclassname">GUI.</code><code class="descname">have_qstring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.have_qstring" title="Permalink to this definition">¶</a></dt>
+<dd><p>p3/qt5 get rid of QString wrapper as py3 has native unicode str type</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="GUI.inverted">
+<code class="descclassname">GUI.</code><code class="descname">inverted</code><span class="sig-paren">(</span><em>color</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.inverted" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="GUI.main">
+<code class="descclassname">GUI.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.main" title="Permalink to this definition">¶</a></dt>
+<dd><p>construct main app and run it</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="GUI.read">
+<code class="descclassname">GUI.</code><code class="descname">read</code><span class="sig-paren">(</span><em>filename</em>, <em>default=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.read" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="GUI.util_qt_strlistclass">
+<code class="descclassname">GUI.</code><code class="descname">util_qt_strlistclass</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.util_qt_strlistclass" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/GUI.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Gayathri Mahalingam, Kevin Gay.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/GUI.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>

@@ -1,0 +1,164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
+  "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+
+
+<html xmlns="http://www.w3.org/1999/xhtml">
+  <head>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    
+    <title>labelFile module &mdash; PyPCB 1.0 documentation</title>
+    
+    <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    
+    <script type="text/javascript">
+      var DOCUMENTATION_OPTIONS = {
+        URL_ROOT:    './',
+        VERSION:     '1.0',
+        COLLAPSE_INDEX: false,
+        FILE_SUFFIX: '.html',
+        HAS_SOURCE:  true
+      };
+    </script>
+    <script type="text/javascript" src="_static/jquery.js"></script>
+    <script type="text/javascript" src="_static/underscore.js"></script>
+    <script type="text/javascript" src="_static/doctools.js"></script>
+    <link rel="top" title="PyPCB 1.0 documentation" href="index.html" />
+   
+  <link rel="stylesheet" href="_static/custom.css" type="text/css" />
+  
+  
+  <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
+
+  </head>
+  <body role="document">
+  
+
+    <div class="document">
+      <div class="documentwrapper">
+        <div class="bodywrapper">
+          <div class="body" role="main">
+            
+  <div class="section" id="module-labelFile">
+<span id="labelfile-module"></span><h1>labelFile module<a class="headerlink" href="#module-labelFile" title="Permalink to this headline">¶</a></h1>
+<dl class="class">
+<dt id="labelFile.LabelFile">
+<em class="property">class </em><code class="descclassname">labelFile.</code><code class="descname">LabelFile</code><span class="sig-paren">(</span><em>filename=None</em><span class="sig-paren">)</span><a class="headerlink" href="#labelFile.LabelFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>This class controls the saving and loading of XML label files.</p>
+<dl class="staticmethod">
+<dt id="labelFile.LabelFile.convertPoints2BndBox">
+<em class="property">static </em><code class="descname">convertPoints2BndBox</code><span class="sig-paren">(</span><em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#labelFile.LabelFile.convertPoints2BndBox" title="Permalink to this definition">¶</a></dt>
+<dd><p>Given points, convert them into a bounding box (xmin, xmax, ymin, ymax).
+:param points: The points to convert.
+:return: The xmin, xmax, ymin, and ymax that correspond to the given points.</p>
+</dd></dl>
+
+<dl class="staticmethod">
+<dt id="labelFile.LabelFile.isLabelFile">
+<em class="property">static </em><code class="descname">isLabelFile</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#labelFile.LabelFile.isLabelFile" title="Permalink to this definition">¶</a></dt>
+<dd><p>Returns true if the filename has the same suffix as the class variable &#8220;suffix&#8221;.
+:param filename: The filename to test.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="labelFile.LabelFile.load">
+<code class="descname">load</code><span class="sig-paren">(</span><em>filename</em><span class="sig-paren">)</span><a class="headerlink" href="#labelFile.LabelFile.load" title="Permalink to this definition">¶</a></dt>
+<dd><p>Load information from a file into the instance variables
+:param filename: 
+:return:</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="labelFile.LabelFile.save">
+<code class="descname">save</code><span class="sig-paren">(</span><em>filename</em>, <em>shapes</em>, <em>imagePath</em>, <em>imageData</em>, <em>lineColor=None</em>, <em>fillColor=None</em><span class="sig-paren">)</span><a class="headerlink" href="#labelFile.LabelFile.save" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a XML file.
+:param filename: The name to save the file with. 
+:param shapes: The shapes to save to the XML file.
+:param imagePath: The path to the image that the annotations correspond to.
+:param imageData: The data about the image, including the width, height, and depth.
+:param lineColor: The line color that is saved with the boxes.
+:param fillColor: The fill color that is saved with the boxes.</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="labelFile.LabelFile.savePascalVocFormat">
+<code class="descname">savePascalVocFormat</code><span class="sig-paren">(</span><em>filename</em>, <em>shapes</em>, <em>imagePath</em>, <em>imageData</em>, <em>lineColor=None</em>, <em>fillColor=None</em>, <em>databaseSrc=None</em><span class="sig-paren">)</span><a class="headerlink" href="#labelFile.LabelFile.savePascalVocFormat" title="Permalink to this definition">¶</a></dt>
+<dd><p>Save a XML in pascal Voc format.
+:param filename: The name to save the file with.
+:param shapes: The shapes to save to the XML file.
+:param imagePath: The path to the image that the annotations correspond to.
+:param imageData: The data about the image, including the width, height, and depth.
+:param lineColor: The line color that is saved with the boxes.
+:param fillColor: The fill color that is saved with the boxes.
+:param databaseSrc: The source of the database that the annotations are located.</p>
+</dd></dl>
+
+<dl class="attribute">
+<dt id="labelFile.LabelFile.suffix">
+<code class="descname">suffix</code><em class="property"> = '.xml'</em><a class="headerlink" href="#labelFile.LabelFile.suffix" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+</dd></dl>
+
+<dl class="exception">
+<dt id="labelFile.LabelFileError">
+<em class="property">exception </em><code class="descclassname">labelFile.</code><code class="descname">LabelFileError</code><a class="headerlink" href="#labelFile.LabelFileError" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">Exception</span></code></p>
+</dd></dl>
+
+</div>
+
+
+          </div>
+        </div>
+      </div>
+      <div class="sphinxsidebar" role="navigation" aria-label="main navigation">
+        <div class="sphinxsidebarwrapper"><div class="relations">
+<h3>Related Topics</h3>
+<ul>
+  <li><a href="index.html">Documentation overview</a><ul>
+  </ul></li>
+</ul>
+</div>
+  <div role="note" aria-label="source link">
+    <h3>This Page</h3>
+    <ul class="this-page-menu">
+      <li><a href="_sources/labelFile.txt"
+            rel="nofollow">Show Source</a></li>
+    </ul>
+   </div>
+<div id="searchbox" style="display: none" role="search">
+  <h3>Quick search</h3>
+    <form class="search" action="search.html" method="get">
+      <input type="text" name="q" />
+      <input type="submit" value="Go" />
+      <input type="hidden" name="check_keywords" value="yes" />
+      <input type="hidden" name="area" value="default" />
+    </form>
+    <p class="searchtip" style="font-size: 90%">
+    Enter search terms or a module, class or function name.
+    </p>
+</div>
+<script type="text/javascript">$('#searchbox').show(0);</script>
+        </div>
+      </div>
+      <div class="clearer"></div>
+    </div>
+    <div class="footer">
+      &copy;2017, Gayathri Mahalingam, Kevin Gay.
+      
+      |
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
+      
+      |
+      <a href="_sources/labelFile.txt"
+          rel="nofollow">Page source</a>
+    </div>
+
+    
+
+    
+  </body>
+</html>
