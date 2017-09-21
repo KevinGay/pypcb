@@ -22,6 +22,9 @@ import shlex
 # documentation root, use os.path.abspath to make it absolute, like shown here.
 sys.path.insert(0, os.path.abspath('../labelImage'))
 sys.path.insert(0, os.path.abspath('../labelImage/libs'))
+sys.path.insert(0, os.path.abspath('../textDetector'))
+sys.path.insert(0, os.path.abspath('../textDetector/layers'))
+sys.path.insert(0, os.path.abspath('../detector'))
 
 # -- General configuration ------------------------------------------------
 

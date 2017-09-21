@@ -2,106 +2,58 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f11c0d31-c548-4351-964a-b05e729fb719" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/GUI.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/canvas.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/classes.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/colorDialog.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/environment.pickle" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/index.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/labelDialog.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/labelFile.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/lib.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/modules.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/pascal_voc_io.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/pypcb.detector.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/pypcb.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/pypcb.textDetector.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/pypcb.textDetector.layers.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/resources.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/shape.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/toolBar.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/ustr.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/doctrees/zoomWidget.doctree" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/.buildinfo" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/GUI.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/GUI.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/canvas.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/classes.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/colorDialog.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/index.rst.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/index.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/labelDialog.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/labelFile.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/lib.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/modules.rst.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/modules.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/pascal_voc_io.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/pypcb.detector.rst.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/pypcb.rst.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/pypcb.textDetector.layers.rst.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/pypcb.textDetector.rst.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/resources.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/shape.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/toolBar.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/ustr.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/zoomWidget.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/ajax-loader.gif" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/alabaster.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/basic.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/comment-bright.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/comment-close.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/comment.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/custom.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/doctools.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/down-pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/down.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/file.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/jquery-1.11.1.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/jquery-3.1.0.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/jquery.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/minus.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/plus.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/pygments.css" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/searchtools.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/underscore-1.3.1.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/underscore.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/up-pressed.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/up.png" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/_static/websupport.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/canvas.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/colorDialog.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/genindex.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/index.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/labelDialog.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/labelFile.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/lib.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/modules.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/objects.inv" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/pascal_voc_io.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/py-modindex.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/pypcb.detector.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/pypcb.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/pypcb.textDetector.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/pypcb.textDetector.layers.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/resources.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/search.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/searchindex.js" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/shape.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/toolBar.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/ustr.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/_build/html/zoomWidget.html" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/pascal_voc_io.rst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/pypcb.detector.rst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/pypcb.rst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/pypcb.textDetector.layers.rst" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/doc/pypcb.textDetector.rst" afterPath="" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/pypcb.iml" afterPath="$PROJECT_DIR$/.idea/pypcb.iml" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/cpu_nms.so" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/Clustering.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/componentDetector.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/config.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/helperModules.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/deploy.prototxt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/fullConv_capacitor.prototxt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/mean_capacitor.binaryproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/mean_capacitor.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/model_capacitor.caffemodel" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/deploy.prototxt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/fullConv_ic.prototxt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/mean_ic.binaryproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/mean_ic.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/model_ic.caffemodel" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/deploy.prototxt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/fullConv_resistor.prototxt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/mean_resistor.binaryproto" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/mean_resistor.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/model_resistor.caffemodel" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/nms.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/windowExtractor.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/anchor.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/config.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/detectors.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/layers/__init__.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/layers/text_proposal_layer.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/ctpn_deploy.prototxt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/ctpn_trained_model.caffemodel" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/fontLabels.txt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/font_deploy.prototxt" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/font_mean.npy" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/font_model.caffemodel" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/other.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/textRecognizer.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/text_proposal_connector.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/text_proposal_graph_builder.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/timer.py" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/build/temp.linux-x86_64-2.7/textDetector/cpu_nms.o" afterPath="" />
+      <change type="DELETED" beforePath="$PROJECT_DIR$/pypcb/textDetector/cpu_nms.so" afterPath="" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/GUI.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/GUI.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/doc/_build/doctrees/environment.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/modules.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/modules.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/objects.inv" afterPath="$PROJECT_DIR$/doc/_build/html/objects.inv" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/textDetector/cpu_nms.so" afterPath="$PROJECT_DIR$/textDetector/cpu_nms.so" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/Makefile" afterPath="$PROJECT_DIR$/doc/Makefile" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/modules.txt" afterPath="$PROJECT_DIR$/doc/_build/html/_sources/modules.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/modules.html" afterPath="$PROJECT_DIR$/doc/_build/html/modules.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/doc/_build/html/searchindex.js" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/conf.py" afterPath="$PROJECT_DIR$/doc/conf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.rst" afterPath="$PROJECT_DIR$/doc/index.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/make.bat" afterPath="$PROJECT_DIR$/doc/make.bat" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/modules.rst" afterPath="$PROJECT_DIR$/doc/modules.rst" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelImage/GUI.py" afterPath="$PROJECT_DIR$/labelImage/GUI.py" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelImage/resources.py" afterPath="$PROJECT_DIR$/labelImage/resources.py" />
@@ -128,8 +80,8 @@
       <file leaf-file-name="GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="510">
-              <caret line="30" column="3" lean-forward="false" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
+            <state relative-caret-position="289">
+              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#256#269#0" expanded="true" />
               </folding>
@@ -140,8 +92,8 @@
       <file leaf-file-name="resources.py" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/labelImage/resources.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="5848">
-              <caret line="344" column="65" lean-forward="false" selection-start-line="344" selection-start-column="65" selection-end-line="344" selection-end-column="65" />
+            <state relative-caret-position="0">
+              <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
               <folding />
             </state>
           </provider>
@@ -283,8 +235,8 @@
         <option value="$PROJECT_DIR$/labelImage/libs/colorDialog.py" />
         <option value="$PROJECT_DIR$/labelImage/genDocs.py" />
         <option value="$PROJECT_DIR$/labelImage/resources.py" />
-        <option value="$PROJECT_DIR$/labelImage/GUI.py" />
         <option value="$PROJECT_DIR$/spreadsheet.py" />
+        <option value="$PROJECT_DIR$/labelImage/GUI.py" />
       </list>
     </option>
   </component>
@@ -670,9 +622,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1056" extended-state="7" />
+    <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="true" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22575517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22575517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23943663" sideWeight="0.50596184" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -999,14 +952,6 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/labelImage/resources.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="5848">
-          <caret line="344" column="65" lean-forward="false" selection-start-line="344" selection-start-column="65" selection-end-line="344" selection-end-column="65" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/libs/ustr.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -1033,16 +978,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/spreadsheet.py" />
+    <entry file="file://$PROJECT_DIR$/labelImage/resources.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="510">
-          <caret line="30" column="3" lean-forward="false" selection-start-line="30" selection-start-column="3" selection-end-line="30" selection-end-column="3" />
+        <state relative-caret-position="289">
+          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
             <element signature="e#256#269#0" expanded="true" />
           </folding>
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/spreadsheet.py" />
   </component>
 </project>

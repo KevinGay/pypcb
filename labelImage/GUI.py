@@ -10,9 +10,8 @@ import os.path
 import re
 import sys
 import subprocess
-#import cv2
+import cv2
 
-'''
 from textDetector.textRecognizer import TextRecognizer
 from textDetector.other import draw_boxes, resize_im
 from textDetector.config import Config as cfg
@@ -28,7 +27,6 @@ if '/data0/mahaling/TEXT/CTPN/caffe/python' not in sys.path:
 
 
 import caffe
-'''
 
 from functools import partial
 from collections import defaultdict
