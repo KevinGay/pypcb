@@ -4,11 +4,7 @@
  *
  * Sphinx JavaScript utilities for all documentation.
  *
-<<<<<<< HEAD
- * :copyright: Copyright 2007-2017 by the Sphinx team, see AUTHORS.
-=======
  * :copyright: Copyright 2007-2015 by the Sphinx team, see AUTHORS.
->>>>>>> a9b40e05415291bcbe2ec0d6c15599b0bb2eed8f
  * :license: BSD, see LICENSE for details.
  *
  */
@@ -128,10 +124,6 @@ var Documentation = {
     this.fixFirefoxAnchorBug();
     this.highlightSearchWords();
     this.initIndexTable();
-<<<<<<< HEAD
-    
-=======
->>>>>>> a9b40e05415291bcbe2ec0d6c15599b0bb2eed8f
   },
 
   /**
@@ -260,32 +252,6 @@ var Documentation = {
     });
     var url = parts.join('/');
     return path.substring(url.lastIndexOf('/') + 1, path.length - 1);
-<<<<<<< HEAD
-  },
-
-  initOnKeyListeners: function() {
-    $(document).keyup(function(event) {
-      var activeElementType = document.activeElement.tagName;
-      // don't navigate when in search box or textarea
-      if (activeElementType !== 'TEXTAREA' && activeElementType !== 'INPUT' && activeElementType !== 'SELECT') {
-        switch (event.keyCode) {
-          case 37: // left
-            var prevHref = $('link[rel="prev"]').prop('href');
-            if (prevHref) {
-              window.location.href = prevHref;
-              return false;
-            }
-          case 39: // right
-            var nextHref = $('link[rel="next"]').prop('href');
-            if (nextHref) {
-              window.location.href = nextHref;
-              return false;
-            }
-        }
-      }
-    });
-=======
->>>>>>> a9b40e05415291bcbe2ec0d6c15599b0bb2eed8f
   }
 };
 
@@ -294,8 +260,4 @@ _ = Documentation.gettext;
 
 $(document).ready(function() {
   Documentation.init();
-<<<<<<< HEAD
 });
-=======
-});
->>>>>>> a9b40e05415291bcbe2ec0d6c15599b0bb2eed8f

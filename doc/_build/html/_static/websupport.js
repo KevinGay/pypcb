@@ -2,15 +2,9 @@
  * websupport.js
  * ~~~~~~~~~~~~~
  *
-<<<<<<< HEAD
- * sphinx.websupport utilities for all documentation.
- *
- * :copyright: Copyright 2007-2017 by the Sphinx team, see AUTHORS.
-=======
  * sphinx.websupport utilties for all documentation.
  *
  * :copyright: Copyright 2007-2015 by the Sphinx team, see AUTHORS.
->>>>>>> a9b40e05415291bcbe2ec0d6c15599b0bb2eed8f
  * :license: BSD, see LICENSE for details.
  *
  */

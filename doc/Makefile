@@ -1,29 +1,8 @@
-<<<<<<< HEAD
-# Minimal makefile for Sphinx documentation
-=======
 # Makefile for Sphinx documentation
->>>>>>> a9b40e05415291bcbe2ec0d6c15599b0bb2eed8f
 #
 
 # You can set these variables from the command line.
 SPHINXOPTS    =
-<<<<<<< HEAD
-SPHINXBUILD   = python -msphinx
-SPHINXPROJ    = pypcb
-SOURCEDIR     = .
-BUILDDIR      = _build
-
-# Put it first so that "make" without argument is like "make help".
-help:
-	@$(SPHINXBUILD) -M help "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-
-.PHONY: help Makefile
-
-# Catch-all target: route all unknown targets to Sphinx using the new
-# "make mode" option.  $(O) is meant as a shortcut for $(SPHINXOPTS).
-%: Makefile
-	@$(SPHINXBUILD) -M $@ "$(SOURCEDIR)" "$(BUILDDIR)" $(SPHINXOPTS) $(O)
-=======
 SPHINXBUILD   = sphinx-build
 PAPER         =
 BUILDDIR      = _build
@@ -211,4 +190,3 @@ pseudoxml:
 	$(SPHINXBUILD) -b pseudoxml $(ALLSPHINXOPTS) $(BUILDDIR)/pseudoxml
 	@echo
 	@echo "Build finished. The pseudo-XML files are in $(BUILDDIR)/pseudoxml."
->>>>>>> a9b40e05415291bcbe2ec0d6c15599b0bb2eed8f
