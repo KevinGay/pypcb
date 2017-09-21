@@ -5,8 +5,72 @@ import numpy as np
 import itertools as it
 import numpy.matlib
 import itertools as it
+from rtree import index as rindex
+import networkx as nx
+
+"""
+.. module:: Clustering
+    :synopsis: source code for bounding box clustering algorithm
+.. module_author:: Gayathri Mahalingam <gayumahalingam@gmail.com>
+"""
+
+def ClusterBoundingBoxes(boxes):
+    """Cluster a list of bounding boxes
+
+    Parameters
+    ----------
+    boxlist : a list of bounding boxes [x,y,w,h] (n x 4)
+
+    Returns
+    -------
+    meanBoxes : list of mean bounding boxes of each cluster
+    """
+    # convert boxes to numpy array
+    boxes = np.array(boxes)
+
+    # check if the confidence score is included in the boxes
+    if boxes.shape[1] == 5:
+        boxes = boxes[:,:-1]
+    boxes = boxes.tolist()
+
+    # convert all values to int
+    fboxes = [[int(b[0]), int(b[1]), int(b[2]), int(b[3])] for b in boxes]
+
+    # create rtree and graph
+    ridx = rindex.Index()
+    G = nx.Graph()
+
+    # insert boxes in rtree
+    [ridx.insert(i, (b[0], b[1], b[2], b[3])) for i, b in enumerate(fboxes)]
+
+    for i, b in enumerate(fboxes):
+        nodex = list(ridx.intersection((b[0], b[1], b[2], b[3])))
+        nodex.remove(i)
+        [G.add_edge(i, node) for node in nodex]
+
+    Gc = nx.connected_component_subgraphs(G)
+
+    meanBoxes = []
+    for s in Gc:
+        bbs = [fboxes[i] for i in s.nodes()]
+        bbs = np.array(bbs)
+        meanBoxes.append([np.min(bbs[:,0]), np.min(bbs[:,1]), np.max(bbs[:,2]), np.max(bbs[:,3])])
+
+    return meanBoxes
+
 
 def initClusters(b):
+    """Initialize list of lists for Clustering
+
+    Parameters
+    ----------
+    b : list of bounding boxes
+
+    Returns
+    -------
+    obj: `list of lists`
+        list of lists each representing a bounding box in its own cluster
+    """
     listsoflists = []
 
     for i in xrange(0, len(b)):
@@ -14,9 +78,20 @@ def initClusters(b):
 
     return listsoflists
 
+
 def intersection(r1, r2):
-    # finds the intersection of all pairs of rectangles from clusters r1 and r2
-    # r1 and r2 are lists
+    """Finds the intersection of all pairs of rectangles from clusters r1 and r2
+
+    Parameters
+    ----------
+    r1 : List of [x,y,w,h] bounding box coordinates (n x 4)
+    r2 : List of [x,y,w,h] boounding box coordinates (n x 4)
+
+    Returns
+    -------
+    iou : List of n intersection over union ratios
+    """
+
     rs1 = np.array(r1)
     rs2 = np.array(r2)
 
@@ -71,7 +146,18 @@ def intersection(r1, r2):
 
     return iou
 
+
 def clusterBoxes(boxlist):
+    """Cluster a list of bounding boxes
+
+    Parameters
+    ----------
+    boxlist : a list of bounding boxes [x,y,w,h] (n x 4)
+
+    Returns
+    -------
+    obj : list of list of clusters of bounding boxes
+    """
 
     # Initialize clusters
     clusts = initClusters(boxlist)
@@ -121,6 +207,18 @@ def clusterBoxes(boxlist):
 
 
 def getAvgClusterBoxes(cluster):
+    """Compute an average bounding box from a list of bounding boxes
+
+    Parameters
+    ----------
+    cluster : a list of list of bounding boxes [x,y,w,h]
+
+    Returns
+    -------
+    a list of bounding boxes [x,y,w,h] (n x 4)
+
+    """
+
     boxes = []
     for clust in cluster:
         k = np.array(clust)
@@ -133,7 +231,19 @@ def getAvgClusterBoxes(cluster):
 
 
 def validateBoxes(boxes, imgSize):
-    # checks for the boundary conditions for the boxes with the image
+    """checks for the boundary conditions for the boxes with the image
+
+    Parameters
+    ----------
+    boxes : a list of bounding boxes
+    imgSize : w and h of input image for checking the bounds
+
+    Returns
+    -------
+    nBoxes : a list of bounding boxes that are within image bounds
+
+    """
+
     nBoxes = []
     for i in xrange(0, len(boxes)):
         box = boxes[i]
@@ -143,8 +253,21 @@ def validateBoxes(boxes, imgSize):
                 nBoxes.append(box)
     return nBoxes
 
+
 def enclosed(a,b):
-    # checks whether b is enclosed in a or not
+    """checks whether b is enclosed in a or not
+
+    Parameters
+    ----------
+    a : [x,y,w,h] bounding box
+    b : [x,y,w,h] bounding box
+
+    Returns
+    -------
+    True : if b is enclosed in a
+    False : if a is enclosed in b
+
+    """
 
     # add and subtract to top left and bottom right corners to avoid checking special cases
     k = deepcopy(b)
@@ -157,6 +280,7 @@ def enclosed(a,b):
         return True
     else:
         return False
+
 
 def enclosingBoxes(meanCluster):
     clust = []
