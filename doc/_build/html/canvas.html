@@ -1,29 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>canvas module &mdash; PyPCB 1.0 documentation</title>
-    
+    <title>canvas module &#8212; PyPCB 1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyPCB 1.0 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -31,7 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -44,7 +43,7 @@
 <dl class="class">
 <dt id="canvas.Canvas">
 <em class="property">class </em><code class="descclassname">canvas.</code><code class="descname">Canvas</code><span class="sig-paren">(</span><em>*args</em>, <em>**kwargs</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtWidgets.QWidget</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt4.QtGui.QWidget</span></code></p>
 <p>Canvas inherits QWidget and is the area that displays the image and handles the drawing, resizing, and 
 moving the shapes.</p>
 <dl class="attribute">
@@ -104,7 +103,7 @@ are not entirely overlapping.
 <dl class="method">
 <dt id="canvas.Canvas.closeEnough">
 <code class="descname">closeEnough</code><span class="sig-paren">(</span><em>p1</em>, <em>p2</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.closeEnough" title="Permalink to this definition">¶</a></dt>
-<dd><p>Returns the distance between a point and epsilon. This helps the user select a point of shape even if they&#8217;re
+<dd><p>Returns the distance between a point and epsilon. This helps the user select a point of shape even if they’re
 a few pixels off, which improves responsiveness.
 :param p1: Point 1.
 :param p2: Point 2.
@@ -184,7 +183,7 @@ a few pixels off, which improves responsiveness.
 <dl class="method">
 <dt id="canvas.Canvas.finalize">
 <code class="descname">finalize</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.finalize" title="Permalink to this definition">¶</a></dt>
-<dd><p>Helper method that&#8217;s called when a shape is finished being drawn.</p>
+<dd><p>Helper method that’s called when a shape is finished being drawn.</p>
 </dd></dl>
 
 <dl class="method">
@@ -210,9 +209,9 @@ a few pixels off, which improves responsiveness.
 <dl class="method">
 <dt id="canvas.Canvas.intersectingEdges">
 <code class="descname">intersectingEdges</code><span class="sig-paren">(</span><em>x1y1</em>, <em>x2y2</em>, <em>points</em><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.intersectingEdges" title="Permalink to this definition">¶</a></dt>
-<dd><p>For each edge formed by <cite>points&#8217;, yield the intersection
+<dd><p>For each edge formed by <cite>points’, yield the intersection
 with the line segment `(x1,y1) - (x2,y2)</cite>, if it exists.
-Also return the distance of <a href="#id1"><span class="problematic" id="id2">`</span></a>(x2,y2)&#8217; to the middle of the
+Also return the distance of <a href="#id1"><span class="problematic" id="id2">`</span></a>(x2,y2)’ to the middle of the
 edge along with its index, so that the one closest can be chosen.
 :param x1y1: Point 1.
 :param x2y2: Point 2.</p>
@@ -334,9 +333,9 @@ and find the one intersecting the current line segment.
 <col class="field-name" />
 <col class="field-body" />
 <tbody valign="top">
-<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>p</strong> &#8211; The point.</td>
+<tr class="field-odd field"><th class="field-name">Parameters:</th><td class="field-body"><strong>p</strong> – The point.</td>
 </tr>
-<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the point p is outside of the image&#8217;s pixmap. False otherwise.</td>
+<tr class="field-even field"><th class="field-name">Returns:</th><td class="field-body">True if the point p is outside of the image’s pixmap. False otherwise.</td>
 </tr>
 </tbody>
 </table>
@@ -462,7 +461,7 @@ box.
 <dl class="method">
 <dt id="canvas.Canvas.unHighlight">
 <code class="descname">unHighlight</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#canvas.Canvas.unHighlight" title="Permalink to this definition">¶</a></dt>
-<dd><p>Clear the highlighting color from the inside of a shape when the user mouses out of the shape&#8217;s location.</p>
+<dd><p>Clear the highlighting color from the inside of a shape when the user mouses out of the shape’s location.</p>
 </dd></dl>
 
 <dl class="method">
@@ -484,6 +483,21 @@ box.
 
 </dd></dl>
 
+<dl class="function">
+<dt id="canvas.bin">
+<code class="descclassname">canvas.</code><code class="descname">bin</code><span class="sig-paren">(</span><em>QTextStream</em><span class="sig-paren">)</span> &#x2192; QTextStream<a class="headerlink" href="#canvas.bin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="canvas.hex">
+<code class="descclassname">canvas.</code><code class="descname">hex</code><span class="sig-paren">(</span><em>QTextStream</em><span class="sig-paren">)</span> &#x2192; QTextStream<a class="headerlink" href="#canvas.hex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="canvas.oct">
+<code class="descclassname">canvas.</code><code class="descname">oct</code><span class="sig-paren">(</span><em>QTextStream</em><span class="sig-paren">)</span> &#x2192; QTextStream<a class="headerlink" href="#canvas.oct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
 
 
@@ -501,21 +515,18 @@ box.
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/canvas.txt"
+      <li><a href="_sources/canvas.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -526,11 +537,11 @@ box.
       &copy;2017, Gayathri Mahalingam, Kevin Gay.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="_sources/canvas.txt"
+      <a href="_sources/canvas.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

@@ -1,29 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>GUI module &mdash; PyPCB 1.0 documentation</title>
-    
+    <title>GUI module &#8212; PyPCB 1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyPCB 1.0 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -31,7 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -45,7 +44,7 @@
 <dl class="class">
 <dt id="GUI.DetectionDialog">
 <em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">DetectionDialog</code><span class="sig-paren">(</span><em>filePath</em>, <em>parent=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.DetectionDialog" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtWidgets.QDialog</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt4.QtGui.QDialog</span></code></p>
 <dl class="method">
 <dt id="GUI.DetectionDialog.getShapes">
 <code class="descname">getShapes</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.DetectionDialog.getShapes" title="Permalink to this definition">¶</a></dt>
@@ -76,13 +75,13 @@
 <dl class="class">
 <dt id="GUI.HashableQListWidgetItem">
 <em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">HashableQListWidgetItem</code><span class="sig-paren">(</span><em>*args</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.HashableQListWidgetItem" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtWidgets.QListWidgetItem</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt4.QtGui.QListWidgetItem</span></code></p>
 </dd></dl>
 
 <dl class="class">
 <dt id="GUI.MainWindow">
 <em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">MainWindow</code><span class="sig-paren">(</span><em>defaultFilename=None</em>, <em>defaultPrefdefClassFile=None</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtWidgets.QMainWindow</span></code>, <a class="reference internal" href="#GUI.WindowMixin" title="GUI.WindowMixin"><code class="xref py py-class docutils literal"><span class="pre">GUI.WindowMixin</span></code></a></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt4.QtGui.QMainWindow</span></code>, <a class="reference internal" href="#GUI.WindowMixin" title="GUI.WindowMixin"><code class="xref py py-class docutils literal"><span class="pre">GUI.WindowMixin</span></code></a></p>
 <p>This class handles the entire GUI.</p>
 <dl class="attribute">
 <dt id="GUI.MainWindow.FIT_WIDTH">
@@ -398,7 +397,7 @@
 <dt id="GUI.MainWindow.openAnnotation">
 <code class="descname">openAnnotation</code><span class="sig-paren">(</span><em>_value=False</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.openAnnotation" title="Permalink to this definition">¶</a></dt>
 <dd><p>Open the annotation file. This method display a dialog box and asks the user to select a txt or xml file.
-The method will then call the appropriate loadTXT or loadXML method based on the user&#8217;s selection.
+The method will then call the appropriate loadTXT or loadXML method based on the user’s selection.
 :param _value: Whether an annotation is loaded or not.</p>
 </dd></dl>
 
@@ -572,8 +571,8 @@ where class= 1-ic; 2-capacitor; 3-resistor; 4-inductor; 5-sscapactitor</p>
 <dl class="method">
 <dt id="GUI.MainWindow.setFitWindow">
 <code class="descname">setFitWindow</code><span class="sig-paren">(</span><em>value=True</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.MainWindow.setFitWindow" title="Permalink to this definition">¶</a></dt>
-<dd><p>This event is called whenever the user select &#8216;fit to window&#8217;
-:param value: Whether &#8216;fit to window&#8217; is selected or not.</p>
+<dd><p>This event is called whenever the user select ‘fit to window’
+:param value: Whether ‘fit to window’ is selected or not.</p>
 </dd></dl>
 
 <dl class="method">
@@ -667,7 +666,7 @@ where class= 1-ic; 2-capacitor; 3-resistor; 4-inductor; 5-sscapactitor</p>
 <dl class="class">
 <dt id="GUI.TaskThread">
 <em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">TaskThread</code><span class="sig-paren">(</span><em>components</em>, <em>filePath</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.TaskThread" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtCore.QRunnable</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt4.QtCore.QRunnable</span></code></p>
 <dl class="method">
 <dt id="GUI.TaskThread.run">
 <code class="descname">run</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.TaskThread.run" title="Permalink to this definition">¶</a></dt>
@@ -695,7 +694,7 @@ where class= 1-ic; 2-capacitor; 3-resistor; 4-inductor; 5-sscapactitor</p>
 <dl class="class">
 <dt id="GUI.WorkerSignals">
 <em class="property">class </em><code class="descclassname">GUI.</code><code class="descname">WorkerSignals</code><a class="headerlink" href="#GUI.WorkerSignals" title="Permalink to this definition">¶</a></dt>
-<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt5.QtCore.QObject</span></code></p>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">PyQt4.QtCore.QObject</span></code></p>
 <p>Defines the signals available from a running worker thread.</p>
 <p>Supported signals are:</p>
 <dl class="docutils">
@@ -731,10 +730,15 @@ where class= 1-ic; 2-capacitor; 3-resistor; 4-inductor; 5-sscapactitor</p>
 </dd></dl>
 
 <dl class="function">
+<dt id="GUI.bin">
+<code class="descclassname">GUI.</code><code class="descname">bin</code><span class="sig-paren">(</span><em>QTextStream</em><span class="sig-paren">)</span> &#x2192; QTextStream<a class="headerlink" href="#GUI.bin" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
 <dt id="GUI.get_main_app">
 <code class="descclassname">GUI.</code><code class="descname">get_main_app</code><span class="sig-paren">(</span><em>argv=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.get_main_app" title="Permalink to this definition">¶</a></dt>
 <dd><p>Standard boilerplate Qt application code.
-Do everything but app.exec_() &#8211; so that we can test the application in one thread</p>
+Do everything but app.exec_() – so that we can test the application in one thread</p>
 </dd></dl>
 
 <dl class="function">
@@ -742,6 +746,11 @@ Do everything but app.exec_() &#8211; so that we can test the application in one
 <code class="descclassname">GUI.</code><code class="descname">have_qstring</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#GUI.have_qstring" title="Permalink to this definition">¶</a></dt>
 <dd><p>p3/qt5 get rid of QString wrapper as py3 has native unicode str type</p>
 </dd></dl>
+
+<dl class="function">
+<dt id="GUI.hex">
+<code class="descclassname">GUI.</code><code class="descname">hex</code><span class="sig-paren">(</span><em>QTextStream</em><span class="sig-paren">)</span> &#x2192; QTextStream<a class="headerlink" href="#GUI.hex" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="function">
 <dt id="GUI.inverted">
@@ -753,6 +762,11 @@ Do everything but app.exec_() &#8211; so that we can test the application in one
 <code class="descclassname">GUI.</code><code class="descname">main</code><span class="sig-paren">(</span><em>argv=[]</em><span class="sig-paren">)</span><a class="headerlink" href="#GUI.main" title="Permalink to this definition">¶</a></dt>
 <dd><p>construct main app and run it</p>
 </dd></dl>
+
+<dl class="function">
+<dt id="GUI.oct">
+<code class="descclassname">GUI.</code><code class="descname">oct</code><span class="sig-paren">(</span><em>QTextStream</em><span class="sig-paren">)</span> &#x2192; QTextStream<a class="headerlink" href="#GUI.oct" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
 
 <dl class="function">
 <dt id="GUI.read">
@@ -781,21 +795,18 @@ Do everything but app.exec_() &#8211; so that we can test the application in one
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/GUI.txt"
+      <li><a href="_sources/GUI.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -806,11 +817,11 @@ Do everything but app.exec_() &#8211; so that we can test the application in one
       &copy;2017, Gayathri Mahalingam, Kevin Gay.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="_sources/GUI.txt"
+      <a href="_sources/GUI.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 

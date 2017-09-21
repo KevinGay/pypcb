@@ -2,61 +2,60 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f11c0d31-c548-4351-964a-b05e729fb719" name="Default" comment="">
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/cpu_nms.so" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/Clustering.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/componentDetector.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/config.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/helperModules.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/deploy.prototxt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/fullConv_capacitor.prototxt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/mean_capacitor.binaryproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/mean_capacitor.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/capacitor/model_capacitor.caffemodel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/deploy.prototxt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/fullConv_ic.prototxt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/mean_ic.binaryproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/mean_ic.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/ic/model_ic.caffemodel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/deploy.prototxt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/fullConv_resistor.prototxt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/mean_resistor.binaryproto" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/mean_resistor.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/models/resistor/model_resistor.caffemodel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/nms.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/detector/windowExtractor.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/anchor.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/config.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/detectors.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/layers/__init__.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/layers/text_proposal_layer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/ctpn_deploy.prototxt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/ctpn_trained_model.caffemodel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/fontLabels.txt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/font_deploy.prototxt" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/font_mean.npy" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/models/font_model.caffemodel" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/other.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/textRecognizer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/text_proposal_connector.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/text_proposal_graph_builder.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/lib.linux-x86_64-2.7/textDetector/timer.py" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/build/temp.linux-x86_64-2.7/textDetector/cpu_nms.o" afterPath="" />
-      <change type="DELETED" beforePath="$PROJECT_DIR$/pypcb/textDetector/cpu_nms.so" afterPath="" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/GUI.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/GUI.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/canvas.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/canvas.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/colorDialog.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/colorDialog.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/detector.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/detector.doctree" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/doc/_build/doctrees/environment.pickle" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/index.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/labelDialog.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/labelDialog.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/labelFile.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/labelFile.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/lib.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/lib.doctree" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/modules.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/modules.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/shape.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/shape.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/textDetector.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/textDetector.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/textDetector.layers.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/textDetector.layers.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/toolBar.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/toolBar.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/ustr.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/ustr.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/zoomWidget.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/zoomWidget.doctree" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/comment-bright.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/comment-bright.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/comment-close.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/comment-close.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/comment.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/comment.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/down-pressed.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/down-pressed.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/down.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/down.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/file.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/file.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/minus.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/minus.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/plus.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/plus.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/up-pressed.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/up-pressed.png" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/up.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/up.png" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/objects.inv" afterPath="$PROJECT_DIR$/doc/_build/html/objects.inv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/textDetector/cpu_nms.so" afterPath="$PROJECT_DIR$/textDetector/cpu_nms.so" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_sources/modules.txt" afterPath="$PROJECT_DIR$/doc/_build/html/_sources/modules.txt" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/.buildinfo" afterPath="$PROJECT_DIR$/doc/_build/html/.buildinfo" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/GUI.html" afterPath="$PROJECT_DIR$/doc/_build/html/GUI.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/basic.css" afterPath="$PROJECT_DIR$/doc/_build/html/_static/basic.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/doctools.js" afterPath="$PROJECT_DIR$/doc/_build/html/_static/doctools.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/jquery.js" afterPath="$PROJECT_DIR$/doc/_build/html/_static/jquery.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/pygments.css" afterPath="$PROJECT_DIR$/doc/_build/html/_static/pygments.css" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/searchtools.js" afterPath="$PROJECT_DIR$/doc/_build/html/_static/searchtools.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/websupport.js" afterPath="$PROJECT_DIR$/doc/_build/html/_static/websupport.js" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/canvas.html" afterPath="$PROJECT_DIR$/doc/_build/html/canvas.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/colorDialog.html" afterPath="$PROJECT_DIR$/doc/_build/html/colorDialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/detector.html" afterPath="$PROJECT_DIR$/doc/_build/html/detector.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/genindex.html" afterPath="$PROJECT_DIR$/doc/_build/html/genindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/index.html" afterPath="$PROJECT_DIR$/doc/_build/html/index.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/labelDialog.html" afterPath="$PROJECT_DIR$/doc/_build/html/labelDialog.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/labelFile.html" afterPath="$PROJECT_DIR$/doc/_build/html/labelFile.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/lib.html" afterPath="$PROJECT_DIR$/doc/_build/html/lib.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/modules.html" afterPath="$PROJECT_DIR$/doc/_build/html/modules.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/py-modindex.html" afterPath="$PROJECT_DIR$/doc/_build/html/py-modindex.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/search.html" afterPath="$PROJECT_DIR$/doc/_build/html/search.html" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/doc/_build/html/searchindex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/conf.py" afterPath="$PROJECT_DIR$/doc/conf.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/modules.rst" afterPath="$PROJECT_DIR$/doc/modules.rst" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelImage/GUI.py" afterPath="$PROJECT_DIR$/labelImage/GUI.py" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelImage/resources.py" afterPath="$PROJECT_DIR$/labelImage/resources.py" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/shape.html" afterPath="$PROJECT_DIR$/doc/_build/html/shape.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/textDetector.html" afterPath="$PROJECT_DIR$/doc/_build/html/textDetector.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/textDetector.layers.html" afterPath="$PROJECT_DIR$/doc/_build/html/textDetector.layers.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/toolBar.html" afterPath="$PROJECT_DIR$/doc/_build/html/toolBar.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/ustr.html" afterPath="$PROJECT_DIR$/doc/_build/html/ustr.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/zoomWidget.html" afterPath="$PROJECT_DIR$/doc/_build/html/zoomWidget.html" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.rst" afterPath="$PROJECT_DIR$/doc/index.rst" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -80,8 +79,8 @@
       <file leaf-file-name="GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="289">
-              <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="-31538">
+              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
               <folding>
                 <element signature="e#256#269#0" expanded="true" />
               </folding>
@@ -636,7 +635,7 @@
       <window_info id="Terminal" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="9" side_tool="false" content_ui="tabs" />
       <window_info id="Debug" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.39957035" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Favorites" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="2" side_tool="true" content_ui="tabs" />
-      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
+      <window_info id="Data View" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.3298887" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
       <window_info id="Cvs" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.25" sideWeight="0.5" order="4" side_tool="false" content_ui="tabs" />
       <window_info id="Message" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
       <window_info id="Commander" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.4" sideWeight="0.5" order="0" side_tool="false" content_ui="tabs" />
@@ -989,8 +988,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="289">
-          <caret line="29" column="0" lean-forward="true" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="-31538">
+          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
           <folding>
             <element signature="e#256#269#0" expanded="true" />
           </folding>

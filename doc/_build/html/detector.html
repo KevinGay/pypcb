@@ -1,29 +1,28 @@
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN"
   "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
-
 
 <html xmlns="http://www.w3.org/1999/xhtml">
   <head>
     <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
-    
-    <title>detector package &mdash; PyPCB 1.0 documentation</title>
-    
+    <title>detector package &#8212; PyPCB 1.0 documentation</title>
     <link rel="stylesheet" href="_static/alabaster.css" type="text/css" />
     <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
-    
     <script type="text/javascript">
       var DOCUMENTATION_OPTIONS = {
         URL_ROOT:    './',
         VERSION:     '1.0',
         COLLAPSE_INDEX: false,
         FILE_SUFFIX: '.html',
-        HAS_SOURCE:  true
+        HAS_SOURCE:  true,
+        SOURCELINK_SUFFIX: '.txt'
       };
     </script>
     <script type="text/javascript" src="_static/jquery.js"></script>
     <script type="text/javascript" src="_static/underscore.js"></script>
     <script type="text/javascript" src="_static/doctools.js"></script>
-    <link rel="top" title="PyPCB 1.0 documentation" href="index.html" />
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
    
   <link rel="stylesheet" href="_static/custom.css" type="text/css" />
   
@@ -31,7 +30,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=0.9, maximum-scale=0.9" />
 
   </head>
-  <body role="document">
+  <body>
   
 
     <div class="document">
@@ -44,26 +43,232 @@
 <div class="section" id="submodules">
 <h2>Submodules<a class="headerlink" href="#submodules" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="detector-clustering-module">
-<h2>detector.Clustering module<a class="headerlink" href="#detector-clustering-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-detector.Clustering">
+<span id="detector-clustering-module"></span><h2>detector.Clustering module<a class="headerlink" href="#module-detector.Clustering" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="detector.Clustering.ClusterBoundingBoxes">
+<code class="descclassname">detector.Clustering.</code><code class="descname">ClusterBoundingBoxes</code><span class="sig-paren">(</span><em>boxes</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.Clustering.ClusterBoundingBoxes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster a list of bounding boxes</p>
+<p>boxlist : a list of bounding boxes [x,y,w,h] (n x 4)</p>
+<p>meanBoxes : list of mean bounding boxes of each cluster</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="detector.Clustering.clusterBoxes">
+<code class="descclassname">detector.Clustering.</code><code class="descname">clusterBoxes</code><span class="sig-paren">(</span><em>boxlist</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.Clustering.clusterBoxes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Cluster a list of bounding boxes</p>
+<p>boxlist : a list of bounding boxes [x,y,w,h] (n x 4)</p>
+<p>obj : list of list of clusters of bounding boxes</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="detector.Clustering.enclosed">
+<code class="descclassname">detector.Clustering.</code><code class="descname">enclosed</code><span class="sig-paren">(</span><em>a</em>, <em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.Clustering.enclosed" title="Permalink to this definition">¶</a></dt>
+<dd><p>checks whether b is enclosed in a or not</p>
+<p>a : [x,y,w,h] bounding box
+b : [x,y,w,h] bounding box</p>
+<p>True : if b is enclosed in a
+False : if a is enclosed in b</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="detector.Clustering.enclosingBoxes">
+<code class="descclassname">detector.Clustering.</code><code class="descname">enclosingBoxes</code><span class="sig-paren">(</span><em>meanCluster</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.Clustering.enclosingBoxes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.Clustering.getAvgClusterBoxes">
+<code class="descclassname">detector.Clustering.</code><code class="descname">getAvgClusterBoxes</code><span class="sig-paren">(</span><em>cluster</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.Clustering.getAvgClusterBoxes" title="Permalink to this definition">¶</a></dt>
+<dd><p>Compute an average bounding box from a list of bounding boxes</p>
+<p>cluster : a list of list of bounding boxes [x,y,w,h]</p>
+<p>a list of bounding boxes [x,y,w,h] (n x 4)</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="detector.Clustering.initClusters">
+<code class="descclassname">detector.Clustering.</code><code class="descname">initClusters</code><span class="sig-paren">(</span><em>b</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.Clustering.initClusters" title="Permalink to this definition">¶</a></dt>
+<dd><p>Initialize list of lists for Clustering</p>
+<p>b : list of bounding boxes</p>
+<dl class="docutils">
+<dt>obj: <cite>list of lists</cite></dt>
+<dd>list of lists each representing a bounding box in its own cluster</dd>
+</dl>
+</dd></dl>
+
+<dl class="function">
+<dt id="detector.Clustering.intersection">
+<code class="descclassname">detector.Clustering.</code><code class="descname">intersection</code><span class="sig-paren">(</span><em>r1</em>, <em>r2</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.Clustering.intersection" title="Permalink to this definition">¶</a></dt>
+<dd><p>Finds the intersection of all pairs of rectangles from clusters r1 and r2</p>
+<p>r1 : List of [x,y,w,h] bounding box coordinates (n x 4)
+r2 : List of [x,y,w,h] boounding box coordinates (n x 4)</p>
+<p>iou : List of n intersection over union ratios</p>
+</dd></dl>
+
+<dl class="function">
+<dt id="detector.Clustering.validateBoxes">
+<code class="descclassname">detector.Clustering.</code><code class="descname">validateBoxes</code><span class="sig-paren">(</span><em>boxes</em>, <em>imgSize</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.Clustering.validateBoxes" title="Permalink to this definition">¶</a></dt>
+<dd><p>checks for the boundary conditions for the boxes with the image</p>
+<p>boxes : a list of bounding boxes
+imgSize : w and h of input image for checking the bounds</p>
+<p>nBoxes : a list of bounding boxes that are within image bounds</p>
+</dd></dl>
+
 </div>
-<div class="section" id="detector-componentdetector-module">
-<h2>detector.componentDetector module<a class="headerlink" href="#detector-componentdetector-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-detector.componentDetector">
+<span id="detector-componentdetector-module"></span><h2>detector.componentDetector module<a class="headerlink" href="#module-detector.componentDetector" title="Permalink to this headline">¶</a></h2>
+<dl class="class">
+<dt id="detector.componentDetector.componentDetector">
+<em class="property">class </em><code class="descclassname">detector.componentDetector.</code><code class="descname">componentDetector</code><span class="sig-paren">(</span><em>component='ic'</em>, <em>mode='GPU'</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.componentDetector.componentDetector" title="Permalink to this definition">¶</a></dt>
+<dd><p>Bases: <code class="xref py py-class docutils literal"><span class="pre">object</span></code></p>
+<p>Component Detector class</p>
+<p>component : Name of the component (string) e.g. ic, resistor, capacitor
+mode : “GPU” or “CPU”</p>
+<p>icDetector = componentDetector(component=”ic”, mode=”GPU”)</p>
+<dl class="method">
+<dt id="detector.componentDetector.componentDetector.detect">
+<code class="descname">detect</code><span class="sig-paren">(</span><em>image</em>, <em>minComponentSize</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.componentDetector.componentDetector.detect" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perfoms detection of component (slower)
+Works with images of smaller size for the detector to process</p>
+<p>image : full path to the image (string)
+minComponentSize : the size of the least sized component class</p>
+<p>nBoxes : a list of bounding boxes [x,y,w,h] of size (n x 4)</p>
+</dd></dl>
+
+<dl class="method">
+<dt id="detector.componentDetector.componentDetector.detectfast">
+<code class="descname">detectfast</code><span class="sig-paren">(</span><em>image</em>, <em>minComponentSize</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.componentDetector.componentDetector.detectfast" title="Permalink to this definition">¶</a></dt>
+<dd><p>Perfoms detection of component faster
+Works with images of smaller size for the detector to process</p>
+<p>image : full path to the image (string)
+minComponentSize : the size of the least sized component class</p>
+<p>nBoxes : a list of bounding boxes [x,y,w,h] of size (n x 4)</p>
+</dd></dl>
+
+</dd></dl>
+
 </div>
-<div class="section" id="detector-config-module">
-<h2>detector.config module<a class="headerlink" href="#detector-config-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-detector.config">
+<span id="detector-config-module"></span><h2>detector.config module<a class="headerlink" href="#module-detector.config" title="Permalink to this headline">¶</a></h2>
 </div>
-<div class="section" id="detector-helpermodules-module">
-<h2>detector.helperModules module<a class="headerlink" href="#detector-helpermodules-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-detector.helperModules">
+<span id="detector-helpermodules-module"></span><h2>detector.helperModules module<a class="headerlink" href="#module-detector.helperModules" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="detector.helperModules.computeScale">
+<code class="descclassname">detector.helperModules.</code><code class="descname">computeScale</code><span class="sig-paren">(</span><em>img</em>, <em>mins</em>, <em>maxs</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.computeScale" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.computeScales">
+<code class="descclassname">detector.helperModules.</code><code class="descname">computeScales</code><span class="sig-paren">(</span><em>img</em>, <em>mins</em>, <em>maxs</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.computeScales" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.drawBoundingBoxes">
+<code class="descclassname">detector.helperModules.</code><code class="descname">drawBoundingBoxes</code><span class="sig-paren">(</span><em>img</em>, <em>boxes</em>, <em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.drawBoundingBoxes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.drawFinalBoxes">
+<code class="descclassname">detector.helperModules.</code><code class="descname">drawFinalBoxes</code><span class="sig-paren">(</span><em>img</em>, <em>boxes</em>, <em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.drawFinalBoxes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.generateBoundingBox">
+<code class="descclassname">detector.helperModules.</code><code class="descname">generateBoundingBox</code><span class="sig-paren">(</span><em>featureMap</em>, <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.generateBoundingBox" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.getMean">
+<code class="descclassname">detector.helperModules.</code><code class="descname">getMean</code><span class="sig-paren">(</span><em>meanBinaryProto</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.getMean" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.loadNet">
+<code class="descclassname">detector.helperModules.</code><code class="descname">loadNet</code><span class="sig-paren">(</span><em>deployProto</em>, <em>fullConvProto</em>, <em>caffeModel</em>, <em>mode='CPU'</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.loadNet" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.loadTransformer">
+<code class="descclassname">detector.helperModules.</code><code class="descname">loadTransformer</code><span class="sig-paren">(</span><em>net_full_conv</em>, <em>meanFile</em>, <em>reshapeSize=(515</em>, <em>515)</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.loadTransformer" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.parse_args">
+<code class="descclassname">detector.helperModules.</code><code class="descname">parse_args</code><span class="sig-paren">(</span><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.parse_args" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.plotHeatmap">
+<code class="descclassname">detector.helperModules.</code><code class="descname">plotHeatmap</code><span class="sig-paren">(</span><em>img</em>, <em>outprob</em>, <em>title</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.plotHeatmap" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.processHeatMaps">
+<code class="descclassname">detector.helperModules.</code><code class="descname">processHeatMaps</code><span class="sig-paren">(</span><em>out</em>, <em>windows</em>, <em>scale</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.processHeatMaps" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.helperModules.sliding_window">
+<code class="descclassname">detector.helperModules.</code><code class="descname">sliding_window</code><span class="sig-paren">(</span><em>image</em>, <em>window_size</em>, <em>step_size</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.helperModules.sliding_window" title="Permalink to this definition">¶</a></dt>
+<dd><p>This function returns a patch of the input image <cite>image</cite> of size equal
+to <cite>window_size</cite>. The first image returned top-left co-ordinates (0, 0)
+and are increment in both x and y directions by the <cite>step_size</cite> supplied.
+So, the input parameters are -
+* <cite>image</cite> - Input Image
+* <cite>window_size</cite> - Size of Sliding Window
+* <cite>step_size</cite> - Incremented Size of Window
+The function returns a tuple -
+(x, y, im_window)
+where
+* x is the top-left x co-ordinate
+* y is the top-left y co-ordinate
+* im_window is the sliding window image</p>
+</dd></dl>
+
 </div>
-<div class="section" id="detector-nms-module">
-<h2>detector.nms module<a class="headerlink" href="#detector-nms-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-detector.nms">
+<span id="detector-nms-module"></span><h2>detector.nms module<a class="headerlink" href="#module-detector.nms" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="detector.nms.combine_boxes">
+<code class="descclassname">detector.nms.</code><code class="descname">combine_boxes</code><span class="sig-paren">(</span><em>boxes</em>, <em>overlapThresh=0.07</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.nms.combine_boxes" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.nms.match_score">
+<code class="descclassname">detector.nms.</code><code class="descname">match_score</code><span class="sig-paren">(</span><em>b1</em>, <em>b2</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.nms.match_score" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.nms.nms_average">
+<code class="descclassname">detector.nms.</code><code class="descname">nms_average</code><span class="sig-paren">(</span><em>boxes</em>, <em>overlapThresh=0.2</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.nms.nms_average" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.nms.nms_max">
+<code class="descclassname">detector.nms.</code><code class="descname">nms_max</code><span class="sig-paren">(</span><em>boxes</em>, <em>overlapThresh=0.3</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.nms.nms_max" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
-<div class="section" id="detector-windowextractor-module">
-<h2>detector.windowExtractor module<a class="headerlink" href="#detector-windowextractor-module" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-detector.windowExtractor">
+<span id="detector-windowextractor-module"></span><h2>detector.windowExtractor module<a class="headerlink" href="#module-detector.windowExtractor" title="Permalink to this headline">¶</a></h2>
+<dl class="function">
+<dt id="detector.windowExtractor.extractSubImages">
+<code class="descclassname">detector.windowExtractor.</code><code class="descname">extractSubImages</code><span class="sig-paren">(</span><em>image</em>, <em>windows</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.windowExtractor.extractSubImages" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.windowExtractor.extractSubWindows">
+<code class="descclassname">detector.windowExtractor.</code><code class="descname">extractSubWindows</code><span class="sig-paren">(</span><em>image</em>, <em>windows</em>, <em>transformer</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.windowExtractor.extractSubWindows" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
+<dl class="function">
+<dt id="detector.windowExtractor.getWindowDims">
+<code class="descclassname">detector.windowExtractor.</code><code class="descname">getWindowDims</code><span class="sig-paren">(</span><em>image, winSize=[515, 515], stride=[32, 32]</em><span class="sig-paren">)</span><a class="headerlink" href="#detector.windowExtractor.getWindowDims" title="Permalink to this definition">¶</a></dt>
+<dd></dd></dl>
+
 </div>
-<div class="section" id="module-contents">
-<h2>Module contents<a class="headerlink" href="#module-contents" title="Permalink to this headline">¶</a></h2>
+<div class="section" id="module-detector">
+<span id="module-contents"></span><h2>Module contents<a class="headerlink" href="#module-detector" title="Permalink to this headline">¶</a></h2>
 </div>
 </div>
 
@@ -77,13 +282,13 @@
   <ul>
 <li><a class="reference internal" href="#">detector package</a><ul>
 <li><a class="reference internal" href="#submodules">Submodules</a></li>
-<li><a class="reference internal" href="#detector-clustering-module">detector.Clustering module</a></li>
-<li><a class="reference internal" href="#detector-componentdetector-module">detector.componentDetector module</a></li>
-<li><a class="reference internal" href="#detector-config-module">detector.config module</a></li>
-<li><a class="reference internal" href="#detector-helpermodules-module">detector.helperModules module</a></li>
-<li><a class="reference internal" href="#detector-nms-module">detector.nms module</a></li>
-<li><a class="reference internal" href="#detector-windowextractor-module">detector.windowExtractor module</a></li>
-<li><a class="reference internal" href="#module-contents">Module contents</a></li>
+<li><a class="reference internal" href="#module-detector.Clustering">detector.Clustering module</a></li>
+<li><a class="reference internal" href="#module-detector.componentDetector">detector.componentDetector module</a></li>
+<li><a class="reference internal" href="#module-detector.config">detector.config module</a></li>
+<li><a class="reference internal" href="#module-detector.helperModules">detector.helperModules module</a></li>
+<li><a class="reference internal" href="#module-detector.nms">detector.nms module</a></li>
+<li><a class="reference internal" href="#module-detector.windowExtractor">detector.windowExtractor module</a></li>
+<li><a class="reference internal" href="#module-detector">Module contents</a></li>
 </ul>
 </li>
 </ul>
@@ -97,21 +302,18 @@
   <div role="note" aria-label="source link">
     <h3>This Page</h3>
     <ul class="this-page-menu">
-      <li><a href="_sources/detector.txt"
+      <li><a href="_sources/detector.rst.txt"
             rel="nofollow">Show Source</a></li>
     </ul>
    </div>
 <div id="searchbox" style="display: none" role="search">
   <h3>Quick search</h3>
     <form class="search" action="search.html" method="get">
-      <input type="text" name="q" />
-      <input type="submit" value="Go" />
+      <div><input type="text" name="q" /></div>
+      <div><input type="submit" value="Go" /></div>
       <input type="hidden" name="check_keywords" value="yes" />
       <input type="hidden" name="area" value="default" />
     </form>
-    <p class="searchtip" style="font-size: 90%">
-    Enter search terms or a module, class or function name.
-    </p>
 </div>
 <script type="text/javascript">$('#searchbox').show(0);</script>
         </div>
@@ -122,11 +324,11 @@
       &copy;2017, Gayathri Mahalingam, Kevin Gay.
       
       |
-      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.3.1</a>
+      Powered by <a href="http://sphinx-doc.org/">Sphinx 1.6.3</a>
       &amp; <a href="https://github.com/bitprophet/alabaster">Alabaster 0.7.10</a>
       
       |
-      <a href="_sources/detector.txt"
+      <a href="_sources/detector.rst.txt"
           rel="nofollow">Page source</a>
     </div>
 
