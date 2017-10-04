@@ -2,60 +2,11 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f11c0d31-c548-4351-964a-b05e729fb719" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/GUI.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/GUI.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/canvas.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/canvas.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/colorDialog.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/colorDialog.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/detector.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/detector.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/environment.pickle" afterPath="$PROJECT_DIR$/doc/_build/doctrees/environment.pickle" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/index.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/index.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/labelDialog.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/labelDialog.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/labelFile.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/labelFile.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/lib.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/lib.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/modules.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/modules.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/shape.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/shape.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/textDetector.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/textDetector.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/textDetector.layers.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/textDetector.layers.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/toolBar.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/toolBar.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/ustr.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/ustr.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/doctrees/zoomWidget.doctree" afterPath="$PROJECT_DIR$/doc/_build/doctrees/zoomWidget.doctree" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/comment-bright.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/comment-bright.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/comment-close.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/comment-close.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/comment.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/comment.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/down-pressed.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/down-pressed.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/down.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/down.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/file.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/file.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/minus.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/minus.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/plus.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/plus.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/up-pressed.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/up-pressed.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/up.png" afterPath="$PROJECT_DIR$/doc/_build/html/_static/up.png" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/objects.inv" afterPath="$PROJECT_DIR$/doc/_build/html/objects.inv" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/.buildinfo" afterPath="$PROJECT_DIR$/doc/_build/html/.buildinfo" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/GUI.html" afterPath="$PROJECT_DIR$/doc/_build/html/GUI.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/basic.css" afterPath="$PROJECT_DIR$/doc/_build/html/_static/basic.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/doctools.js" afterPath="$PROJECT_DIR$/doc/_build/html/_static/doctools.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/jquery.js" afterPath="$PROJECT_DIR$/doc/_build/html/_static/jquery.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/pygments.css" afterPath="$PROJECT_DIR$/doc/_build/html/_static/pygments.css" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/searchtools.js" afterPath="$PROJECT_DIR$/doc/_build/html/_static/searchtools.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/_static/websupport.js" afterPath="$PROJECT_DIR$/doc/_build/html/_static/websupport.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/canvas.html" afterPath="$PROJECT_DIR$/doc/_build/html/canvas.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/colorDialog.html" afterPath="$PROJECT_DIR$/doc/_build/html/colorDialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/detector.html" afterPath="$PROJECT_DIR$/doc/_build/html/detector.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/genindex.html" afterPath="$PROJECT_DIR$/doc/_build/html/genindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/index.html" afterPath="$PROJECT_DIR$/doc/_build/html/index.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/labelDialog.html" afterPath="$PROJECT_DIR$/doc/_build/html/labelDialog.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/labelFile.html" afterPath="$PROJECT_DIR$/doc/_build/html/labelFile.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/lib.html" afterPath="$PROJECT_DIR$/doc/_build/html/lib.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/modules.html" afterPath="$PROJECT_DIR$/doc/_build/html/modules.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/py-modindex.html" afterPath="$PROJECT_DIR$/doc/_build/html/py-modindex.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/search.html" afterPath="$PROJECT_DIR$/doc/_build/html/search.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/searchindex.js" afterPath="$PROJECT_DIR$/doc/_build/html/searchindex.js" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/shape.html" afterPath="$PROJECT_DIR$/doc/_build/html/shape.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/textDetector.html" afterPath="$PROJECT_DIR$/doc/_build/html/textDetector.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/textDetector.layers.html" afterPath="$PROJECT_DIR$/doc/_build/html/textDetector.layers.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/toolBar.html" afterPath="$PROJECT_DIR$/doc/_build/html/toolBar.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/ustr.html" afterPath="$PROJECT_DIR$/doc/_build/html/ustr.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/_build/html/zoomWidget.html" afterPath="$PROJECT_DIR$/doc/_build/html/zoomWidget.html" />
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/doc/index.rst" afterPath="$PROJECT_DIR$/doc/index.rst" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/detector/models/capacitor/model_capacitor.caffemodel" afterPath="$PROJECT_DIR$/detector/models/capacitor/model_capacitor.caffemodel" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/misc.xml" afterPath="$PROJECT_DIR$/.idea/misc.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/pypcb.iml" afterPath="$PROJECT_DIR$/.idea/pypcb.iml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
+      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelImage/GUI.py" afterPath="$PROJECT_DIR$/labelImage/GUI.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
     <option name="TRACKING_ENABLED" value="true" />
@@ -66,7 +17,7 @@
   </component>
   <component name="CoverageDataManager">
     <SUITE FILE_PATH="coverage/pypcb$KGlabelImg.coverage" NAME="KGlabelImg Coverage Results" MODIFIED="1500406941699" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
-    <SUITE FILE_PATH="coverage/pypcb$GUI__1_.coverage" NAME="GUI (1) Coverage Results" MODIFIED="1505235645627" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/labelImage" />
+    <SUITE FILE_PATH="coverage/pypcb$GUI__1_.coverage" NAME="GUI (1) Coverage Results" MODIFIED="1507060419533" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/labelImage" />
     <SUITE FILE_PATH="coverage/pypcb$spreadsheet.coverage" NAME="spreadsheet Coverage Results" MODIFIED="1505335007890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/pypcb$GUI.coverage" NAME="GUI Coverage Results" MODIFIED="1500528024857" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
   </component>
@@ -79,8 +30,8 @@
       <file leaf-file-name="GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-31538">
-              <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+            <state relative-caret-position="1481">
+              <caret line="1974" column="0" lean-forward="true" selection-start-line="1974" selection-start-column="0" selection-end-line="1974" selection-end-column="0" />
               <folding>
                 <element signature="e#256#269#0" expanded="true" />
               </folding>
@@ -101,8 +52,8 @@
       <file leaf-file-name="resources.qrc" pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/labelImage/resources.qrc">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="527">
-              <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
+            <state relative-caret-position="289">
+              <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
               <folding />
             </state>
           </provider>
@@ -246,7 +197,7 @@
     <sorting>DEFINITION_ORDER</sorting>
   </component>
   <component name="ProjectFrameBounds">
-    <option name="x" value="-8" />
+    <option name="x" value="2552" />
     <option name="y" value="-8" />
     <option name="width" value="2576" />
     <option name="height" value="1056" />
@@ -275,52 +226,6 @@
             </PATH_ELEMENT>
             <PATH_ELEMENT>
               <option name="myItemId" value="pypcb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pypcb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pypcb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="labelImage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pypcb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pypcb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="labelImage" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="libs" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-          </PATH>
-          <PATH>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pypcb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.ProjectViewProjectNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="pypcb" />
-              <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
-            </PATH_ELEMENT>
-            <PATH_ELEMENT>
-              <option name="myItemId" value="doc" />
               <option name="myItemType" value="com.intellij.ide.projectView.impl.nodes.PsiDirectoryNode" />
             </PATH_ELEMENT>
           </PATH>
@@ -355,7 +260,7 @@
       </list>
     </option>
   </component>
-  <component name="RunManager" selected="Python.spreadsheet">
+  <component name="RunManager" selected="Python.GUI (1)">
     <configuration default="false" name="GUI (1)" type="PythonConfigurationType" factoryName="Python" temporary="true">
       <option name="INTERPRETER_OPTIONS" value="" />
       <option name="PARENT_ENVS" value="true" />
@@ -582,8 +487,8 @@
     </list>
     <recent_temporary>
       <list size="2">
-        <item index="0" class="java.lang.String" itemvalue="Python.spreadsheet" />
-        <item index="1" class="java.lang.String" itemvalue="Python.GUI (1)" />
+        <item index="0" class="java.lang.String" itemvalue="Python.GUI (1)" />
+        <item index="1" class="java.lang.String" itemvalue="Python.spreadsheet" />
       </list>
     </recent_temporary>
     <configuration default="true" type="tests" factoryName="Attests">
@@ -621,9 +526,10 @@
     <servers />
   </component>
   <component name="ToolWindowManager">
-    <frame x="-8" y="-8" width="2576" height="1056" extended-state="6" />
+    <frame x="2552" y="-8" width="2576" height="1056" extended-state="6" />
+    <editor active="true" />
     <layout>
-      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.22575517" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
+      <window_info id="Project" active="false" anchor="left" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="true" show_stripe_button="true" weight="0.23529412" sideWeight="0.5" order="0" side_tool="false" content_ui="combo" />
       <window_info id="TODO" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="6" side_tool="false" content_ui="tabs" />
       <window_info id="Event Log" active="false" anchor="bottom" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.23943663" sideWeight="0.50596184" order="7" side_tool="true" content_ui="tabs" />
       <window_info id="Database" active="false" anchor="right" auto_hide="false" internal_type="DOCKED" type="DOCKED" visible="false" show_stripe_button="true" weight="0.33" sideWeight="0.5" order="3" side_tool="false" content_ui="tabs" />
@@ -657,14 +563,6 @@
     <watches-manager />
   </component>
   <component name="editorHistoryManager">
-    <entry file="file://$PROJECT_DIR$/labelImage/libs/canvas.py">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="6494">
-          <caret line="383" column="0" lean-forward="false" selection-start-line="383" selection-start-column="0" selection-end-line="383" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/libs/shape.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="2822">
@@ -942,14 +840,6 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/genDocs.py" />
-    <entry file="file://$PROJECT_DIR$/labelImage/resources.qrc">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="527">
-          <caret line="31" column="0" lean-forward="false" selection-start-line="31" selection-start-column="0" selection-end-line="31" selection-end-column="0" />
-          <folding />
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/libs/ustr.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="391">
@@ -977,6 +867,21 @@
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/spreadsheet.py" />
+    <entry file="file://$PROJECT_DIR$/__init__.py">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="0">
+          <caret line="0" column="0" lean-forward="false" selection-start-line="0" selection-start-column="0" selection-end-line="0" selection-end-column="0" />
+        </state>
+      </provider>
+    </entry>
+    <entry file="file://$PROJECT_DIR$/labelImage/resources.qrc">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="289">
+          <caret line="17" column="40" lean-forward="false" selection-start-line="17" selection-start-column="40" selection-end-line="17" selection-end-column="40" />
+          <folding />
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/resources.py">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="0">
@@ -987,8 +892,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-31538">
-          <caret line="29" column="0" lean-forward="false" selection-start-line="29" selection-start-column="0" selection-end-line="29" selection-end-column="0" />
+        <state relative-caret-position="1481">
+          <caret line="1974" column="0" lean-forward="true" selection-start-line="1974" selection-start-column="0" selection-end-line="1974" selection-end-column="0" />
           <folding>
             <element signature="e#256#269#0" expanded="true" />
           </folding>

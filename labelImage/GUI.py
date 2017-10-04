@@ -12,12 +12,14 @@ import sys
 import subprocess
 import cv2
 
+
 from textDetector.textRecognizer import TextRecognizer
 from textDetector.other import draw_boxes, resize_im
 from textDetector.config import Config as cfg
 
 from detector import componentDetector as cd
 from detector.helperModules import *
+
 
 if '/usr/local/caffe/python' in sys.path:
     sys.path.remove('/usr/local/caffe/python')

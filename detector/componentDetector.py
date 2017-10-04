@@ -21,18 +21,6 @@ from windowExtractor import *
 
 
 class componentDetector(object):
-    """Component Detector class
-
-    Parameters
-    ----------
-    component : Name of the component (string) e.g. ic, resistor, capacitor
-    mode : "GPU" or "CPU"
-
-    Examples
-    --------
-    icDetector = componentDetector(component="ic", mode="GPU")
-
-    """
 
     def __init__(self, component="ic", mode="GPU"):
         self.componentClass = component
@@ -54,19 +42,6 @@ class componentDetector(object):
 
 
     def detectfast(self, image, minComponentSize):
-        """Perfoms detection of component faster
-        Works with images of smaller size for the detector to process
-
-        Parameters
-        ----------
-        image : full path to the image (string)
-        minComponentSize : the size of the least sized component class
-
-        Returns
-        -------
-        nBoxes : a list of bounding boxes [x,y,w,h] of size (n x 4)
-        """
-
         # check if the image exists
         if os.path.exists(image):
             # load the image
@@ -90,99 +65,84 @@ class componentDetector(object):
             # validate the boxes for boundary conditions
             true_boxes = validateBoxes(true_boxes, [img.shape[0], img.shape[1]])
             # cluster the boxes
-            nBoxes = ClusterBoundingBoxes(true_boxes)
-            #clusters = clusterBoxes(true_boxes)
-            #fCluster = getAvgClusterBoxes(clusters)
+            clusters = clusterBoxes(true_boxes)
+            fCluster = getAvgClusterBoxes(clusters)
             # perform validation again
-            #nBoxes = validateBoxes(fCluster, [img.shape[0], img.shape[1]])
+            nBoxes = validateBoxes(fCluster, [img.shape[0], img.shape[1]])
             # get enclosing boxes
-            #nBoxes = enclosingBoxes(nBoxes)
+            nBoxes = enclosingBoxes(nBoxes)
             return nBoxes
         else:
             print("Image not found")
 
 
     def detect(self, image, minComponentSize):
-        """Perfoms detection of component (slower)
-        Works with images of smaller size for the detector to process
-
-        Parameters
-        ----------
-        image : full path to the image (string)
-        minComponentSize : the size of the least sized component class
-
-        Returns
-        -------
-        nBoxes : a list of bounding boxes [x,y,w,h] of size (n x 4)
-        """
-
         # check if the image exists:
-	if os.path.exists(image):
-		# load the image
-		img = caffe.io.load_image(image)
-		# compute scale
-		scale = math.ceil(227.0 / int(minComponentSize))
-		# scale the image
-		ims = caffe.io.resize_image(img, (int(img.shape[0]*scale), int(img.shape[1]*scale)))
-		# sliding window
-		total_boxes = []
+            if os.path.exists(image):
+                # load the image
+                img = caffe.io.load_image(image)
+                # compute scale
+                scale = math.ceil(227.0 / int(minComponentSize))
+                # scale the image
+                ims = caffe.io.resize_image(img, (int(img.shape[0]*scale), int(img.shape[1]*scale)))
+                # sliding window
+                total_boxes = []
 
-		print("Computing bounding boxes")
-		start1 = time.time()
-		for (x,y,imw) in sliding_window(ims, (515, 515), (minComponentSize, minComponentSize)):
-			# pass the image window to the classifier network
-			out = self.net_full_conv.forward_all(data=np.asarray([self.transformer.preprocess('data', imw)]))
+                print("Computing bounding boxes")
+                start1 = time.time()
+                for (x,y,imw) in sliding_window(ims, (515, 515), (minComponentSize, minComponentSize)):
+                    # pass the image window to the classifier network
+                    out = self.net_full_conv.forward_all(data=np.asarray([self.transformer.preprocess('data', imw)]))
 
-			# get the probability matrix associated with class 1 (IC here)
-			outprob = out['prob'][0,1]
+                    # get the probability matrix associated with class 1 (IC here)
+                    outprob = out['prob'][0,1]
 
-			# generate the bounding boxes based on the heat map
-			boxes = generateBoundingBox(outprob, 1)
+                    # generate the bounding boxes based on the heat map
+                    boxes = generateBoundingBox(outprob, 1)
 
-			# convert boxes to np array for nms
-			boxes_nms = np.array(boxes)
+                    # convert boxes to np array for nms
+                    boxes_nms = np.array(boxes)
 
-			# perform non-maximum suppression
-			true_boxes = nms_max(boxes_nms, overlapThresh=cfg.overlapThresh)
+                    # perform non-maximum suppression
+                    true_boxes = nms_max(boxes_nms, overlapThresh=cfg.overlapThresh)
 
-			# if there are any boxes returned scale them according to the original image
-			if (np.any(true_boxes)):
-				#plotHeatmap(scaleImg, outprob, "Heat Map")
-				scaled_boxes = copy.deepcopy(true_boxes)
-				for i, box in enumerate(scaled_boxes):
-					scaled_boxes[i][0] += x
-					scaled_boxes[i][1] += y
-					scaled_boxes[i][2] += x
-					scaled_boxes[i][3] += y
-				#drawBoundingBoxes(ims, scaled_boxes, "Scaled Image")
-				for i, box in enumerate(scaled_boxes):
-					true_boxes[i][0] = scaled_boxes[i][0] / scale
-					true_boxes[i][1] = scaled_boxes[i][1] / scale
-					true_boxes[i][2] = scaled_boxes[i][2] / scale
-					true_boxes[i][3] = scaled_boxes[i][3] / scale
-				total_boxes.extend(true_boxes)
+                    # if there are any boxes returned scale them according to the original image
+                    if (np.any(true_boxes)):
+                        #plotHeatmap(scaleImg, outprob, "Heat Map")
+                        scaled_boxes = copy.deepcopy(true_boxes)
+                        for i, box in enumerate(scaled_boxes):
+                            scaled_boxes[i][0] += x
+                            scaled_boxes[i][1] += y
+                            scaled_boxes[i][2] += x
+                            scaled_boxes[i][3] += y
+                        #drawBoundingBoxes(ims, scaled_boxes, "Scaled Image")
+                        for i, box in enumerate(scaled_boxes):
+                            true_boxes[i][0] = scaled_boxes[i][0] / scale
+                            true_boxes[i][1] = scaled_boxes[i][1] / scale
+                            true_boxes[i][2] = scaled_boxes[i][2] / scale
+                            true_boxes[i][3] = scaled_boxes[i][3] / scale
+                        total_boxes.extend(true_boxes)
 
-		end1 = time.time()
-		#print "Total time take for this image: " % (end1-start1)
+                end1 = time.time()
+                #print "Total time take for this image: " % (end1-start1)
 
-		print("Performing Non-Maxima Suppression")
-		# perform nms for the entire set of boxes
-		boxes_nms = np.array(total_boxes)
-		true_boxes = nms_max(boxes_nms, overlapThresh=0.2)
+                print("Performing Non-Maxima Suppression")
+                # perform nms for the entire set of boxes
+                boxes_nms = np.array(total_boxes)
+                true_boxes = nms_max(boxes_nms, overlapThresh=0.2)
 
-		print("Clustering bounding boxes")
-		# Cluster the overlapping bounding boxes
-		finalBoxes = ClusterBoundingBoxes(true_boxes)
-		#clusters = clusterBoxes(true_boxes)
-		#fCluster = getAvgClusterBoxes(clusters)
+                print("Clustering bounding boxes")
+                # Cluster the overlapping bounding boxes
+                clusters = clusterBoxes(true_boxes)
+                fCluster = getAvgClusterBoxes(clusters)
 
-		#print("Finding enclosing boxes")
-		# group enclosed boxes
-		#finalBoxes = enclosingBoxes(fCluster)
+                print("Finding enclosing boxes")
+                # group enclosed boxes
+                finalBoxes = enclosingBoxes(fCluster)
 
-		return finalBoxes
+                return finalBoxes
 
-		#draw the Bounding boxes on top of the image
-		#drawBoundingBoxes(im, finalBoxes, "Final Image")
-	else:
-		print("Image not found")
+                #draw the Bounding boxes on top of the image
+                #drawBoundingBoxes(im, finalBoxes, "Final Image")
+            else:
+                print("Image not found")
