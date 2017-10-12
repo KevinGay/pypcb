@@ -21,6 +21,18 @@ from windowExtractor import *
 
 
 class componentDetector(object):
+    """Component Detector class
+
+    Parameters
+    ----------
+    component : Name of the component (string) e.g. ic, resistor, capacitor
+    mode : "GPU" or "CPU"
+
+    Examples
+    --------
+    icDetector = componentDetector(component="ic", mode="GPU")
+
+    """
 
     def __init__(self, component="ic", mode="GPU"):
         self.componentClass = component
@@ -42,6 +54,19 @@ class componentDetector(object):
 
 
     def detectfast(self, image, minComponentSize):
+        """Perfoms detection of component faster
+        Works with images of smaller size for the detector to process
+
+        Parameters
+        ----------
+        image : full path to the image (string)
+        minComponentSize : the size of the least sized component class
+
+        Returns
+        -------
+        nBoxes : a list of bounding boxes [x,y,w,h] of size (n x 4)
+        """
+
         # check if the image exists
         if os.path.exists(image):
             # load the image
@@ -65,18 +90,32 @@ class componentDetector(object):
             # validate the boxes for boundary conditions
             true_boxes = validateBoxes(true_boxes, [img.shape[0], img.shape[1]])
             # cluster the boxes
-            clusters = clusterBoxes(true_boxes)
-            fCluster = getAvgClusterBoxes(clusters)
+            nBoxes = ClusterBoundingBoxes(true_boxes)
+            #clusters = clusterBoxes(true_boxes)
+            #fCluster = getAvgClusterBoxes(clusters)
             # perform validation again
-            nBoxes = validateBoxes(fCluster, [img.shape[0], img.shape[1]])
+            #nBoxes = validateBoxes(fCluster, [img.shape[0], img.shape[1]])
             # get enclosing boxes
-            nBoxes = enclosingBoxes(nBoxes)
+            #nBoxes = enclosingBoxes(nBoxes)
             return nBoxes
         else:
             print("Image not found")
 
 
     def detect(self, image, minComponentSize):
+        """Perfoms detection of component (slower)
+        Works with images of smaller size for the detector to process
+
+        Parameters
+        ----------
+        image : full path to the image (string)
+        minComponentSize : the size of the least sized component class
+
+        Returns
+        -------
+        nBoxes : a list of bounding boxes [x,y,w,h] of size (n x 4)
+        """
+
         # check if the image exists:
             if os.path.exists(image):
                 # load the image
@@ -133,12 +172,13 @@ class componentDetector(object):
 
                 print("Clustering bounding boxes")
                 # Cluster the overlapping bounding boxes
-                clusters = clusterBoxes(true_boxes)
-                fCluster = getAvgClusterBoxes(clusters)
+                finalBoxes = ClusterBoundingBoxes(true_boxes)
+                #clusters = clusterBoxes(true_boxes)
+                #fCluster = getAvgClusterBoxes(clusters)
 
-                print("Finding enclosing boxes")
+                #print("Finding enclosing boxes")
                 # group enclosed boxes
-                finalBoxes = enclosingBoxes(fCluster)
+                #finalBoxes = enclosingBoxes(fCluster)
 
                 return finalBoxes
 

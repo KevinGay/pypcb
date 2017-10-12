@@ -1926,7 +1926,6 @@ class TaskThread(QRunnable):
         if self.components[1]:
             detector = cd.componentDetector("capacitor", "gpu")
             self.caps = detector.detectfast(self.filePath, minSize)
-            print(self.caps)
         if self.components[2]:
             detector = cd.componentDetector("resistor", "gpu")
             self.res = detector.detectfast(self.filePath, minSize)
