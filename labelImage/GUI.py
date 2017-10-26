@@ -1856,6 +1856,29 @@ class DetectionDialog(QDialog):
 
         return shapes
 
+    def _loadLabels(self, component, boxes):
+        """
+        Put the predictions in the format that labelImg can read.
+        :param component: The component to identify.
+        :param boxes: The boxes 
+        :return: Shapes from the component detector module.
+        """
+        shapes = []
+        for i in range(len(list(boxes[0]))):
+            print(boxes[0][i])
+            points = []
+            leftx = boxes[0][i][0]
+            topy = boxes[0][i][1]
+            rightx = boxes[0][i][2]
+            bottomy = boxes[0][i][3]
+            points.append((leftx, topy))
+            points.append((rightx, topy))  # topright
+            points.append((rightx, bottomy))  # bottomright
+            points.append((leftx, bottomy))  # bottomleft
+            shapes.append([component + str(i), points, None, None])
+
+        return shapes
+
     def getShapes(self):
         """
         :return: The shapes. 
@@ -1875,7 +1898,7 @@ class DetectionDialog(QDialog):
         if len(self.modelThread.res) > 0:
             [self.shapes.append(box) for box in self._loadPredictions("resistor", self.modelThread.res)]
         if len(self.modelThread.labels) > 0:
-            [self.shapes.append(box) for box in self._loadPredictions("label", self.modelThread.labels)]
+            [self.shapes.append(box) for box in self._loadLabels("label", self.modelThread.labels)]
 
         self.accept()
 
