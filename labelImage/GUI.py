@@ -1865,7 +1865,6 @@ class DetectionDialog(QDialog):
         """
         shapes = []
         for i in range(len(list(boxes[0]))):
-            print(boxes[0][i])
             points = []
             leftx = boxes[0][i][0]
             topy = boxes[0][i][1]
