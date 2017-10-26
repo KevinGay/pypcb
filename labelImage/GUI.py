@@ -10,8 +10,6 @@ import os.path
 import re
 import sys
 import subprocess
-import cv2
-
 
 from textDetector.textRecognizer import TextRecognizer
 from textDetector.other import draw_boxes, resize_im
@@ -467,12 +465,12 @@ class MainWindow(QMainWindow, WindowMixin):
 
         self.settings = settings = Settings(types)
 
-        if settings.get('lastOpenDir'):
+        if settings.get('recentFiles'):
             if have_qstring():
-               recentFileQStringList = settings.get('lastOpenDir')
-               self.recentFiles = [ustr(i) for i in recentFileQStringList]
+                recentFileQStringList = settings.get('recentFiles')
+                self.recentFiles = [ustr(i) for i in recentFileQStringList]
             else:
-                self.recentFiles = recentFileQStringList = settings.get('lastOpenDir')
+                self.recentFiles = recentFileQStringList = settings.get('recentFiles')
 
         size = settings.get('window/size', QSize(600, 500))
         position = settings.get('window/position', QPoint(0, 0))
@@ -1786,7 +1784,7 @@ class DetectionDialog(QDialog):
 
         self.minSize = QSpinBox(self)
         self.minSize.setFixedWidth(60)
-        self.minSize.setRange(1, 999)
+        self.minSize.setRange(1, 9999)
         self.minSize.setValue(1)
 
         self.acceptButton = QPushButton("Ok")
@@ -1865,6 +1863,7 @@ class DetectionDialog(QDialog):
         """
         shapes = []
         for i in range(len(list(boxes[0]))):
+            print(boxes[0][i])
             points = []
             leftx = boxes[0][i][0]
             topy = boxes[0][i][1]

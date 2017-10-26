@@ -2,7 +2,6 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="f11c0d31-c548-4351-964a-b05e729fb719" name="Default" comment="">
-      <change type="MODIFICATION" beforePath="$PROJECT_DIR$/.idea/workspace.xml" afterPath="$PROJECT_DIR$/.idea/workspace.xml" />
       <change type="MODIFICATION" beforePath="$PROJECT_DIR$/labelImage/GUI.py" afterPath="$PROJECT_DIR$/labelImage/GUI.py" />
     </list>
     <option name="EXCLUDED_CONVERTED_TO_IGNORED" value="true" />
@@ -27,8 +26,8 @@
       <file leaf-file-name="GUI.py" pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="546">
-              <caret line="1867" column="0" lean-forward="false" selection-start-line="1867" selection-start-column="0" selection-end-line="1867" selection-end-column="0" />
+            <state relative-caret-position="264">
+              <caret line="1786" column="37" lean-forward="false" selection-start-line="1786" selection-start-column="37" selection-end-line="1786" selection-end-column="37" />
               <folding>
                 <element signature="e#256#269#0" expanded="true" />
               </folding>
@@ -129,7 +128,6 @@
   </component>
   <component name="FindInProjectRecents">
     <findStrings>
-      <find>setCreateMode</find>
       <find>toggleDrawMode</find>
       <find>openNext</find>
       <find>setEditing</find>
@@ -159,6 +157,7 @@
       <find>reset</find>
       <find>toggleAd</find>
       <find>print</find>
+      <find>if have_Q</find>
     </findStrings>
   </component>
   <component name="Git.Settings">
@@ -889,8 +888,8 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/labelImage/GUI.py">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="546">
-          <caret line="1867" column="0" lean-forward="false" selection-start-line="1867" selection-start-column="0" selection-end-line="1867" selection-end-column="0" />
+        <state relative-caret-position="264">
+          <caret line="1786" column="37" lean-forward="false" selection-start-line="1786" selection-start-column="37" selection-end-line="1786" selection-end-column="37" />
           <folding>
             <element signature="e#256#269#0" expanded="true" />
           </folding>
